@@ -16,6 +16,7 @@
         <link href="{{asset('lib/owlcarousel/assets/owl.carousel.min.css')}}" rel="stylesheet">
         <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
         <link href="{{asset('css/style.css')}}" rel="stylesheet">
+        <link rel="shortcut icon" href="{{url ('storage/logors.png')}}" type="image/x-icon"/>
     </head>
 
     <body>
@@ -42,15 +43,12 @@
                 <div class="col-lg-4 text-center text-lg-end">
                     <div class="d-flex align-items-center justify-content-end">
                         <a href="#" class="btn btn-light btn-square border rounded-circle nav-fill me-3"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="btn btn-light btn-square border rounded-circle nav-fill me-3"><i class="fab fa-twitter"></i></a>
                         <a href="#" class="btn btn-light btn-square border rounded-circle nav-fill me-3"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="btn btn-light btn-square border rounded-circle nav-fill me-0"><i class="fab fa-linkedin-in"></i></a>
                     </div>
                 </div>
             </div>
         </div>
         <!-- Topbar End -->
-
 
         <!-- Navbar & Hero Start -->
         <div class="container-fluid position-relative p-0">
@@ -75,7 +73,6 @@
                                 <a href="blog.html" class="dropdown-item">Our Blog</a>
                                 <a href="team.html" class="dropdown-item">Our Team</a>
                                 <a href="testimonial.html" class="dropdown-item">Testimonial</a>
-                                <a href="404.html" class="dropdown-item">404 Page</a>
                             </div>
                         </div>
                         <a href="contact.html" class="nav-item nav-link">Contact Us</a>
@@ -83,36 +80,31 @@
                     <a href="#" class="btn btn-primary rounded-pill text-white py-2 px-4 flex-wrap flex-sm-shrink-0">Login</a>
                 </div>
             </nav>
-
-
-            <!-- Carousel Start -->
-            <div class="header-carousel owl-carousel">
-                <div class="header-carousel-item">
-                    <img src="{{asset('img/carousel-1.jpg')}}" class="img-fluid w-100" alt="Image">
-                    <div class="carousel-caption">
-                        <div class="carousel-caption-content p-3">
-                            <h5 class="text-white text-uppercase fw-bold mb-4" style="letter-spacing: 3px;">RSUD Rumah Sehat Amanah Husada</h5>
-                            <h1 class="display-1 text-capitalize text-white mb-4">Senyum Santun Sapa</h1>
-                            {{--<p class="mb-5 fs-5">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-                            </p>
-                            <a class="btn btn-primary rounded-pill text-white py-3 px-5" href="#">Book Appointment</a>--}}
-                        </div>
-                    </div>
-                </div>
-                <div class="header-carousel-item">
-                    <img src="{{asset('img/carousel-2.jpg')}}" class="img-fluid w-100" alt="Image">
-                    <div class="carousel-caption">
-                        <div class="carousel-caption-content p-3">
-                            <h5 class="text-white text-uppercase fw-bold mb-4" style="letter-spacing: 3px;">RSUD Rumah Sehat Amanah Husada</h5>
-                            <h1 class="display-1 text-capitalize text-white mb-4">Senyum Santun Sapa</h1>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Carousel End -->
         </div>
         <!-- Navbar & Hero End -->
 
+        <!-- Carousel Start -->
+        <div class="header-carousel owl-carousel">
+            <div class="header-carousel-item">
+                <img src="{{asset('img/carousel-1.jpg')}}" class="img-fluid w-100" alt="Image">
+                <div class="carousel-caption">
+                    <div class="carousel-caption-content p-3">
+                        <h5 class="text-white text-uppercase fw-bold mb-4" style="letter-spacing: 3px;">RSUD Rumah Sehat Amanah Husada</h5>
+                        <h1 class="display-1 text-capitalize text-white mb-4">Senyum Santun Sapa</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="header-carousel-item">
+                <img src="{{asset('img/carousel-2.jpg')}}" class="img-fluid w-100" alt="Image">
+                <div class="carousel-caption">
+                    <div class="carousel-caption-content p-3">
+                        <h5 class="text-white text-uppercase fw-bold mb-4" style="letter-spacing: 3px;">RSUD Rumah Sehat Amanah Husada</h5>
+                        <h1 class="display-1 text-capitalize text-white mb-4">Senyum Santun Sapa</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Carousel End -->
 
         <!-- Services Start -->
         <div class="container-fluid service py-5">
@@ -149,7 +141,7 @@
                         </div>
                     @endforelse
                     <div class="col-12 text-center wow fadeInUp" data-wow-delay="0.2s">
-                        <a class="btn btn-primary rounded-pill text-white py-3 px-5" href="#">Services More</a>
+                        <a class="btn btn-primary rounded-pill text-white py-3 px-5" href="#">Browse More</a>
                     </div>
                 </div>
             </div>
@@ -465,6 +457,9 @@
                     @endforeach
                 </div>
             </div>
+            <div class="col-12 text-center wow fadeInUp" data-wow-delay="0.2s">
+                <a class="btn btn-primary rounded-pill text-white py-3 px-5" href="#">Browse More</a>
+            </div>
         </div>
         <!-- Team End -->
 
@@ -493,7 +488,7 @@
                 </div>
             </div>
             <div class="col-12 text-center wow fadeInUp" data-wow-delay="0.2s">
-                <a class="btn btn-secondary rounded-pill text-white py-3 px-5" href="#">Services More</a>
+                <a class="btn btn-secondary rounded-pill text-white py-3 px-5" href="#">Browse More</a>
             </div>
         </div>
         <!-- Testimonial End -->
