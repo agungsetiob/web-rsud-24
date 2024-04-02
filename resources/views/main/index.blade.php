@@ -16,7 +16,7 @@
         <link href="{{asset('lib/owlcarousel/assets/owl.carousel.min.css')}}" rel="stylesheet">
         <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
         <link href="{{asset('css/style.css')}}" rel="stylesheet">
-        <link rel="shortcut icon" href="{{url ('storage/logors.png')}}" type="image/x-icon"/>
+        <link rel="shortcut icon" href="{{asset ('img/favicon.png')}}" type="image/x-icon"/>
     </head>
 
     <body>
@@ -62,9 +62,10 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto py-0">
-                        <a href="index.html" class="nav-item nav-link active">Home</a>
-                        <a href="about.html" class="nav-item nav-link">About</a>
-                        <a href="service.html" class="nav-item nav-link">Services</a>
+                        <a href="{{url('/')}}" class="nav-item nav-link active">Beranda</a>
+                        <a href="#blog" class="nav-item nav-link">Blog</a>
+                        <a href="#tentang" class="nav-item nav-link">Tentang</a>
+                        <a href="#layanan" class="nav-item nav-link">Layanan</a>
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                             <div class="dropdown-menu m-0">
@@ -75,7 +76,6 @@
                                 <a href="testimonial.html" class="dropdown-item">Testimonial</a>
                             </div>
                         </div>
-                        <a href="contact.html" class="nav-item nav-link">Contact Us</a>
                     </div>
                     <a href="#" class="btn btn-primary rounded-pill text-white py-2 px-4 flex-wrap flex-sm-shrink-0">Login</a>
                 </div>
@@ -106,8 +106,8 @@
         </div>
         <!-- Carousel End -->
 
-        <!-- Services Start -->
-        <div class="container-fluid service py-5">
+        <!-- Blog Start -->
+        <div id="blog" class="container-fluid service py-5">
             <div class="container py-5">
                 <div class="section-title mb-5 wow fadeInUp" data-wow-delay="0.2s">
                     <div class="sub-style">
@@ -150,15 +150,15 @@
 
 
         <!-- About Start -->
-        <div class="container-fluid about bg-light py-5">
+        <div id="tentang" class="container-fluid about bg-light py-5">
             <div class="container py-5">
                 <div class="row g-5 align-items-center">
                     <div class="col-lg-5 wow fadeInLeft" data-wow-delay="0.2s">
                         <div class="about-img pb-5 ps-5">
                             <img src="{{url('storage/about.jpeg')}}" class="img-fluid rounded w-100" style="object-fit: cover;" alt="Image">
-                            <div class="about-img-inner">
+                            {{--<div class="about-img-inner">
                                 <img src="{{url('storage/logors.png')}}" class="img-fluid rounded-circle w-100 h-100" alt="Image">
-                            </div>
+                            </div>--}}
                         </div>
                     </div>
                     <div class="col-lg-7 wow fadeInRight" data-wow-delay="0.4s">
@@ -179,8 +179,8 @@
         </div>
         <!-- About End -->
 
-        <!-- Feature Start -->
-        <div class="container-fluid feature py-5">
+        <!-- Layanan Start -->
+        <div id="layanan" class="container-fluid feature py-5">
             <div class="container py-5">
                 <div class="section-title mb-5 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="sub-style">
