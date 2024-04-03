@@ -1,7 +1,7 @@
     @extends('layouts.main-layout')
         @section('content')
         <!-- Carousel Start -->
-        <div id="top-page" data-loading-class="d-none">
+        <div id="top-page">
             <div class="header-carousel owl-carousel">
                 <div class="header-carousel-item">
                     <img src="{{asset('img/carousel-1.jpg')}}" class="img-fluid w-100" alt="Image">

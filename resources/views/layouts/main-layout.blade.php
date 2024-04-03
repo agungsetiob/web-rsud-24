@@ -23,14 +23,13 @@
 
     <body hx-ext="loading-states">
 
-        <!-- Spinner Start -->
+        {{--<!-- Spinner Start -->
         <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
             <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
                 <span class="sr-only">Loading...</span>
             </div>
         </div>
-        <!-- Spinner End -->
-
+        <!-- Spinner End -->--}}
 
         <!-- Topbar Start -->
         <div id="beranda" class="container-fluid bg-dark px-5 d-none d-lg-block">
@@ -87,6 +86,11 @@
         <!-- Navbar & Hero End -->
 
         @yield('content')
+
+        <div data-loading-class="loading-overlay"></div>
+        <div data-loading-class-remove="d-none" class="d-none d-flex align-items-center justify-content-center" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 100001;">
+            <i class="fas fa-circle-notch fa-spin fa-4x text-primary"></i>
+        </div>
 
         <!-- Footer Start -->
         <div class="container-fluid footer py-5 wow fadeIn" data-wow-delay="0.2s">
