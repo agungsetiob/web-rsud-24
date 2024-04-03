@@ -16,10 +16,12 @@
         <link href="{{asset('lib/owlcarousel/assets/owl.carousel.min.css')}}" rel="stylesheet">
         <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
         <link href="{{asset('css/style.css')}}" rel="stylesheet">
-        <link rel="shortcut icon" href="{{url ('storage/logors.png')}}" type="image/x-icon"/>
+        <link rel="shortcut icon" href="{{asset('img/favicon.png')}}" type="image/x-icon"/>
+        <script src="{{asset('vendor/tanbu/tanbu.min.js')}}"></script>
+        <script src="{{asset('vendor/tanbu/loading-states.js')}}"></script>
     </head>
 
-    <body>
+    <body hx-ext="loading-states">
 
         <!-- Spinner Start -->
         <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
@@ -31,19 +33,19 @@
 
 
         <!-- Topbar Start -->
-        <div class="container-fluid bg-dark px-5 d-none d-lg-block">
+        <div id="beranda" class="container-fluid bg-dark px-5 d-none d-lg-block">
             <div class="row gx-0 align-items-center" style="height: 45px;">
                 <div class="col-lg-8 text-center text-lg-start mb-lg-0">
                     <div class="d-flex flex-wrap">
-                        <a href="#" class="text-light me-4"><i class="fas fa-map-marker-alt text-primary me-2"></i>Find Us</a>
+                        <a href="https://maps.app.goo.gl/Q1FrsSHqmTuKRU776" class="text-light me-4" target="_blank"><i class="fas fa-map-marker-alt text-primary me-2"></i>Find Us</a>
                         <a href="#" class="text-light me-4"><i class="fas fa-phone-alt text-primary me-2"></i>+628115040540</a>
-                        <a href="#" class="text-light me-0"><i class="fas fa-envelope text-primary me-2"></i>rsud@tanahbumbukab.go.id/rsud.tanbu@gmail.com</a>
+                        <a href="#" class="text-light me-0"><i class="fas fa-envelope text-primary me-2"></i>rsud.tanbu@gmail.com</a>
                     </div>
                 </div>
                 <div class="col-lg-4 text-center text-lg-end">
                     <div class="d-flex align-items-center justify-content-end">
                         <a href="#" class="btn btn-light btn-square border rounded-circle nav-fill me-3"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="btn btn-light btn-square border rounded-circle nav-fill me-3"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.instagram.com/rsud_tanah_bumbu/" class="btn btn-light btn-square border rounded-circle nav-fill me-3"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
             </div>
@@ -53,7 +55,7 @@
         <!-- Navbar & Hero Start -->
         <div class="container-fluid position-relative p-0">
             <nav class="navbar navbar-expand-lg navbar-light bg-white px-4 px-lg-5 py-3 py-lg-0">
-                <a href="index.html" class="navbar-brand p-0">
+                <a href="/" class="navbar-brand p-0">
                     <!-- <h1 class="text-primary m-0"><i class="fas fa-star-of-life me-3"></i>Terapia</h1> -->
                     <img src="{{url('storage/logors.png')}}" alt="Logo">
                 </a>
@@ -62,8 +64,9 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto py-0">
-                        <a href="index.html" class="nav-item nav-link active">Home</a>
-                        <a href="about.html" class="nav-item nav-link">About</a>
+                        <a href="{{url ('/#beranda')}}" class="nav-item nav-link">Beranda</a>
+                        <a href="{{url ('/#blog')}}" class="nav-item nav-link">Blog</a>
+                        <a href="#tentang" class="nav-item nav-link">Tentang</a>
                         <a href="service.html" class="nav-item nav-link">Services</a>
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
@@ -85,22 +88,19 @@
 
         @yield('content')
 
-
         <!-- Footer Start -->
         <div class="container-fluid footer py-5 wow fadeIn" data-wow-delay="0.2s">
             <div class="container py-5">
                 <div class="row g-5">
                     <div class="col-md-6 col-lg-6 col-xl-3">
                         <div class="footer-item d-flex flex-column">
-                            <h4 class="text-white mb-4"><i class="fas fa-star-of-life me-3"></i>Terapia</h4>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus dolorem impedit eos autem dolores laudantium quia, qui similique
+                            <h4 class="text-white mb-4"><img src="{{asset('img/favicon.png')}}" alt="Logo" width="25px;"></i> Amanah Husada</h4>
+                            <p>RSUD Rumah Sehat Amanah Husada adalah rumah sakit umum milik Pemkab Tanah Bumbu yang ditujukan untuk memberikan pelayanan kesehatan prima bagi masyarakat
                             </p>
                             <div class="d-flex align-items-center">
                                 <i class="fas fa-share fa-2x text-white me-2"></i>
                                 <a class="btn-square btn btn-primary text-white rounded-circle mx-1" href=""><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn-square btn btn-primary text-white rounded-circle mx-1" href=""><i class="fab fa-twitter"></i></a>
                                 <a class="btn-square btn btn-primary text-white rounded-circle mx-1" href=""><i class="fab fa-instagram"></i></a>
-                                <a class="btn-square btn btn-primary text-white rounded-circle mx-1" href=""><i class="fab fa-linkedin-in"></i></a>
                             </div>
                         </div>
                     </div>

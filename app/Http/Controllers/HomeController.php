@@ -17,12 +17,16 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $posts = Post::latest()->paginate(6);
         $title = 'Blog';
         foreach ($posts as $post){
             $post->content = Str::limit($post->content, 40);   
+        }
+        sleep(2);
+        if ($request->header('HX-Request')) {
+            return view('main.blog', compact('posts', 'title'))->fragment('blog');
         }
         return view('main.blog', compact('posts', 'title'));
     }
