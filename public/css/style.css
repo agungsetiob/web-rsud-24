@@ -24,10 +24,6 @@
     height: 100%;
     background-color: #3c3e42;
     z-index: 10000;
-  }
-
-.opacity-0 {
-    visibility: hidden;
 }
 
 .back-to-top {
@@ -230,12 +226,12 @@
 }
 
 .navbar-light .navbar-brand img {
-    max-height: 70px;
+    max-height: 75px;
     transition: .5s;
 }
 
 .sticky-top.navbar-light .navbar-brand img {
-    max-height: 45px;
+    max-height: 50px;
 }
 
 .navbar .dropdown-toggle::after {
@@ -557,9 +553,9 @@
     position: absolute;
     left: 0; 
     bottom: 0; 
-    border: 10px solid; 
-    border-color: var(--bs-white) var(--bs-white) var(--bs-white) var(--bs-white);
-    border-radius: 50%;
+/*    border: 10px solid; */
+/*    border-color: var(--bs-white) var(--bs-white) var(--bs-white) var(--bs-white);*/
+/*    border-radius: 50%;*/
 
 }
 

@@ -65,8 +65,8 @@
                     <div class="navbar-nav ms-auto py-0">
                         <a href="{{url ('/#beranda')}}" class="nav-item nav-link">Beranda</a>
                         <a href="{{url ('/#blog')}}" class="nav-item nav-link">Blog</a>
-                        <a href="#tentang" class="nav-item nav-link">Tentang</a>
-                        <a href="service.html" class="nav-item nav-link">Services</a>
+                        <a href="{{url ('/#profil')}}" class="nav-item nav-link">Profil</a>
+                        <a href="{{url ('/#layanan')}}" class="nav-item nav-link">Layanan</a>
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                             <div class="dropdown-menu m-0">
@@ -87,10 +87,10 @@
 
         @yield('content')
 
-        <div data-loading-class="loading-overlay"></div>
+        {{-- <div data-loading-class="loading-overlay"></div> 
         <div data-loading-class-remove="d-none" class="d-none d-flex align-items-center justify-content-center" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 100001;">
             <i class="fas fa-circle-notch fa-spin fa-4x text-primary"></i>
-        </div>
+        </div>--}}
 
         <!-- Footer Start -->
         <div class="container-fluid footer py-5 wow fadeIn" data-wow-delay="0.2s">
