@@ -10,8 +10,8 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StandarPelayananController;
-use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Models\Profile;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,10 +24,15 @@ use App\Models\Profile;
 |
 */
 
-Route::get('/profil', function () {
+Route::get('/profil', function (Request $request) {
     $title = 'Profil';
     $profiles = Profile::all();
-    return view('main.about', compact('title', 'profiles'));
+    //sleep(2);
+    if ($request->header('HX-Request')) {
+        return view('main.profil', compact('profiles', 'title'))->fragment('profil');
+    } else {
+        return view('main.profil', compact('title', 'profiles'));
+    }
 });
 
 //call symlink through symlink.blade.php

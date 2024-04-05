@@ -21,11 +21,20 @@
                         </div>
                     </div>
                 </div>
+                <div class="header-carousel-item">
+                    <img src="{{asset('img/carousel-3.png')}}" class="img-fluid w-100" alt="Image">
+                    <div class="carousel-caption">
+                        <div class="carousel-caption-content p-3">
+                            <h5 class="text-white text-uppercase fw-bold mb-4" style="letter-spacing: 3px;">RSUD Rumah Sehat Amanah Husada</h5>
+                            <h1 class="display-1 text-capitalize text-white mb-4">Senyum Santun Sapa</h1>
+                        </div>
+                    </div>
+                </div>
             </div>
             <!-- Carousel End -->
 
             <!-- Blog Start -->
-            <div id="blog" class="container-fluid service py-5">
+            <div id="blog" class="container-fluid service py-5" data-loading-class="fade">
                 <div class="container py-5">
                     <div class="section-title mb-5 wow fadeInUp" data-wow-delay="0.2s">
                         <div class="sub-style">
@@ -60,21 +69,20 @@
                         @endforelse
                         <div class="col-12 text-center wow fadeInUp" data-wow-delay="0.2s">
                             <a class="btn btn-primary rounded-pill text-white py-3 px-5" href="#"
-                            hx-get="{{url('blog/#blog-page')}}" 
+                            hx-get="{{url('blog/')}}" 
                             hx-trigger="click" 
                             hx-target="#top-page" 
                             hx-swap="outerHTML transition:true"
                             hx-push-url="true"
                             data-loading-class="d-none">Browse More</a>
-                            <a class="d-none btn btn-primary rounded-pill text-white py-3 px-5" href="#" data-loading-class-remove="d-none"><i class="fas fa-circle-notch fa-spin fa-2x"></i></a>
                         </div>
                     </div>
                 </div>
             </div>
             <!-- Blog End -->
 
-            <!-- About Start -->
-            <div id="profil" class="container-fluid about bg-light py-5">
+            <!-- Profile Start -->
+            <div id="profil" class="container-fluid about bg-light py-5" data-loading-class="fade">
                 <div class="container py-5">
                     <div class="row g-5 align-items-center">
                         <div class="col-lg-5 wow fadeInLeft" data-wow-delay="0.2s">
@@ -96,13 +104,18 @@
                                     <h6 class="mb-2">Misi</h6>
                                     <p class="text-secondary"><i class="fa fa-check text-primary me-2"></i> Meningkatkan Pelayanan Kesehatan Rujukan Yang Berkualitas</p>
                                 </div>
-                                <a href="#" class="btn btn-primary rounded-pill text-white py-3 px-5">Discover More</a>
+                                <a href="#" class="btn btn-primary rounded-pill text-white py-3 px-5"
+                                hx-get="{{url('profil')}}" 
+                                hx-trigger="click" 
+                                hx-target="#top-page" 
+                                hx-swap="outerHTML transition:true"
+                                hx-push-url="true">Discover More</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- About End -->
+            <!-- Profile End -->
 
             <!-- Layanan Start -->
             <div id="layanan" class="container-fluid feature py-5">
@@ -111,7 +124,7 @@
                         <div class="sub-style">
                             <h4 class="sub-title px-3 mb-0">Layanan</h4>
                         </div>
-                        <h3 class="mb-4">Why Choose Us? Get Your Life Style Back</h3>
+                        <h3 class="mb-4">Poliklinik dan Layanan Kami</h3>
                     </div>
                     <div class="row g-4 justify-content-center">
                         <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.1s">
@@ -123,112 +136,7 @@
                                         </div>
                                     </div>
                                     <div class="feature-content d-flex flex-column">
-                                        <h5 class="mb-4">Licensed Therapist</h5>
-                                        <p class="mb-0">Dolor, sit amet consectetur adipisicing elit. Soluta inventore cum accusamus,</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.3s">
-                            <div class="row-cols-1 feature-item p-4">
-                                <div class="col-12">
-                                    <div class="feature-icon mb-4">
-                                        <div class="p-3 d-inline-flex bg-white rounded">
-                                            <i class="fas fa-briefcase-medical fa-4x text-primary"></i>
-                                        </div>
-                                    </div>
-                                    <div class="feature-content d-flex flex-column">
-                                        <h5 class="mb-4">Personalized Treatment</h5>
-                                        <p class="mb-0">Dolor, sit amet consectetur adipisicing elit. Soluta inventore cum accusamus,</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.5s">
-                            <div class="row-cols-1 feature-item p-4">
-                                <div class="col-12">
-                                    <div class="feature-icon mb-4">
-                                        <div class="p-3 d-inline-flex bg-white rounded">
-                                            <i class="fas fa-hospital-user fa-4x text-primary"></i>
-                                        </div>
-                                    </div>
-                                    <div class="feature-content d-flex flex-column">
-                                        <h5 class="mb-4">Therapy Goals</h5>
-                                        <p class="mb-0">Dolor, sit amet consectetur adipisicing elit. Soluta inventore cum accusamus,</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.7s">
-                            <div class="row-cols-1 feature-item p-4">
-                                <div class="col-12">
-                                    <div class="feature-icon mb-4">
-                                        <div class="p-3 d-inline-flex bg-white rounded">
-                                            <i class="fas fa-users fa-4x text-primary"></i>
-                                        </div>
-                                    </div>
-                                    <div class="feature-content d-flex flex-column">
-                                        <h5 class="mb-4">Practitioners Network</h5>
-                                        <p class="mb-0">Dolor, sit amet consectetur adipisicing elit. Soluta inventore cum accusamus,</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.1s">
-                            <div class="row-cols-1 feature-item p-4">
-                                <div class="col-12">
-                                    <div class="feature-icon mb-4">
-                                        <div class="p-3 d-inline-flex bg-white rounded">
-                                            <i class="fas fa-spa fa-4x text-primary"></i>
-                                        </div>
-                                    </div>
-                                    <div class="feature-content d-flex flex-column">
-                                        <h5 class="mb-4">Comfortable Center</h5>
-                                        <p class="mb-0">Dolor, sit amet consectetur adipisicing elit. Soluta inventore cum accusamus,</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.3s">
-                            <div class="row-cols-1 feature-item p-4">
-                                <div class="col-12">
-                                    <div class="feature-icon mb-4">
-                                        <div class="p-3 d-inline-flex bg-white rounded">
-                                            <i class="fas fa-heart fa-4x text-primary"></i>
-                                        </div>
-                                    </div>
-                                    <div class="feature-content d-flex flex-column">
-                                        <h5 class="mb-4">Experienced Stuff</h5>
-                                        <p class="mb-0">Dolor, sit amet consectetur adipisicing elit. Soluta inventore cum accusamus,</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.5s">
-                            <div class="row-cols-1 feature-item p-4">
-                                <div class="col-12">
-                                    <div class="feature-icon mb-4">
-                                        <div class="p-3 d-inline-flex bg-white rounded">
-                                            <i class="fab fa-pied-piper fa-4x text-primary"></i>
-                                        </div>
-                                    </div>
-                                    <div class="feature-content d-flex flex-column">
-                                        <h5 class="mb-4">Therapy Goals</h5>
-                                        <p class="mb-0">Dolor, sit amet consectetur adipisicing elit. Soluta inventore cum accusamus,</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.7s">
-                            <div class="row-cols-1 feature-item p-4">
-                                <div class="col-12">
-                                    <div class="feature-icon mb-4">
-                                        <div class="p-3 d-inline-flex bg-white rounded">
-                                            <i class="fas fa-user-md fa-4x text-primary"></i>
-                                        </div>
-                                    </div>
-                                    <div class="feature-content d-flex flex-column">
-                                        <h5 class="mb-4">Licensed Therapist</h5>
+                                        <h5 class="mb-4">Lab Patologi Klinis</h5>
                                         <p class="mb-0">Dolor, sit amet consectetur adipisicing elit. Soluta inventore cum accusamus,</p>
                                     </div>
                                 </div>

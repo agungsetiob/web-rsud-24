@@ -24,7 +24,7 @@ class HomeController extends Controller
         foreach ($posts as $post){
             $post->content = Str::limit($post->content, 40);   
         }
-        sleep(3);
+        //sleep(2);
         if ($request->header('HX-Request')) {
             return view('main.blog', compact('posts', 'title'))->fragment('blog');
         }
