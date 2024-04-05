@@ -1,4 +1,4 @@
-@extends('layouts.main-layout')
+@extends('layouts.page-layout')
         @section('content')
             @fragment('profil')
                 <div id="profile-page" class="container-fluid bg-breadcrumb to-top">
@@ -43,16 +43,6 @@
                     window.onbeforeunload = function () {
                         window.scrollTo(0, 0);
                     }
-                    window.addEventListener('load', function() {
-                        window.scrollTo(0, 0);
-                    });
-
-                    function scrollToTop() {
-                        window.scrollTo(0, 0);
-                    }
-                    htmx.on('htmx:afterOnLoad', function(event) {
-                        scrollToTop();
-                    });
                 </script>
             @endfragment
         @endsection
