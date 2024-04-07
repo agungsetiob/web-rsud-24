@@ -55,15 +55,36 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto py-0">
-                        <a href="{{url ('/#beranda')}}" class="nav-item nav-link">Beranda</a>
-                        <a href="{{url ('/#blog')}}" class="nav-item nav-link">Blog</a>
+                        <a href="" class="nav-item nav-link"
+                        hx-get="{{url('/#beranda')}}" 
+                        hx-trigger="click" 
+                        hx-target="#app" 
+                        hx-swap="outerHTML transition:true"
+                        hx-push-url="true">Beranda</a>
+                        <a href="" class="nav-item nav-link"
+                        hx-get="{{url('/#blog')}}" 
+                        hx-trigger="click" 
+                        hx-target="#app" 
+                        hx-swap="outerHTML transition:true"
+                        hx-push-url="true">Blog</a>
                         <a href="" class="nav-item nav-link"
                         hx-get="{{url('/#profil')}}" 
                         hx-trigger="click" 
-                        hx-target="#profile-page" 
+                        hx-target="#app" 
                         hx-swap="outerHTML transition:true"
                         hx-push-url="true">Profil</a>
-                        <a href="{{url ('/#layanan')}}" class="nav-item nav-link">Layanan</a>
+                        <a href="" class="nav-item nav-link"
+                        hx-get="{{url('/#layanan')}}" 
+                        hx-trigger="click" 
+                        hx-target="#app" 
+                        hx-swap="outerHTML transition:true"
+                        hx-push-url="true">Layanan</a>
+                        <a id="kontak" href="" class="nav-item nav-link"
+                        hx-get="{{url('/#kontak')}}" 
+                        hx-trigger="click" 
+                        hx-target="#app" 
+                        hx-swap="outerHTML transition:true"
+                        hx-push-url="true">Kontak</a>
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                             <div class="dropdown-menu m-0">
@@ -74,7 +95,6 @@
                                 <a href="testimonial.html" class="dropdown-item">Testimonial</a>
                             </div>
                         </div>
-                        <a href="contact.html" class="nav-item nav-link">Contact Us</a>
                     </div>
                     <a href="#" class="btn btn-primary rounded-pill text-white py-2 px-4 flex-wrap flex-sm-shrink-0">Login</a>
                 </div>

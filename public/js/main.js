@@ -109,7 +109,6 @@
     });
 
     
-    
    // Back to top button
    $(window).scroll(function () {
     if ($(this).scrollTop() > 300) {
@@ -126,8 +125,22 @@
     function scrollToTop() {
         window.scrollTo(0, 0);
     }
+
     htmx.on('htmx:afterOnLoad', function(event) {
         scrollToTop();
+    });
+
+    function scrollToKontak() {
+      var kontakElement = document.getElementById('kontak');
+      if (kontakElement) {
+        kontakElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+
+    document.body.addEventListener('htmx:afterSwap', function(event) {
+      if (event.detail.elt.id === 'kontak') {
+        scrollToKontak();
+      }
     });
 
 })(jQuery);

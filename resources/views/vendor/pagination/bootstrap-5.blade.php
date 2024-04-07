@@ -11,7 +11,7 @@
                     <li class="page-item">
                         <a class="page-link" href="" rel="prev" hx-get="{{ $paginator->previousPageUrl() }}"
                             hx-trigger="click" 
-                            hx-target="#pagination-blog" 
+                            hx-target="#app" 
                             hx-swap="outerHTML transition:true"
                             hx-push-url="true">@lang('pagination.previous')</a>
                     </li>
@@ -55,7 +55,7 @@
                             <a 
                             hx-get="{{ $paginator->previousPageUrl() }}#blog-page"
                             hx-trigger="click" 
-                            hx-target="#pagination-blog" 
+                            hx-target="#app" 
                             hx-swap="outerHTML transition:true"
                             hx-push-url="true"
                             class="page-link" href=""  rel="prev" aria-label="@lang('pagination.previous')">&lsaquo;</a>
@@ -78,7 +78,7 @@
                                     <li class="page-item"><a class="page-link" href=""
                                     hx-get="{{ $url }}#blog-page"
                                     hx-trigger="click" 
-                                    hx-target="#pagination-blog" 
+                                    hx-target="#app" 
                                     hx-swap="outerHTML transition:true"
                                     hx-push-url="true">{{ $page }}</a></li>
                                 @endif
@@ -92,7 +92,7 @@
                             <a class="page-link" href="" rel="next" aria-label="@lang('pagination.next')"
                             hx-get="{{ $paginator->nextPageUrl() }}#blog-page"
                             hx-trigger="click" 
-                            hx-target="#pagination-blog" 
+                            hx-target="#app" 
                             hx-swap="outerHTML transition:true"
                             hx-push-url="true">&rsaquo;</a>
                         </li>

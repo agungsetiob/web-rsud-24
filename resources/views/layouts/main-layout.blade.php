@@ -59,6 +59,7 @@
                         <a href="{{url ('/#blog')}}" class="nav-item nav-link">Blog</a>
                         <a href="{{url ('/#profil')}}" class="nav-item nav-link">Profil</a>
                         <a href="{{url ('/#layanan')}}" class="nav-item nav-link">Layanan</a>
+                        <a href="{{url ('/#kontak')}}" class="nav-item nav-link">Kontak</a>
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                             <div class="dropdown-menu m-0">
@@ -69,7 +70,6 @@
                                 <a href="testimonial.html" class="dropdown-item">Testimonial</a>
                             </div>
                         </div>
-                        <a href="contact.html" class="nav-item nav-link">Contact Us</a>
                     </div>
                     <a href="#" class="btn btn-primary rounded-pill text-white py-2 px-4 flex-wrap flex-sm-shrink-0">Login</a>
                 </div>

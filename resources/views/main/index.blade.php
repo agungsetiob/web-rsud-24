@@ -1,7 +1,7 @@
     @extends('layouts.main-layout')
         @section('content')
         <!-- Carousel Start -->
-        <div id="top-page">
+        <div id="app">
             <div class="header-carousel owl-carousel">
                 <div class="header-carousel-item">
                     <img src="{{asset('img/carousel-1.jpg')}}" class="img-fluid w-100" alt="Image">
@@ -71,7 +71,7 @@
                             <a class="btn btn-primary rounded-pill text-white py-3 px-5" href="#"
                             hx-get="{{url('blog/')}}" 
                             hx-trigger="click" 
-                            hx-target="#top-page" 
+                            hx-target="#app" 
                             hx-swap="outerHTML transition:true"
                             hx-push-url="true"
                             data-loading-class="d-none">Browse More</a>
@@ -107,7 +107,7 @@
                                 <a href="#" class="btn btn-primary rounded-pill text-white py-3 px-5"
                                 hx-get="{{url('profil')}}" 
                                 hx-trigger="click" 
-                                hx-target="#top-page" 
+                                hx-target="#app" 
                                 hx-swap="outerHTML transition:true"
                                 hx-push-url="true">Discover More</a>
                             </div>
@@ -148,31 +148,27 @@
                     </div>
                 </div>
             </div>
-            <!-- Feature End -->
+            <!-- Layanan End -->
 
 
-            <!-- Book Appointment Start -->
-            <div class="container-fluid appointment py-5">
+            <!-- Kontak Start -->
+            <div id="kontak" class="container-fluid appointment py-5">
                 <div class="container py-5">
-                    <div class="row g-5 align-items-center">
+                    <div class="row g-5">
                         <div class="col-lg-6 wow fadeInLeft" data-wow-delay="0.2">
                             <div class="section-title text-start">
-                                <h4 class="sub-title pe-3 mb-0">Solutions To Your Pain</h4>
-                                <h3 class="mb-4">Best Quality Services With Minimal Pain Rate</h3>
-                                <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat deleniti amet at atque sequi quibusdam cumque itaque repudiandae temporibus, eius nam mollitia voluptas maxime veniam necessitatibus saepe in ab? Repellat!</p>
+                                <h4 class="sub-title pe-3 mb-0">Kontak Kami</h4>
+                                <h3 class="mb-4">Silahkan hubungi kami melalui kanal berikut:</h3>
                                 <div class="row g-4">
                                     <div class="col-sm-6">
                                         <div class="d-flex flex-column h-100">
                                             <div class="mb-4">
-                                                <h5 class="mb-3"><i class="fa fa-check text-primary me-2"></i> Body Relaxation</h5>
-                                                <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et deserunt qui cupiditate veritatis enim ducimus.</p>
+                                                <h5 class="mb-3"><i class="fa fa-check text-primary me-2"></i> Phone/WA</h5>
+                                                <p class="mb-0">+62 8125040540</p>
                                             </div>
                                             <div class="mb-4">
-                                                <h5 class="mb-3"><i class="fa fa-check text-primary me-2"></i> Body Relaxation</h5>
-                                                <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et deserunt qui cupiditate veritatis enim ducimus.</p>
-                                            </div>
-                                            <div class="text-start mb-4">
-                                                <a href="#" class="btn btn-primary rounded-pill text-white py-3 px-5">More Details</a>
+                                                <h5 class="mb-3"><i class="fa fa-check text-primary me-2"></i> Email</h5>
+                                                <p class="mb-0">rsud.tanbu@gmail.com</p>
                                             </div>
                                         </div>
                                     </div>
@@ -189,8 +185,7 @@
                         </div>
                         <div class="col-lg-6 wow fadeInRight" data-wow-delay="0.4s">
                             <div class="appointment-form rounded p-5">
-                                <p class="fs-4 text-uppercase text-primary">Get In Touch</p>
-                                <h3 class="mb-4">Get Appointment</h3>
+                                <h3 class="mb-4">Pertanyaan atau Pengaduan</h3>
                                 <form>
                                     <div class="row gy-3 gx-4">
                                         <div class="col-xl-6">
@@ -252,7 +247,7 @@
                     </div>
                 </div>
             </div>
-            <!-- Book Appointment End -->
+            <!-- Kontak End -->
 
 
             <!-- Our Doctor -->
@@ -297,7 +292,7 @@
             <!-- Team End -->
 
 
-            <!-- Testimonial Start -->
+            <!-- FAQ Start -->
             <div class="container-fluid testimonial py-5 wow zoomInDown" data-wow-delay="0.1s">
                 <div class="container py-5">
                     <div class="section-title mb-5">
@@ -324,6 +319,6 @@
                     <a class="btn btn-secondary rounded-pill text-white py-3 px-5" href="#">Browse More</a>
                 </div>
             </div>
-            <!-- Testimonial End -->
+            <!-- FAQ End -->
         </div>
         @endsection

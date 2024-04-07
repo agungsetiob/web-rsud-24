@@ -3,7 +3,7 @@
 <head>
     <link
       rel="shortcut icon"
-      href="{{url ('storage/logors.png')}}"
+      href="{{asset('img/favicon.png')}}"
       type="image/x-icon"
     />
     <title>405 - Not Allowed</title>
