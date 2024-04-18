@@ -1,7 +1,8 @@
 @extends('layouts.page-layout')
         @section('content')
             @fragment('profil')
-                <div id="app" class="container-fluid bg-breadcrumb to-top">
+            <div id="app" data-loading-class="fade">
+                <div id="profile-page" class="container-fluid bg-breadcrumb to-top">
                     <div class="container text-center py-5" style="max-width: 900px;">
                         <h3 class="text-white display-5 mb-4 wow fadeInDown" data-wow-delay="0.1s">RSUD Rumah Sehat Amanah Husada</h1>
                         <ol class="breadcrumb justify-content-center mb-0 wow fadeInDown" data-wow-delay="0.3s">
@@ -45,5 +46,6 @@
                         window.scrollTo(0, 0);
                     }
                 </script>
+            </div>
             @endfragment
         @endsection

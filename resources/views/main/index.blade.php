@@ -1,4 +1,4 @@
-    @extends('layouts.main-layout')
+    @extends('layouts.page-layout')
         @section('content')
         <!-- Carousel Start -->
         <div id="app">
@@ -186,41 +186,36 @@
                         <div class="col-lg-6 wow fadeInRight" data-wow-delay="0.4s">
                             <div class="appointment-form rounded p-5">
                                 <h3 class="mb-4">Pertanyaan atau Pengaduan</h3>
-                                <form>
+                                <form id="contactForm" method="POST" hx-post="{{url('send/message')}}" hx-target="#contactForm">
+                                    @csrf
                                     <div class="row gy-3 gx-4">
-                                        <div class="col-xl-6">
-                                            <input type="text" class="form-control py-3 border-primary bg-transparent text-white" placeholder="First Name">
+                                        <div class="col-xl-12">
+                                            <input type="text" name="name" value="{{ old('name') }}" class="form-control py-3 border-primary bg-transparent text-dark" placeholder="Nama lengkap" required>
+                                            @error('name')
+                                                <div class="text-danger">{{ $message }}</div>
+                                            @enderror
                                         </div>
-                                        <div class="col-xl-6">
-                                            <input type="email" class="form-control py-3 border-primary bg-transparent text-white" placeholder="Email">
+                                        <div class="col-xl-12">
+                                            <input type="email" name="email" value="{{ old('email') }}" class="form-control py-3 border-primary bg-transparent text-dark" placeholder="Email" required>
+                                            @error('email')
+                                                <div class="text-danger">{{ $message }}</div>
+                                            @enderror
                                         </div>
-                                        <div class="col-xl-6">
-                                            <input type="phone" class="form-control py-3 border-primary bg-transparent" placeholder="Phone">
-                                        </div>
-                                        <div class="col-xl-6">
-                                            <select class="form-select py-3 border-primary bg-transparent" aria-label="Default select example">
-                                                <option selected>Your Gender</option>
-                                                <option value="1">Male</option>
-                                                <option value="2">FeMale</option>
-                                                <option value="3">Others</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-xl-6">
-                                            <input type="date" class="form-control py-3 border-primary bg-transparent">
-                                        </div>
-                                        <div class="col-xl-6">
-                                            <select class="form-select py-3 border-primary bg-transparent" aria-label="Default select example">
-                                                <option selected>Department</option>
-                                                <option value="1">Physiotherapy</option>
-                                                <option value="2">Physical Helth</option>
-                                                <option value="2">Treatments</option>
-                                            </select>
+                                        <div class="col-xl-12">
+                                            <input type="tel" name="phone" value="{{ old('phone') }}" class="form-control py-3 border-primary bg-transparent text-dark" placeholder="No hp/wa" required>
+                                            @error('phone')
+                                                <div class="text-danger">{{ $message }}</div>
+                                            @enderror
                                         </div>
                                         <div class="col-12">
-                                            <textarea class="form-control border-primary bg-transparent text-white" name="text" id="area-text" cols="30" rows="5" placeholder="Write Comments"></textarea>
+                                            <textarea class="form-control border-primary bg-transparent text-dark" name="message" id="area-text" cols="30" rows="5" placeholder="Pertanyaan/keluhan/pesan" required>{{ old('message') }}</textarea>
+                                            @error('message')
+                                                <div class="text-danger">{{ $message }}</div>
+                                            @enderror
                                         </div>
                                         <div class="col-12">
-                                            <button type="button" class="btn btn-primary text-white w-100 py-3 px-5">SUBMIT NOW</button>
+                                            <button type="submit" class="btn btn-primary text-white w-100 py-3 px-5" data-loading-class="d-none">KIRIM</button>
+                                            <button type="submit" class="btn btn-primary text-white w-100 py-3 px-5 d-none" data-loading-class-remove="d-none" disabled>Mengirim <i class="fas fa-spinner fa-spin"></i></button>
                                         </div>
                                     </div>
                                 </form>

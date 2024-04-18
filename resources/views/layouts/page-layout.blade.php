@@ -55,32 +55,32 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto py-0">
-                        <a href="" class="nav-item nav-link"
-                        hx-get="{{url('/#beranda')}}" 
+                        <a href="#" class="nav-item nav-link"
+                        hx-get="{{url('/')}}" 
                         hx-trigger="click" 
                         hx-target="#app" 
                         hx-swap="outerHTML transition:true"
                         hx-push-url="true">Beranda</a>
-                        <a href="" class="nav-item nav-link"
-                        hx-get="{{url('/#blog')}}" 
+                        <a href="#" class="nav-item nav-link"
+                        hx-get="{{url('/blog')}}" 
                         hx-trigger="click" 
                         hx-target="#app" 
                         hx-swap="outerHTML transition:true"
                         hx-push-url="true">Blog</a>
-                        <a href="" class="nav-item nav-link"
-                        hx-get="{{url('/#profil')}}" 
+                        <a href="#" class="nav-item nav-link"
+                        hx-get="{{url('/profil')}}" 
                         hx-trigger="click" 
                         hx-target="#app" 
                         hx-swap="outerHTML transition:true"
                         hx-push-url="true">Profil</a>
-                        <a href="" class="nav-item nav-link"
-                        hx-get="{{url('/#layanan')}}" 
+                        <a href="#" class="nav-item nav-link"
+                        hx-get="{{url('/layanan')}}" 
                         hx-trigger="click" 
                         hx-target="#app" 
                         hx-swap="outerHTML transition:true"
                         hx-push-url="true">Layanan</a>
                         <a id="kontak" href="" class="nav-item nav-link"
-                        hx-get="{{url('/#kontak')}}" 
+                        hx-get="{{url('/kontak')}}" 
                         hx-trigger="click" 
                         hx-target="#app" 
                         hx-swap="outerHTML transition:true"

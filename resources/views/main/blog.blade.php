@@ -2,7 +2,7 @@
         <!-- Header Start -->
         @section('content')
         @fragment('blog')
-        <div id="app">
+        <div id="app" data-loading-class="fade">
             <div id="blog-page" class="container-fluid bg-breadcrumb show">
                 <div class="container text-center py-5" style="max-width: 900px;">
                     <h3 class="text-white display-3 mb-4 wow fadeInDown" data-wow-delay="0.1s">News and Articles</h1>
@@ -56,7 +56,7 @@
             window.onbeforeunload = function () {
                 window.scrollTo(0, 0);
             }
-                </script>
+        </script>
         @endfragment
         @endsection
         <!-- Blog End -->

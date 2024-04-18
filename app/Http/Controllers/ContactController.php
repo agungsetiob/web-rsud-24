@@ -46,27 +46,29 @@ class ContactController extends Controller
      */
     public function store(Request $request)
     {
-        $url = URL('/') . '#contact';
+        $url = URL('/') . '#kontak';
         $validator = Validator::make($request->all(), [
             'name'      => 'required',
             'email'     => 'required|email',
+            'phone'     => 'required',
             'message'   => 'required|min:25'
         ]);
 
-        //create post
-        if ($validator->fails()) {
-            return redirect($url)
-            ->withErrors($validator)
-            ->withInput();
-        } else{
-            Contact::create([
-            'name'    => addslashes($request->name),
-            'email'   => $request->email,
-            'message' => $request->message
-        ]);
+        if ($request->header('HX-Request')) {
+            if ($validator->fails()) {
+                return redirect($url)
+                ->withErrors($validator)
+                ->withInput()->fragment('contact-form');
+            } else{
+                Contact::create([
+                'name'    => addslashes($request->name),
+                'email'   => $request->email,
+                'message' => $request->message
+            ]);
 
-        //redirect to index
-            return redirect($url)->with('success', 'Message sent');
+            //redirect to index
+                return redirect($url)->with('success', 'Message sent')-fragment('contact-form');
+            }
         }
 
     }

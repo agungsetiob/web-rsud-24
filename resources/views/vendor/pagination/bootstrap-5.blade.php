@@ -53,7 +53,7 @@
                     @else
                         <li class="page-item">
                             <a 
-                            hx-get="{{ $paginator->previousPageUrl() }}#blog-page"
+                            hx-get="{{ $paginator->previousPageUrl() }}"
                             hx-trigger="click" 
                             hx-target="#app" 
                             hx-swap="outerHTML transition:true"
@@ -76,7 +76,7 @@
                                     <li class="page-item active" aria-current="page"><span class="page-link">{{ $page }}</span></li>
                                 @else
                                     <li class="page-item"><a class="page-link" href=""
-                                    hx-get="{{ $url }}#blog-page"
+                                    hx-get="{{ $url }}"
                                     hx-trigger="click" 
                                     hx-target="#app" 
                                     hx-swap="outerHTML transition:true"
@@ -90,7 +90,7 @@
                     @if ($paginator->hasMorePages())
                         <li class="page-item">
                             <a class="page-link" href="" rel="next" aria-label="@lang('pagination.next')"
-                            hx-get="{{ $paginator->nextPageUrl() }}#blog-page"
+                            hx-get="{{ $paginator->nextPageUrl() }}"
                             hx-trigger="click" 
                             hx-target="#app" 
                             hx-swap="outerHTML transition:true"
