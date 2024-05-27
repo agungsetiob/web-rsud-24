@@ -45,7 +45,7 @@ class HomeController extends Controller
     }
 
     //front page
-    public function frontPage()
+    public function frontPage(Request $request)
     {
         $doctors = Doctor::inRandomOrder()
         ->limit(4)
@@ -55,7 +55,9 @@ class HomeController extends Controller
         ->get();
         $posts = Post::latest()->limit(3)->get();
         $title = 'RSUD RS Amanah Husada';
-
+        if ($request->header('HX-Request')) {
+            return view('main.index', compact('faqs', 'doctors', 'posts', 'title'))->fragment('beranda');
+        }
         return view('main.index', compact('doctors', 'faqs', 'posts', 'title'));
     }
 
@@ -173,31 +175,47 @@ class HomeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    // public function show($slug)
+    // {
+    //     $post = Post::where('slug', $slug)->first();
+    //     if ($post) {
+    //         $description = Str::limit($post->content, 40);
+    //         $post->view = $post->view + 1;
+    //         $post->save();
+    //         $popularPosts = Post::latest('view')
+    //         ->where('id', '!=', $post->id)
+    //         ->limit(3)
+    //         ->get();
+    //         $relatedPosts = Post::where([
+    //             ['category_id', '=', $post->category_id],
+    //             ['id', '!=', $post->id]
+    //         ])
+    //         ->limit(3)
+    //         ->get();
+    //         return view('main.show', compact('post', 
+    //             'relatedPosts', 
+    //             'popularPosts', 
+    //             'description'));
+    //     } else {
+    //         return view ('errors.404');
+    //     }
+        
+    // }
     public function show($slug)
     {
-        $post = Post::where('slug', $slug)->first();
-        if ($post) {
-            $description = Str::limit($post->content, 40);
-            $post->view = $post->view + 1;
-            $post->save();
-            $popularPosts = Post::latest('view')
-            ->where('id', '!=', $post->id)
-            ->limit(3)
-            ->get();
-            $relatedPosts = Post::where([
-                ['category_id', '=', $post->category_id],
-                ['id', '!=', $post->id]
-            ])
-            ->limit(3)
-            ->get();
-            return view('main.show', compact('post', 
-                'relatedPosts', 
-                'popularPosts', 
-                'description'));
-        } else {
-            return view ('errors.404');
-        }
-        
+        $post = Post::where('slug', $slug)->firstOrFail();
+        $post->increment('view');
+        $description = Str::limit($post->content, 40);
+        $popularPosts = Post::where('id', '!=', $post->id)
+                            ->orderBy('view', 'desc')
+                            ->limit(3)
+                            ->get();
+        $relatedPosts = Post::where('category_id', $post->category_id)
+                            ->where('id', '!=', $post->id)
+                            ->limit(3)
+                            ->get();
+        $title = $post->title;
+        return view('main.show', compact('post', 'relatedPosts', 'popularPosts', 'description', 'title'));
     }
 
     public function rank()

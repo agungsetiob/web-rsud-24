@@ -13,7 +13,7 @@ class Contact extends Model
         'name',
         'email',
         'message',
-
+        'phone',
     ];
 
     public function getCreatedAtAttribute()

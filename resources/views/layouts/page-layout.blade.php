@@ -5,8 +5,9 @@
         <meta charset="utf-8">
         <title>{{$title}}</title>
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
-        <meta content="" name="keywords">
-        <meta content="" name="description">
+        <meta content="rsud tanah bumbu" name="keywords">
+        <meta content="rumah sakit umum daerah tanah bumbu amanah husada" name="description">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet"> 
@@ -17,11 +18,18 @@
         <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
         <link href="{{asset('css/style.css')}}" rel="stylesheet">
         <link rel="shortcut icon" href="{{asset('img/favicon.png')}}" type="image/x-icon"/>
+        <!-- JavaScript Libraries -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="{{asset('lib/wow/wow.min.js')}}"></script>
+        <script src="{{asset('lib/easing/easing.min.js')}}"></script>
+        <script src="{{asset('lib/waypoints/waypoints.min.js')}}"></script>
+        <script src="{{asset('lib/owlcarousel/owl.carousel.min.js')}}"></script>
         <script src="{{asset('vendor/tanbu/tanbu.min.js')}}"></script>
         <script src="{{asset('vendor/tanbu/loading-states.js')}}"></script>
     </head>
 
-    <body hx-ext="loading-states">
+    <body id="home" hx-ext="loading-states">
 
         <!-- Topbar Start -->
         <div id="beranda" class="container-fluid bg-dark px-5 d-none d-lg-block">
@@ -30,7 +38,8 @@
                     <div class="d-flex flex-wrap">
                         <a href="https://maps.app.goo.gl/Q1FrsSHqmTuKRU776" class="text-light me-4" target="_blank"><i class="fas fa-map-marker-alt text-primary me-2"></i>Find Us</a>
                         <a href="#" class="text-light me-4"><i class="fas fa-phone-alt text-primary me-2"></i>+628115040540</a>
-                        <a href="#" class="text-light me-0"><i class="fas fa-envelope text-primary me-2"></i>rsud.tanbu@gmail.com</a>
+                        <a href="#" class="text-light me-4"><i class="fas fa-envelope text-primary me-2"></i>rsud.tanbu@gmail.com</a>
+                        <a href="https://lapor.go.id" class="text-light me-0" target="_blank"><img class="me-2" src="{{asset('img/lapor-color.png')}}" alt="Lapor" style="height:21px;"></a>
                     </div>
                 </div>
                 <div class="col-lg-4 text-center text-lg-end">
@@ -50,7 +59,7 @@
                     <!-- <h1 class="text-primary m-0"><i class="fas fa-star-of-life me-3"></i>Terapia</h1> -->
                     <img src="{{url('storage/logors.png')}}" alt="Logo">
                 </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" title="navbar toggle">
                     <span class="fa fa-bars"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -60,31 +69,36 @@
                         hx-trigger="click" 
                         hx-target="#app" 
                         hx-swap="outerHTML transition:true"
-                        hx-push-url="true">Beranda</a>
+                        hx-push-url="true"
+                        hx-indicator="#loadingIndicator">Beranda</a>
                         <a href="#" class="nav-item nav-link"
                         hx-get="{{url('/blog')}}" 
                         hx-trigger="click" 
                         hx-target="#app" 
                         hx-swap="outerHTML transition:true"
-                        hx-push-url="true">Blog</a>
+                        hx-push-url="true"
+                        hx-indicator="#loadingIndicator">Blog</a>
                         <a href="#" class="nav-item nav-link"
                         hx-get="{{url('/profil')}}" 
                         hx-trigger="click" 
                         hx-target="#app" 
                         hx-swap="outerHTML transition:true"
-                        hx-push-url="true">Profil</a>
+                        hx-push-url="true"
+                        hx-indicator="#loadingIndicator">Profil</a>
                         <a href="#" class="nav-item nav-link"
                         hx-get="{{url('/layanan')}}" 
                         hx-trigger="click" 
                         hx-target="#app" 
                         hx-swap="outerHTML transition:true"
-                        hx-push-url="true">Layanan</a>
+                        hx-push-url="true"
+                        hx-indicator="#loadingIndicator">Layanan</a>
                         <a id="kontak" href="" class="nav-item nav-link"
                         hx-get="{{url('/kontak')}}" 
                         hx-trigger="click" 
                         hx-target="#app" 
                         hx-swap="outerHTML transition:true"
-                        hx-push-url="true">Kontak</a>
+                        hx-push-url="true"
+                        hx-indicator="#loadingIndicator">Kontak</a>
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                             <div class="dropdown-menu m-0">
@@ -105,10 +119,10 @@
         @yield('content')
 
         {{-- <div data-loading-class="loading-overlay"></div>--}}
-        <div data-loading-class-remove="d-none" class="d-none d-flex align-items-center justify-content-center" style="position: fixed; top: 30%; left: 50%; transform: translate(-50%, -50%); z-index: 100001;">
-            <i class="fas fa-circle-notch fa-spin fa-4x text-primary"></i>
+        <div id="loadingIndicator" class="htmx-indicator d-flex align-items-center justify-content-center" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 100001;">
+            <i class="fas fa-spinner fa-spin fa-5x text-primary" style="position: absolute; z-index:2;"></i>
+            <!-- <img class="loading-image" src="https://web-rsud.test/storage/logors.png" alt="Loading Image" style="position:relative; z-index:1;"/> -->
         </div>
-        
         <!-- Copyright Start -->
         <div class="container-fluid copyright py-4">
             <div class="container">
@@ -122,20 +136,7 @@
         <!-- Copyright End -->
 
         <!-- Back to Top -->
-        <a href="#" class="btn btn-primary btn-lg-square back-to-top"><i class="fa fa-arrow-up"></i></a>   
-
-        
-        <!-- JavaScript Libraries -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="{{asset('lib/wow/wow.min.js')}}"></script>
-        <script src="{{asset('lib/easing/easing.min.js')}}"></script>
-        <script src="{{asset('lib/waypoints/waypoints.min.js')}}"></script>
-        <script src="{{asset('lib/owlcarousel/owl.carousel.min.js')}}"></script>
-    
-        <!-- Template Javascript -->
-        <script src="{{ asset('js/main.js') }}"></script>
-        
+        <a href="#" class="btn btn-primary btn-lg-square back-to-top"><i class="fa fa-arrow-up"></i></a>
+        <script src="{{ asset('js/main.js') }}"></script>     
     </body>
-
 </html>
