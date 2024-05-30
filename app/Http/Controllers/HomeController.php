@@ -51,7 +51,7 @@ class HomeController extends Controller
         ->limit(4)
         ->get();
         $faqs = Faq::inRandomOrder()
-        ->limit(3)
+        ->limit(6)
         ->get();
         $posts = Post::latest()->limit(3)->get();
         $title = 'RSUD RS Amanah Husada';

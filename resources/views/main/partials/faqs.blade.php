@@ -1,22 +1,26 @@
-<div class="container-fluid testimonial py-5 wow zoomInDown" data-wow-delay="0.1s">
+<div class="container-fluid py-5 wow zoomInDown testimonial" data-wow-delay="0.1s">
     <div class="container py-5">
         <div class="section-title mb-5">
             <div class="sub-style">
-                <h4 class="sub-title text-white px-3 mb-0">Frequenly Asked Questions</h4>
+                <h4 class="sub-title text-white px-3 mb-0">Frequently Asked Questions</h4>
             </div>
-            <h3 class="mb-4">What Clients are Say</h3>
         </div>
-        <div class="testimonial-carousel owl-carousel">
+        <div class="row g-4 justify-content-center">
             @foreach($faqs as $faq)
-                <div class="testimonial-item">
-                    <div class="testimonial-inner p-5">
-                        <p class="text-white fs-7">{{$faq->question}}
-                        </p>
-                        <div class="text-center">
-                            <h5 class="mb-2">{{$faq->answer}}</h5>
+            <div class="accordion col-md-12 col-lg-6 col-xl-6" id="faqAccordion">   
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="heading{{$loop->index}}">
+                        <button class="accordion-button bg-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{$loop->index}}" aria-expanded="true" aria-controls="collapse{{$loop->index}}">
+                            <h5 class="text-white">{{$faq->question}}</h5>
+                        </button>
+                    </h2>
+                    <div id="collapse{{$loop->index}}" class="accordion-collapse collapse" aria-labelledby="heading{{$loop->index}}" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body bg-white text-dark">
+                            {{$faq->answer}}
                         </div>
                     </div>
                 </div>
+            </div>
             @endforeach
         </div>
     </div>
@@ -24,3 +28,15 @@
         <a href="/" class="btn btn-secondary rounded-pill text-white py-3 px-5">Browse More</a>
     </div>
 </div>
+<style type="text/css">
+    .accordion-button {
+        border-radius:10px ;
+    }
+    .accordion-button:not(.collapsed) {
+        color: white;
+    }
+    .accordion-body {
+        border-radius: 10px;
+    }
+
+</style>
