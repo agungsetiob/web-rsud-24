@@ -114,14 +114,10 @@
                 </div>
             </nav>
         </div>
-        <!-- Navbar & Hero End -->
 
         @yield('content')
-
-        {{-- <div data-loading-class="loading-overlay"></div>--}}
         <div id="loadingIndicator" class="htmx-indicator d-flex align-items-center justify-content-center" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 100001;">
             <i class="fas fa-spinner fa-spin fa-5x text-primary" style="position: absolute; z-index:2;"></i>
-            <!-- <img class="loading-image" src="https://web-rsud.test/storage/logors.png" alt="Loading Image" style="position:relative; z-index:1;"/> -->
         </div>
         <!-- Copyright Start -->
         <div class="container-fluid copyright py-4">
