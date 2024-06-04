@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use Auth;
 use App\Models\File;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\View\View;
 
 class FileController extends Controller
 {
@@ -14,7 +16,7 @@ class FileController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(): View
     {
         $files = File::all();
         return view('admin.file', compact('files'));
@@ -25,7 +27,7 @@ class FileController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function document()
+    public function document(): View
     {
         $title = 'Dokumen Publik';
         $files = File::latest()->get();
@@ -38,7 +40,7 @@ class FileController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
         $this->validate($request, [
             'file'   => 'required|mimes:pdf',
@@ -64,33 +66,10 @@ class FileController extends Controller
      * @param  \App\Models\File  $file
      * @return \Illuminate\Http\Response
      */
-    public function show(File $file)
+    public function show(File $file): View
     {
         $title = $file->name;
         return view ('main.show-document', compact('file', 'title'));
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\File  $file
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(File $file)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\File  $file
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, File $file)
-    {
-        //
     }
 
     /**
@@ -99,7 +78,7 @@ class FileController extends Controller
      * @param  \App\Models\File  $file
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id): RedirectResponse
     {
         $file = File::findOrFail($id);
         if (Auth::user()->id == $file->user_id) {

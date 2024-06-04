@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\{Post, Doctor, User, Faq};
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\View\View;
 use DB;
 use Auth;
 
@@ -17,7 +19,7 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index(Request $request): View
     {
         $posts = Post::latest()->paginate(6);
         $title = 'Blog';
@@ -36,11 +38,13 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(): View
     {
-        if (Auth::user()->role == 'admin') {
+        if (Auth::user()->role === 'admin') {
             $doctors = Doctor::all();
             return view('admin.doctor', compact('doctors'));
+        } else {
+            abort(403, 'Not Permitted');
         }
     }
 
@@ -88,7 +92,7 @@ class HomeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
         $this->validate($request, [
             'photo'             => 'mimes:jpeg,png,jpg,gif,svg|max:2048',
@@ -130,7 +134,8 @@ class HomeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function updateDoctor($id, Request $request){
+    public function updateDoctor($id, Request $request): RedirectResponse
+    {
 
         $this->validate($request, [
             'name'              => 'required',
@@ -175,33 +180,7 @@ class HomeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    // public function show($slug)
-    // {
-    //     $post = Post::where('slug', $slug)->first();
-    //     if ($post) {
-    //         $description = Str::limit($post->content, 40);
-    //         $post->view = $post->view + 1;
-    //         $post->save();
-    //         $popularPosts = Post::latest('view')
-    //         ->where('id', '!=', $post->id)
-    //         ->limit(3)
-    //         ->get();
-    //         $relatedPosts = Post::where([
-    //             ['category_id', '=', $post->category_id],
-    //             ['id', '!=', $post->id]
-    //         ])
-    //         ->limit(3)
-    //         ->get();
-    //         return view('main.show', compact('post', 
-    //             'relatedPosts', 
-    //             'popularPosts', 
-    //             'description'));
-    //     } else {
-    //         return view ('errors.404');
-    //     }
-        
-    // }
-    public function show($slug)
+    public function show($slug): View
     {
         $post = Post::where('slug', $slug)->firstOrFail();
         $post->increment('view');
@@ -261,7 +240,7 @@ class HomeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id): RedirectResponse
     {
         if (Auth::user()->role == 'admin') {
 

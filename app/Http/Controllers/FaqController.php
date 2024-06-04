@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Faq;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Auth;
+use Illuminate\View\View;
 
 class FaqController extends Controller
 {
@@ -13,25 +15,15 @@ class FaqController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(): View
     {
         if (Auth::user()->role == 'admin') {
             $faqs = Faq::all();
         return view ('admin.faq', compact('faqs'));
         } else {
-            return redirect()->back()->with(['error' => 'Hok a hok e!']);
+            abort(403, "You don't have permission");
         }
         
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
     }
 
     /**
@@ -40,7 +32,7 @@ class FaqController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
         $this->validate($request, [
             'question'     => 'required|min:10',
@@ -50,32 +42,10 @@ class FaqController extends Controller
         //create post
         Faq::create([
             'question' => addslashes($request->question),
-            'answer'   => addcslashes($request->answer)
+            'answer'   => addslashes($request->answer)
         ]);
 
         return redirect()->back()->with(['success' => 'Data saved succesfully']);
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Faq  $faq
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Faq $faq)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Faq  $faq
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Faq $faq)
-    {
-        //
     }
 
     /**
@@ -85,7 +55,7 @@ class FaqController extends Controller
      * @param  \App\Models\Faq  $faq
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Faq $faq)
+    public function update(Request $request, Faq $faq): RedirectResponse
     {
         $this->validate($request, [
             'question'     => 'required|min:10',
@@ -107,7 +77,7 @@ class FaqController extends Controller
      * @param  \App\Models\Faq  $faq
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Faq $faq)
+    public function destroy(Faq $faq): RedirectResponse
     {
         $faq->delete();
         return redirect()->back()->with(['success' => 'Data deleted succesfully']);

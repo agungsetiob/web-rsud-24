@@ -66,7 +66,7 @@ Route::get('document/{file}', [FileController::class, 'show']);
 
 //route group on my own
 Route::middleware(['auth'])->group(function () {
-    Route::resource('/posts', \App\Http\Controllers\PostController::class);
+    Route::resource('/posts', PostController::class);
     Route::get('user/dashboard', [PostController::class, 'index']);
     Route::get('/dashboard', [PostController::class, 'userPost'])->name('dashboard');
     Route::get('/our-services', [PostController::class, 'services']);
@@ -79,7 +79,7 @@ Route::middleware(['auth'])->group(function () {
     Route::put('update/doctor/{id}', [HomeController::class, 'updateDoctor']);
 
 
-    Route::resource('/standards', \App\Http\Controllers\StandarPelayananController::class);
+    Route::resource('/standards', StandarPelayananController::class);
     Route::get('standar/pelayanan', [StandarPelayananController::class, 'index']);
     Route::post('upload/standar-pelayanan', [StandarPelayananController::class, 'store']);
     Route::delete('delete/standar-pelayanan/{id}', [StandarPelayananController::class, 'destroy']);
