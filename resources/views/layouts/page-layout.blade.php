@@ -102,11 +102,11 @@
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                             <div class="dropdown-menu m-0">
-                                <a href="appointment.html" class="dropdown-item">Appointment</a>
-                                <a href="feature.html" class="dropdown-item">Features</a>
-                                <a href="blog.html" class="dropdown-item">Our Blog</a>
-                                <a href="team.html" class="dropdown-item">Our Team</a>
-                                <a href="testimonial.html" class="dropdown-item">Testimonial</a>
+                                <a href="appointment.html" class="dropdown-item">Al-Qur'an Digital</a>
+                                <a href="feature.html" class="dropdown-item">Standar Pelayanan</a>
+                                <a href="blog.html" class="dropdown-item">Survey</a>
+                                <a href="team.html" class="dropdown-item">Dokumen Publik</a>
+                                <a href="testimonial.html" class="dropdown-item">Top Author</a>
                             </div>
                         </div>
                     </div>
