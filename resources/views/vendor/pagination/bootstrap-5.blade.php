@@ -13,7 +13,8 @@
                             hx-trigger="click" 
                             hx-target="#app" 
                             hx-swap="outerHTML transition:true"
-                            hx-push-url="true">@lang('pagination.previous')</a>
+                            hx-push-url="true"
+                            hx-indicator="#loadingIndicator">@lang('pagination.previous')</a>
                     </li>
                 @endif
 
@@ -58,6 +59,7 @@
                             hx-target="#app" 
                             hx-swap="outerHTML transition:true"
                             hx-push-url="true"
+                            hx-indicator="#loadingIndicator"
                             class="page-link" href=""  rel="prev" aria-label="@lang('pagination.previous')">&lsaquo;</a>
                         </li>
                     @endif
@@ -80,7 +82,8 @@
                                     hx-trigger="click" 
                                     hx-target="#app" 
                                     hx-swap="outerHTML transition:true"
-                                    hx-push-url="true">{{ $page }}</a></li>
+                                    hx-push-url="true"
+                                    hx-indicator="#loadingIndicator">{{ $page }}</a></li>
                                 @endif
                             @endforeach
                         @endif
@@ -94,7 +97,8 @@
                             hx-trigger="click" 
                             hx-target="#app" 
                             hx-swap="outerHTML transition:true"
-                            hx-push-url="true">&rsaquo;</a>
+                            hx-push-url="true"
+                            hx-indicator="#loadingIndicator">&rsaquo;</a>
                         </li>
                     @else
                         <li class="page-item disabled" aria-disabled="true" aria-label="@lang('pagination.next')">

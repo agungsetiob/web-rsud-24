@@ -5,11 +5,10 @@ namespace App\Http\Controllers;
 use Artisan;
 use Exception;
 use Log;
-use Illuminate\View\View;
 use Illuminate\Support\Facades\Storage;
 
 class BackupController extends Controller{
-    public function index(): View
+    public function index()
     {
         $disk = Storage::disk(config('laravel-backup.backup.destination.disks'));
         $files = $disk->files('/public/RSUD/');
@@ -70,7 +69,6 @@ class BackupController extends Controller{
           abort(404, "Backup file doesn't exist.");
      }
      }
-
 
      public function delete($file_name){
           $disk = Storage::disk(config('laravel-backup.backup.destination.disks'));

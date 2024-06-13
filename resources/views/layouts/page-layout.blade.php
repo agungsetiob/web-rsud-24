@@ -116,9 +116,7 @@
         </div>
 
         @yield('content')
-        <div id="loadingIndicator" class="htmx-indicator d-flex align-items-center justify-content-center" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 100001;">
-            <i class="fas fa-spinner fa-spin fa-5x text-primary" style="position: absolute; z-index:2;"></i>
-        </div>
+        @include('main.partials.hx-indicator')
         <!-- Copyright Start -->
         <div class="container-fluid copyright py-4">
             <div class="container">

@@ -3,19 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Models\Faq;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Auth;
-use Illuminate\View\View;
 
 class FaqController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
      */
-    public function index(): View
+    public function index()
     {
         if (Auth::user()->role == 'admin') {
             $faqs = Faq::all();
@@ -30,9 +27,8 @@ class FaqController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
      */
-    public function store(Request $request): RedirectResponse
+    public function store(Request $request)
     {
         $this->validate($request, [
             'question'     => 'required|min:10',
@@ -53,9 +49,8 @@ class FaqController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Faq  $faq
-     * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Faq $faq): RedirectResponse
+    public function update(Request $request, Faq $faq)
     {
         $this->validate($request, [
             'question'     => 'required|min:10',
@@ -75,9 +70,8 @@ class FaqController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\Faq  $faq
-     * @return \Illuminate\Http\Response
      */
-    public function destroy(Faq $faq): RedirectResponse
+    public function destroy(Faq $faq)
     {
         $faq->delete();
         return redirect()->back()->with(['success' => 'Data deleted succesfully']);

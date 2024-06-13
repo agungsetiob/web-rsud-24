@@ -4,19 +4,16 @@ namespace App\Http\Controllers;
 
 use Auth;
 use App\Models\File;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\View\View;
 
 class FileController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
      */
-    public function index(): View
+    public function index()
     {
         $files = File::all();
         return view('admin.file', compact('files'));
@@ -25,9 +22,8 @@ class FileController extends Controller
     /**
      * Show the page of uploade documents.
      *
-     * @return \Illuminate\Http\Response
      */
-    public function document(): View
+    public function document()
     {
         $title = 'Dokumen Publik';
         $files = File::latest()->get();
@@ -38,9 +34,8 @@ class FileController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
      */
-    public function store(Request $request): RedirectResponse
+    public function store(Request $request)
     {
         $this->validate($request, [
             'file'   => 'required|mimes:pdf',
@@ -64,9 +59,8 @@ class FileController extends Controller
      * Display the specified resource.
      *
      * @param  \App\Models\File  $file
-     * @return \Illuminate\Http\Response
      */
-    public function show(File $file): View
+    public function show(File $file)
     {
         $title = $file->name;
         return view ('main.show-document', compact('file', 'title'));
@@ -76,9 +70,8 @@ class FileController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\File  $file
-     * @return \Illuminate\Http\Response
      */
-    public function destroy($id): RedirectResponse
+    public function destroy($id)
     {
         $file = File::findOrFail($id);
         if (Auth::user()->id == $file->user_id) {

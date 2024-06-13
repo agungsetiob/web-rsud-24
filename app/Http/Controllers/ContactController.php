@@ -2,23 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Contact;
 use App\Models\Complain;
 use Barryvdh\DomPDF\Facade\PDF;
 use Auth;
-use Illuminate\View\View;
 
 class ContactController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
      */
-    public function index(): View
+    public function index()
     {
         if (Auth::user()->role == 'admin') {
             $messages = Contact::all();
@@ -65,9 +62,8 @@ class ContactController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
      */
-    public function destroy($id): RedirectResponse
+    public function destroy($id)
     {
         if (Auth::user()->role == 'admin') {
             $mes = Contact::findOrFail($id);
@@ -83,8 +79,6 @@ class ContactController extends Controller
 
     /**
      * Cetak laporan messages
-     *
-     * 
      * 
      */
     public function messagesReport($startdate, $enddate)
@@ -97,13 +91,8 @@ class ContactController extends Controller
         return $pdf->stream('messages.pdf');
     }
 
-
-
-
     /**
      * Pengaduan masyarakat.
-     *
-     * 
      * 
      */
     public function pengaduan()
@@ -149,9 +138,8 @@ class ContactController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
      */
-    public function hapusPengaduan($id): RedirectResponse
+    public function hapusPengaduan($id)
     {
         if (Auth::user()->role == 'admin') {
            //do something here
@@ -172,7 +160,4 @@ class ContactController extends Controller
         set_time_limit(300);
         return $pdf->stream('pengaduan-masyarakat.pdf');
     }
-
-
-
 }

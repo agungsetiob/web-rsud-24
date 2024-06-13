@@ -8,7 +8,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\View\View;
 use DB;
 use Auth;
 
@@ -17,16 +16,15 @@ class HomeController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
      */
-    public function index(Request $request): View
+    public function index(Request $request)
     {
         $posts = Post::latest()->paginate(6);
         $title = 'Blog';
         foreach ($posts as $post){
             $post->content = Str::limit($post->content, 40);   
         }
-        //sleep(2);
+        sleep(2);
         if ($request->header('HX-Request')) {
             return view('main.blog', compact('posts', 'title'))->fragment('blog');
         }
@@ -36,9 +34,8 @@ class HomeController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
      */
-    public function create(): View
+    public function create()
     {
         if (Auth::user()->role === 'admin') {
             $doctors = Doctor::all();
@@ -90,9 +87,8 @@ class HomeController extends Controller
      * Store doctor data.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
      */
-    public function store(Request $request): RedirectResponse
+    public function store(Request $request)
     {
         $this->validate($request, [
             'photo'             => 'mimes:jpeg,png,jpg,gif,svg|max:2048',
@@ -132,9 +128,8 @@ class HomeController extends Controller
      * Update Doctor data
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
      */
-    public function updateDoctor($id, Request $request): RedirectResponse
+    public function updateDoctor($id, Request $request)
     {
 
         $this->validate($request, [
@@ -178,9 +173,8 @@ class HomeController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
      */
-    public function show($slug): View
+    public function show($slug)
     {
         $post = Post::where('slug', $slug)->firstOrFail();
         $post->increment('view');
@@ -238,9 +232,8 @@ class HomeController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
      */
-    public function destroy($id): RedirectResponse
+    public function destroy($id)
     {
         if (Auth::user()->role == 'admin') {
 
