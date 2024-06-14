@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('title')->unique();
             $table->string('slug')->unique();
             $table->text('content');//I change it manually to text
-            $table->unsignedInteger('user_id')->nullable();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
             $table->bigInteger('category_id')->unsigned();
             $table->foreign('category_id')
             ->references('id')

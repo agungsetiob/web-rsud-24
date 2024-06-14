@@ -29,8 +29,8 @@
                     </div>
                 </div>
             @empty
-                <div class="alert alert-danger">
-                    Data is not available.
+                <div class="alert alert-danger text-center">
+                    No data available.
                 </div>
             @endforelse
             <div class="col-12 text-center wow fadeInUp" data-wow-delay="0.2s" data-loading-class="d-none">
