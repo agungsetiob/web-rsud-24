@@ -1,7 +1,7 @@
 <!-- Begin Page Content -->
 @extends('layouts.header')
 @section('content')             
-<div class="container-fluid">
+                <div class="container-fluid">
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">

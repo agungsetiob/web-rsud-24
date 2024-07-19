@@ -25,7 +25,7 @@
     <!-- Custom styles for this page -->
     <link href="{{asset('vendor/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
 
-    <link rel="shortcut icon" href="{{url('storage/logors.png')}}" type="image/x-icon" />
+    <link rel="shortcut icon" href="{{asset('img/favicon.png')}}" type="image/x-icon"/>
 
 </head>
 
@@ -43,7 +43,7 @@
             <div id="content">
 
                 <!-- Topbar -->
-                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow bg-gradient-primary">
+                <nav class="navbar navbar-expand topbar mb-4 static-top shadow bg-gradient-primary">
 
                     <!-- Sidebar Toggle (Topbar) -->
                     <button id="sidebarToggleTop" class="btn btn-link rounded mr-3">
@@ -102,7 +102,6 @@
 
         </div>
         <!-- End of Content Wrapper -->
-
     </div>
     <!-- End of Page Wrapper -->
 
@@ -133,33 +132,6 @@
             </div>
         </div>
     </div>
-
-    <!-- delete Modal-->
-    @foreach ($posts as $post)
-        <div class="modal fade" id="deleteModal{{$post->id}}" tabindex="-1" role="dialog"
-            aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Tenane Lur?</h5>
-                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">×</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">Select "Delete" below if you are sure to delete this data.</div>
-                    <div class="modal-footer">
-                        <button class="btn btn-success" type="button" data-dismiss="modal">Cancel</button>
-                        <form method="POST" action="{{ route('posts.destroy', $post->id) }}">
-                            @csrf
-                            @method ('DELETE')
-                            <button class="btn btn-danger" type="submit">Delete</button>
-                        </form>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    @endforeach
 
     <!-- Bootstrap core JavaScript-->
     <script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
