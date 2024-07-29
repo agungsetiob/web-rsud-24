@@ -4,7 +4,7 @@
             <div class="sub-style">
                 <h4 class="sub-title px-3 mb-0">Layanan</h4>
             </div>
-            <h3 class="mb-4">Poliklinik dan Layanan Kami (under development)</h3>
+            <h3 class="mb-4">Poliklinik dan Layanan Kami</h3>
         </div>
         <div class="row g-4 justify-content-center">
             <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.1s">

@@ -1,6 +1,6 @@
-    @extends('layouts.page-layout')
-        @section('content')
-            @fragment('beranda')
+@extends('layouts.page-layout')
+    @section('content')
+        @fragment('beranda')
             <div id="app">
                 @include('main.partials.carousels')
                 @include('main.partials.blog')
@@ -25,5 +25,5 @@
                     ],
                 });
             </script>
-            @endfragment
-        @endsection
+        @endfragment
+    @endsection
