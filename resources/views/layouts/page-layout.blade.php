@@ -7,7 +7,7 @@
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
         <meta content="rsud tanah bumbu" name="keywords">
         <meta content="rumah sakit umum daerah tanah bumbu amanah husada" name="description">
-        <meta property="og:image" content="{{asset ('img/favicons.png')}}">
+        <meta property="og:image" content="{{asset ('img/logo.png')}}">
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,7 +18,7 @@
         <link href="{{asset('lib/owlcarousel/assets/owl.carousel.min.css')}}" rel="stylesheet">
         <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
         <link href="{{asset('css/style.css')}}" rel="stylesheet">
-        <link rel="shortcut icon" href="{{asset('img/favicon.png')}}" type="image/x-icon"/>
+        <link rel="shortcut icon" href="{{asset('img/logo.png')}}" type="image/x-icon"/>
         <!-- JavaScript Libraries -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>

@@ -6,7 +6,7 @@
                     <img src="{{url('storage/about.jpeg')}}" class="img-fluid rounded w-100" style="object-fit: cover;"
                         alt="Image">
                     <div class="about-img-inner">
-                        <img src="{{asset('img/about.png')}}" class="img-fluid rounded-circle w-75 h-75"
+                        <img src="{{asset('img/logo.png')}}" class="img-fluid rounded-circle w-75 h-75"
                             alt="logo-profil">
                     </div>
                 </div>
