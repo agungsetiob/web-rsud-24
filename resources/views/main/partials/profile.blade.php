@@ -14,7 +14,7 @@
             <div class="col-lg-7 wow fadeInRight" data-wow-delay="0.4s">
                 <div class="section-title text-start mb-5">
                     <h4 class="sub-title pe-3 mb-0">About Us</h4>
-                    <h3 class="mb-2">Sekilas tentang RSUD Rumah Sehat Amanah Husada</h3>
+                    <h3 class="mb-2">Sekilas tentang RSUD dr. H. Andi Abdurrahman Noor</h3>
                     <p class="mb-2">Sejak berdirinya Kabupaten Tanah Bumbu pada tanggal 8 April 2003, RSUD Amanah Husada
                         ditetapkan sebagai RSUD Kabupaten Tanah Bumbu sesuai SK Bupati Tanah Bumbu Nomor 25 Tahun 2003
                         tentang Penunjukan RSUD dan SK Bupati Nomor 26 Tahun 2003 tentang Izin Operasional RSUD Amanah
