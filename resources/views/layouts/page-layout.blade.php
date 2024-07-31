@@ -7,6 +7,7 @@
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
         <meta content="rsud tanah bumbu" name="keywords">
         <meta content="rumah sakit umum daerah tanah bumbu amanah husada" name="description">
+        <meta property="og:image" content="{{asset ('img/favicons.png')}}">
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
