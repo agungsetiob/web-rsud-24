@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Service;
 use Illuminate\Http\Request;
+use Auth;
 
 class ServiceController extends Controller
 {
@@ -12,7 +13,12 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        //
+        if (Auth::user()->role == 'admin') {
+            $services = Service::all();
+            return view ('admin.our-services', compact('services'));
+        } else {
+            return redirect()->back()->with(['error' => 'ojo dibandingke!']);
+        }
     }
 
     /**

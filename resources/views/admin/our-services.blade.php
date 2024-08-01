@@ -6,9 +6,7 @@
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Layanan Kami</h1>
-                        @foreach ($posts as $post)
-                        <a href="{{ route('posts.edit', $post->id) }}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-hand-holding-medical fa-sm text-white-50"></i> Update Layanan</a>
-                        @endforeach
+                        <a href="{{ route('our-services.create') }}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-hand-holding-medical fa-sm text-white-50"></i> Tambah Layanan</a>
                     </div>
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
@@ -20,34 +18,23 @@
                                 <table class="table table-borderless table-striped table-hover" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>Title</th>
-                                            <th>Category</th>
-                                            <th>Date</th>
-                                            <th>View</th>
-                                            <th>Action</th>
+                                            <th>Nama Layanan</th>
+                                            <th>Deskripsi</th>
+                                            <th>Icon</th>
+                                            <th></th>
                                         </tr>
                                     </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>Title</th>
-                                            <th>Category</th>
-                                            <th>Date</th>
-                                            <th>View</th>
-                                            <th>Action</th>
-                                        </tr>
-                                    </tfoot>
                                     <tbody>
-                                        @forelse ($posts as $post)
+                                        @forelse ($services as $service)
                                         <tr>
-                                            <td> {{$post->title}} </td>
-                                            <td> {{$post->category->name}} </td>
-                                            <td> {{$post->created_at}} </td>
-                                            <td> {{$post->view}} </td>
+                                            <td> {{$service->name}} </td>
+                                            <td> {{$service->desc}} </td>
+                                            <td> {{$service->icon}} </td>
                                             <td>
 
-                                                <!-- <button class="btn btn-danger btn-circle btn-sm" title="hapus" data-toggle="modal" onclick="deletePost({{$post->id}})"><i class="fas fa-trash"></i></button> -->
+                                                <!-- <button class="btn btn-danger btn-circle btn-sm" title="hapus" data-toggle="modal" onclick="deleteservice({{$service->id}})"><i class="fas fa-trash"></i></button> -->
                                                 
-                                                <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-success btn-sm" title="edit"><i class="fas fa-pencil-alt"></i></a>
+                                                <a href="{{ route('our-services.edit', $service->id) }}" class="btn btn-success btn-sm" title="edit"><i class="fas fa-pencil-alt"></i></a>
                                         </tr>
                                         @empty
                                             <div class="alert alert-danger">

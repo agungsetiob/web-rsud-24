@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ServiceController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\{CategoryController, 
                         ContactController, 
@@ -69,7 +70,6 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('/posts', PostController::class);
     Route::get('user/dashboard', [PostController::class, 'index']);
     Route::get('/dashboard', [PostController::class, 'userPost'])->name('dashboard');
-    Route::get('/our-services', [PostController::class, 'services']);
     Route::get('/skm', [PostController::class, 'skm']);
 
 
@@ -116,6 +116,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/backup', [BackupController::class, 'index']);
     Route::get('/backup/only-db', [BackupController::class, 'create']);
     Route::get('/backup/delete/{file_name}', [BackupController::class, 'delete']);
+
+    Route::resource('our-services', ServiceController::class);
 
 
 });

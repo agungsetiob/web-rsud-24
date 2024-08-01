@@ -216,18 +216,18 @@ class PostController extends Controller
         
     }
 
-    public function services()
-    {
-        if (Auth::user()->role == 'admin') {
-            $posts = Post::where('slug', 'layanan-kami')->get();
-            return view ('admin.our-services', 
-                compact(
-                    'posts'
-            ));
-        } else {
-            return redirect()->back()->with(['error' => 'ojo dibandingke!']);
-        }
-    }
+    // public function services()
+    // {
+    //     if (Auth::user()->role == 'admin') {
+    //         $posts = Post::where('slug', 'layanan-kami')->get();
+    //         return view ('admin.our-services', 
+    //             compact(
+    //                 'posts'
+    //         ));
+    //     } else {
+    //         return redirect()->back()->with(['error' => 'ojo dibandingke!']);
+    //     }
+    // }
 
     public function skm()
     {
