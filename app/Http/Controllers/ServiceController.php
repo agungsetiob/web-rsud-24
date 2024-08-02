@@ -54,9 +54,10 @@ class ServiceController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Service $service)
+    public function edit($id)
     {
-        //
+        $service = Service::findOrFail($id);
+        return response()->json($service);
     }
 
     /**
@@ -83,8 +84,11 @@ class ServiceController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Service $service)
+    public function destroy($id)
     {
-        //
+        $service = Service::findOrFail($id);
+        $service->delete();
+        return redirect()->route('our-services.index')->with('success', 'Service deleted successfully');
     }
+
 }

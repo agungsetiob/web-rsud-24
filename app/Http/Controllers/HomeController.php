@@ -255,7 +255,7 @@ class HomeController extends Controller
     public function quran()
     {
         //api alquran
-        $response = Http::get('https://equran.id/api/surat');
+        $response = Http::withoutVerifying()->get('https://equran.id/api/surat');
 
         //jadikan json
         $data = $response->json();
@@ -266,7 +266,7 @@ class HomeController extends Controller
 
     public function detailSurah(int $surah)
     {
-        $response = Http::get('https://equran.id/api/surat/' . $surah);
+        $response = Http::withoutVerifying()->get('https://equran.id/api/surat/' . $surah);
         $datadetail = $response->json();
         return view('main.surat', compact('datadetail'));
     }
