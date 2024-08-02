@@ -25,7 +25,7 @@
     <!-- Custom styles for this page -->
     <link href="{{asset('vendor/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
 
-    <link rel="shortcut icon" href="{{asset('img/favicon.png')}}" type="image/x-icon"/>
+    <link rel="shortcut icon" href="{{asset('img/logo.png')}}" type="image/x-icon"/>
     <script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
     <script src="{{asset('vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 

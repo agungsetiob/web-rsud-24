@@ -3,11 +3,20 @@
 
     <head>
         <meta charset="utf-8">
-        <title>{{ config('app.title') }}</title>
+        <title>{{$title}}</title>
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
         <meta content="rsud tanah bumbu" name="keywords">
-        <meta content="rumah sakit umum daerah dr h andi abdurrahman noor tanah bumbu" name="description">
-        <meta property="og:image" content="{{asset ('img/logo.png')}}">
+        <meta name="description" content='{!!$description!!}' />
+        <meta property="og:title" content="{{$title}}">
+        @if ($post->image)
+        <meta property="og:image" content="{{asset ('storage/posts/'. $ogImage)}}">
+        @else
+        <meta property="og:image" content="{{asset ('storage/posts/putih.jpg')}}">
+        @endif
+        <meta property="og:image:width" content="900"/>
+        <meta property="og:image:height" content="500"/>
+        <meta property="og:description" content='{!!$description!!}'>
+        <meta property="og:url" content="{{url('blog/'.$url)}}"/>
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

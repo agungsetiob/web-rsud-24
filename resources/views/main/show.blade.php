@@ -1,6 +1,5 @@
-@extends('layouts.page-layout')
+@extends('layouts.show-layout')
 @section('content')
-@fragment('blog')
     <div id="app" data-loading-class="fade">
         <div id="show-page" class="container-fluid bg-breadcrumb show">
             <div class="container text-center py-5">
@@ -113,6 +112,4 @@
             window.scrollTo(0, 0);
         }
     </script>
-@endfragment
 @endsection
-<!-- Blog End -->

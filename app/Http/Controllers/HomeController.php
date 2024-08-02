@@ -177,7 +177,7 @@ class HomeController extends Controller
      */
     public function show($slug)
     {
-        $post = Post::where('slug', $slug)->firstOrFail();
+        $post = Post::where('slug', $slug)->first();
         $post->increment('view');
         $description = Str::limit($post->content, 40);
         $popularPosts = Post::where('id', '!=', $post->id)
@@ -189,7 +189,9 @@ class HomeController extends Controller
                             ->limit(3)
                             ->get();
         $title = $post->title;
-        return view('main.show', compact('post', 'relatedPosts', 'popularPosts', 'description', 'title'));
+        $ogImage = $post->image;
+        $url = $post->slug;
+        return view('main.show', compact('post', 'relatedPosts', 'popularPosts', 'description', 'title', 'ogImage', 'url'));
     }
 
     public function rank()
