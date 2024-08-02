@@ -2,13 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\{Post, Doctor, User, Faq};
-use Illuminate\Http\RedirectResponse;
+use App\Models\{Post, Doctor, User, Faq, Service};
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
-use DB;
 use Auth;
 
 class HomeController extends Controller
@@ -54,12 +52,15 @@ class HomeController extends Controller
         $faqs = Faq::inRandomOrder()
         ->limit(6)
         ->get();
+        $services = Service::inRandomOrder()
+        ->limit(4)
+        ->get();
         $posts = Post::latest()->limit(3)->get();
         $title = 'RSUD RS Amanah Husada';
         if ($request->header('HX-Request')) {
             return view('main.index', compact('faqs', 'doctors', 'posts', 'title'))->fragment('beranda');
         }
-        return view('main.index', compact('doctors', 'faqs', 'posts', 'title'));
+        return view('main.index', compact('doctors', 'faqs', 'posts', 'title', 'services'));
     }
 
     //sp doctor for doctor page for visitors
