@@ -58,7 +58,7 @@ class HomeController extends Controller
         $posts = Post::latest()->limit(3)->get();
         $title = 'RSUD RS Amanah Husada';
         if ($request->header('HX-Request')) {
-            return view('main.index', compact('faqs', 'doctors', 'posts', 'title'))->fragment('beranda');
+            return view('main.index', compact('faqs', 'doctors', 'posts', 'title', 'services'))->fragment('beranda');
         }
         return view('main.index', compact('doctors', 'faqs', 'posts', 'title', 'services'));
     }

@@ -72,7 +72,7 @@
                         hx-swap="outerHTML transition:true"
                         hx-push-url="true"
                         hx-indicator="#loadingIndicator">Beranda</a>
-                        <a href="#" class="nav-item nav-link"
+                        <a href="" class="nav-item nav-link"
                         hx-get="{{url('/blog')}}" 
                         hx-trigger="click" 
                         hx-target="#app" 
