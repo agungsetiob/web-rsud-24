@@ -64,6 +64,8 @@ Route::post('send/message', [ContactController::class, 'store']);
 Route::get('document', [FileController::class, 'document'])->name('docs');
 Route::get('document/{file}', [FileController::class, 'show']);
 
+Route::get('layanan', [ServiceController::class, 'allServices']);
+
 
 //route group on my own
 Route::middleware(['auth'])->group(function () {
@@ -118,7 +120,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/backup/delete/{file_name}', [BackupController::class, 'delete']);
 
     Route::resource('our-services', ServiceController::class);
-
 
 });
 

@@ -37,7 +37,6 @@ class ServiceController extends Controller
         $service->desc = $request->desc;
         $service->icon = $request->icon;
         $service->save();
-        //dd($service);
 
         return redirect()->back()->with(['success' => 'Service created successfully!']);
     }
@@ -46,9 +45,14 @@ class ServiceController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Service $service)
+    public function allServices(Request $request)
     {
-        //
+        $services = Service::all();
+        if ($request->header('HX-Request')) {
+            return view('main.services', compact('services'))->fragment('services');
+        } else{
+            return view('main.services', compact('services'));
+        }
     }
 
     /**

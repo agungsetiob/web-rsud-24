@@ -29,7 +29,9 @@
                 </div>
             @endforelse
             <div class="col-12 text-center wow fadeInUp" data-wow-delay="0.2s">
-                <a class="btn btn-primary rounded-pill text-white py-3 px-5">More Details</a>
+                <a hx-get="{{url('/layanan')}}" hx-trigger="click" hx-target="#app" hx-swap="outerHTML transition:true"
+                    hx-push-url="true" hx-indicator="#loadingIndicator"
+                    class="btn btn-primary rounded-pill text-white py-3 px-5">Browse More</a>
             </div>
         </div>
     </div>

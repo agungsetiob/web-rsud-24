@@ -34,7 +34,7 @@
                 </div>
             @endforelse
             <div class="col-12 text-center wow fadeInUp" data-wow-delay="0.2s" data-loading-class="d-none">
-                <a class="btn btn-primary rounded-pill text-white py-3 px-5" hx-get="{{url('blog/')}}"
+                <a class="btn btn-primary rounded-pill text-white py-3 px-5" hx-get="{{url('/blog')}}"
                     hx-trigger="click" hx-target="#app" hx-swap="outerHTML transition:true" hx-push-url="true"
                     hx-indicator="#loadingIndicator">Browse More</a>
             </div>

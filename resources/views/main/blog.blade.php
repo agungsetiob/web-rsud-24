@@ -13,7 +13,6 @@
                         </div>
                     </div>
                     <!-- Header End -->
-
                     <!-- Blog Start -->
                     <div id="blog" class="container-fluid service py-5" data-loading-class="fade">
                         <div class="container py-5">
@@ -33,7 +32,7 @@
                                             <div class="service-content rounded-bottom bg-light p-4">
                                                 <div class="service-content-inner">
                                                     <h5 class="mb-4">{{$post->title}}</h5>
-                                                    <a href="{{url('blog/'.$post->slug)}}" class="btn btn-primary rounded-pill text-white py-2 px-4 mb-2">Read More</a>
+                                                    <a href="{{url('/blog'.$post->slug)}}" class="btn btn-primary rounded-pill text-white py-2 px-4 mb-2">Read More</a>
                                                 </div>
                                             </div>
                                         </div>
