@@ -60,6 +60,7 @@ Route::get('frequently-asked-question', [HomeController::class, 'faq'])->name('f
 Route::get('standar-pelayanan', [StandarPelayananController::class, 'standarPelayanan']);
 
 Route::post('send/message', [ContactController::class, 'store']);
+Route::get('kontak', [ContactController::class, 'contactUs']);
 
 Route::get('document', [FileController::class, 'document'])->name('docs');
 Route::get('document/{file}', [FileController::class, 'show']);

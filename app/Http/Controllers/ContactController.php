@@ -160,4 +160,12 @@ class ContactController extends Controller
         set_time_limit(300);
         return $pdf->stream('pengaduan-masyarakat.pdf');
     }
+
+    public function contactUs(Request $request)
+    {
+        if($request->header('HX-Request')){
+            return view('main.contact')->fragment('contact');
+        }
+        return view('main.contact');
+    }
 }
