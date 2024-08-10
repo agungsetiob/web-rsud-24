@@ -137,7 +137,7 @@
             <div class="container">
                 <div class="row g-4 align-items-center justify-content-center">
                     <div class="col-md-6 text-center mb-md-0">
-                        <span class="text-white"><a href="#"><i class="fas fa-copyright text-light me-2"></i>IT PDE</a> RSUD RS Amanah Husada</span>
+                        <span class="text-white"><a href="#"><i class="fas fa-copyright text-light me-2"></i>IT</a> RSUD dr. H. Andi Abdurrahman Noor</span>
                     </div>
                 </div>
             </div>
