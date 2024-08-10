@@ -51,11 +51,12 @@ Route::get('/', [HomeController::class, 'frontPage']);
 Route::get('blog', [HomeController::class, 'index'])->name('blog.index');
 Route::get('blog/category/{category}', [HomeController::class, 'category']);
 Route::get('blog/{slug}', [HomeController::class, 'show'])->name('blog');
-Route::get('our/specialists', [HomeController::class, 'doctor']);
-Route::get('our/doctors', [HomeController::class, 'doctorGeneral']);
+Route::get('dokter', [HomeController::class, 'doctor']);
+Route::get('spesialis', [HomeController::class, 'doctorSpec']);
+Route::get('dokter-umum', [HomeController::class, 'doctorGeneral']);
 Route::get('leaderboard', [HomeController::class, 'rank']);
 Route::get('from/{username}', [HomeController::class, 'postByUser']);
-Route::get('frequently-asked-question', [HomeController::class, 'faq'])->name('frequent.question');
+Route::get('faq', [HomeController::class, 'faq'])->name('frequent.question');
 
 Route::get('standar-pelayanan', [StandarPelayananController::class, 'standarPelayanan']);
 

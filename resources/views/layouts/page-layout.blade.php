@@ -93,6 +93,20 @@
                         hx-swap="outerHTML transition:true"
                         hx-push-url="true"
                         hx-indicator="#loadingIndicator">Layanan</a>
+                        <a href="#" class="nav-item nav-link"
+                        hx-get="{{url('/dokter')}}" 
+                        hx-trigger="click" 
+                        hx-target="#app" 
+                        hx-swap="outerHTML transition:true"
+                        hx-push-url="true"
+                        hx-indicator="#loadingIndicator">Dokter</a>
+                        <a href="#" class="nav-item nav-link"
+                        hx-get="{{url('/faq')}}" 
+                        hx-trigger="click" 
+                        hx-target="#app" 
+                        hx-swap="outerHTML transition:true"
+                        hx-push-url="true"
+                        hx-indicator="#loadingIndicator">Faq</a>
                         <a id="kontak" href="" class="nav-item nav-link"
                         hx-get="{{url('/kontak')}}" 
                         hx-trigger="click" 

@@ -63,24 +63,39 @@ class HomeController extends Controller
         return view('main.index', compact('doctors', 'faqs', 'posts', 'title', 'services'));
     }
 
+    public function doctor(Request $request)
+    {
+        $doctors = Doctor::inRandomOrder()->limit(8)->get();
+        if ($request->header('HX-Request')){
+            return view('main.doctors', compact('doctors'))->fragment('doctor');
+        }
+        return view('main.doctors', compact('doctors'));
+    }
+
     //sp doctor for doctor page for visitors
-    public function doctor()
+    public function doctorSpec(Request $request)
     {
         $doctors = Doctor::latest()
         ->where('category', 'spesialis')
-        ->paginate(12);
+        ->get();
         $title = 'Dokter Spesialis';
-        return view('main.doctor', compact('doctors', 'title'));
+        if ($request->header('HX-Request')){
+            return view('main.doctor-all', compact('doctors'))->fragment('doctor');
+        }
+        return view('main.doctor-all', compact('doctors'));
     }
 
     //general doctor for doctor page for visitors
-    public function doctorGeneral()
+    public function doctorGeneral(Request $request)
     {
         $doctors = Doctor::latest()
         ->where('category', 'umum')
-        ->paginate(12);
+        ->get();
         $title = 'Dokter Umum';
-        return view('main.doctor', compact('doctors', 'title'));
+        if ($request->header('HX-Request')){
+            return view('main.doctor-all', compact('doctors'))->fragment('doctor');
+        }
+        return view('main.doctor-all', compact('doctors'));
     }
 
     /**

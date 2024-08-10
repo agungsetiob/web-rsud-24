@@ -37,10 +37,16 @@
             <div class="col-12 text-center wow fadeInUp" data-wow-delay="0.2s">
                 <div class="d-flex flex-column flex-md-row justify-content-center">
                     <div class="col-md-6 col-sm-12 mx-2 mb-2 mb-md-0">
-                        <a class="btn btn-primary rounded-pill text-white py-3 px-2 w-100" href="#">Lihat Dokter Spesialis</a>
+                        <a class="btn btn-primary rounded-pill text-white py-3 px-2 w-100" href=""
+                            class="nav-item nav-link" hx-get="{{url('/spesialis')}}" hx-trigger="click" hx-target="#app"
+                            hx-swap="outerHTML transition:true" hx-push-url="true"
+                            hx-indicator="#loadingIndicator">Lihat Dokter Spesialis</a>
                     </div>
                     <div class="col-md-6 col-sm-12 mx-2">
-                        <a class="btn btn-primary rounded-pill text-white py-3 px-2 w-100" href="#">Lihat Dokter Umum</a>
+                        <a class="btn btn-primary rounded-pill text-white py-3 px-2 w-100" href=""
+                            class="nav-item nav-link" hx-get="{{url('/dokter-umum')}}" hx-trigger="click"
+                            hx-target="#app" hx-swap="outerHTML transition:true" hx-push-url="true"
+                            hx-indicator="#loadingIndicator">Lihat Dokter Umum</a>
                     </div>
                 </div>
             </div>
