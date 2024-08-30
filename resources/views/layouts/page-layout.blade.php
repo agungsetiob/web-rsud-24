@@ -66,7 +66,7 @@
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto py-0">
                         <a href="#" class="nav-item nav-link"
-                        hx-get="{{url('/')}}" 
+                        hx-get="{{url('/home')}}" 
                         hx-trigger="click" 
                         hx-target="#app" 
                         hx-swap="outerHTML transition:true"
