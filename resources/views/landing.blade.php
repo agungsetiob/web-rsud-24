@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +8,6 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            /* background-image: linear-gradient(#ff8a00, #0074e5); */
             background-image: linear-gradient(to right, violet, #00008b);
             margin: 0;
             padding: 0;
@@ -37,6 +35,7 @@
             justify-content: center;
             text-align: center;
             position: relative;
+            transition: transform 0.3s ease, background-color 0.3s ease;
         }
         .card a {
             text-decoration: none;
@@ -54,13 +53,26 @@
         .logo {
             grid-column: span 3;
             text-align: left;
-            font-size: 24px;
+            font-size: 29px;
             color: #FFEB3B;
             font-weight: bold;
         }
 
+        /* Effect when hovering */
+        .card:hover {
+            background-color: #f0f0f0;
+            transform: scale(1.05); /* Slight zoom effect */
+        }
+
         /* Responsive styles */
         @media (min-width: 1024px) {
+            .container {
+                max-width: 1200px;
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .card {
+                padding: 30px;
+            }
             .card img {
                 width: 100px; /* Double the size for large screens */
                 height: 100px;
@@ -69,10 +81,10 @@
 
         @media (max-width: 768px) {
             .container {
-                grid-template-columns: repeat(1, 1fr);
+                grid-template-columns: repeat(2, 1fr);
             }
             .logo {
-                grid-column: span 1;
+                grid-column: span 2;
             }
         }
 
@@ -102,13 +114,13 @@
         <div class="card">
             <a href="https://simgos.tanahbumbukab.go.id/" target="_blank">
                 <img src="https://simgos.tanahbumbukab.go.id/apps/RegOnline/public/img/simgos-icon.png" alt="SIMRS Icon">
-                <h3>SIMRS</h3>
+                <h3>SIMRS (Sistem Informasi Manajemen Rumah Sakit)</h3>
             </a>
         </div>
         <div class="card">
             <a href="https://simgos.tanahbumbukab.go.id/apps/RegOnline" target="_blank">
-                <img src="https://play-lh.googleusercontent.com/BlrmGYzr7rNTFMYLyNnk7RF2e8EpkY5aCI9kbXnhUZz9cZKW1vj9_ODLdTe3vDUy_Cg=w240-h480-rw" alt="Antrian Online Icon">
-                <h3>Antrian Online</h3>
+                <img src="{{asset('img/pentol.png')}}" alt="Antrian Online Icon">
+                <h3>PAMANPENTOL (Aplikasi Manajemen Antrian dan Pendaftaran Online)</h3>
             </a>
         </div>
     </div>
