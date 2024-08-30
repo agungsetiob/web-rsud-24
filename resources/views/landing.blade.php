@@ -9,7 +9,8 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #FF69B4;
+            /* background-image: linear-gradient(#ff8a00, #0074e5); */
+            background-image: linear-gradient(to right, violet, #00008b);
             margin: 0;
             padding: 0;
             display: flex;
