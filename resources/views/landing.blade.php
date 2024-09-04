@@ -164,7 +164,8 @@
                 <h3 style="text-align: left; color: black;">Tentang Sistem</h3>
                 <p style="text-align: justify; color: black;">
                     Sistem Integrasi Pelayanan dan Administrasi Elektronik (SIPLAYER) 
-                    merupakan sebuah inovasi dari RSUD dr. H. Andi Abdurrahman Noor demi
+                    merupakan sebuah inovasi dari RSUD dr. H. Andi Abdurrahman Noor untuk mengintegrasikan
+                    pelayanan dan administrasi secara elektronik demi
                     mewujudkan pelayanan yang lebih baik untuk masyarakat.
                 </p>
             </a>
