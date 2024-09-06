@@ -5,7 +5,7 @@
             <div class="carousel-caption-content p-3">
                 <h5 class="text-white text-uppercase fw-bold mb-4" style="letter-spacing: 3px;">RSUD dr. H. Andi Abdurrahman Noor
                     </h5>
-                <h1 class="display-1 text-capitalize text-white mb-4">Senyum Santun Sapa</h1>
+                <h3 class="display-3 text-capitalize text-white mb-4">Senyum Salam Sopan Santun Sapa Iman</h3>
             </div>
         </div>
     </div>
@@ -14,7 +14,7 @@
         <div class="carousel-caption">
             <div class="carousel-caption-content p-3">
                 <h5 class="text-white text-uppercase fw-bold mb-4" style="letter-spacing: 3px;">RSUD dr. H. Andi Abdurrahman Noor</h5>
-                <!-- <h1 class="display-1 text-capitalize text-white mb-4">Senyum Santun Sapa</h1> -->
+                <h3 class="display-3 text-capitalize text-white mb-4">Senyum Salam Sopan Santun Sapa Iman</h3>
             </div>
         </div>
     </div>
@@ -24,7 +24,7 @@
             <div class="carousel-caption-content p-3">
                 <h5 class="text-white text-uppercase fw-bold mb-4" style="letter-spacing: 3px;">RSUD dr. H. Andi Abdurrahman Noor
                     </h5>
-                <h1 class="display-1 text-capitalize text-white mb-4">Senyum Santun Sapa</h1>
+                <h3 class="display-3 text-capitalize text-white mb-4">Senyum Salam Sopan Santun Sapa Iman</h3>
             </div>
         </div>
     </div>
