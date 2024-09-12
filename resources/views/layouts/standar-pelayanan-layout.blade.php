@@ -3,7 +3,7 @@
 
     <head>
         <meta charset="utf-8">
-        <title>{{ config('app.title') }}</title>
+        <title>{{ $title }}</title>
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
         <meta content="rsud tanah bumbu" name="keywords">
         <meta content="rumah sakit umum daerah dr h andi abdurrahman noor tanah bumbu" name="description">
@@ -118,7 +118,7 @@
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                             <div class="dropdown-menu m-0">
                                 <a href="{{url('quran')}}" class="dropdown-item">Al-Qur'an Digital</a>
-                                <a href="{{ url('standar-pelayanan') }}" class="dropdown-item">Standar Pelayanan</a>
+                                <a href="#" class="dropdown-item">Standar Pelayanan</a>
                                 <a href="#" class="dropdown-item">Survey</a>
                                 <a href="#" class="dropdown-item">Dokumen Publik</a>
                                 <a href="#" class="dropdown-item">Top Author</a>

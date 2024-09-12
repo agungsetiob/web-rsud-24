@@ -29,8 +29,8 @@ class StandarPelayananController extends Controller
     public function standarPelayanan()
     {
         $title = 'Standar Pelayanan';
-        $files = Standard::latest()->get();
-        return view ('main.standar-pelayanan', compact('files', 'title'));
+        $standards = Standard::latest()->get();
+        return view ('main.standar-pelayanan', compact('standards', 'title'));
     }
 
     /**
