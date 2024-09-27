@@ -26,10 +26,13 @@ class StandarPelayananController extends Controller
         }
     }
 
-    public function standarPelayanan()
+    public function standarPelayanan(Request $request)
     {
         $title = 'Standar Pelayanan';
-        $standards = Standard::latest()->get();
+        $standards = Standard::latest()->paginate(10);
+        if ($request->header('HX-Request')){
+            return view ('main.standar-pelayanan', compact('standards', 'title'))->fragment('standar');
+        }
         return view ('main.standar-pelayanan', compact('standards', 'title'));
     }
 

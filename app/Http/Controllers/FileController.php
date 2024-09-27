@@ -23,11 +23,14 @@ class FileController extends Controller
      * Show the page of uploade documents.
      *
      */
-    public function document()
+    public function document(Request $request)
     {
         $title = 'Dokumen Publik';
         $files = File::latest()->get();
-        return view('main.document', compact('title', 'files'));
+        if ($request->header('HX-Request')) {
+            return view('main.documents', compact('title', 'files'))->fragment('docs');
+        }
+        return view('main.documents', compact('title', 'files'));
     }
 
     /**

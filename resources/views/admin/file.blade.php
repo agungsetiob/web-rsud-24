@@ -32,7 +32,7 @@
                                             <td> {{$file->created_at}} </td>
                                             <td>
                                                 <button class="btn btn-danger btn-sm" title="hapus" href="#" data-toggle="modal" data-target="#deleteModal{{$file->id}}">
-                                                <i class="fas fa-trash"></i> edit
+                                                <i class="fas fa-trash"></i> delete
                                                 </button>
                                                 <a class="btn btn-success btn-sm" title="download" href="{{Storage::url('docs/'. $file->file )}}" target="_blank">
                                                 <i class="fas fa-download"></i> download
