@@ -193,6 +193,9 @@ class HomeController extends Controller
     public function show($slug)
     {
         $post = Post::where('slug', $slug)->first();
+        if (!$post) {
+            abort(404);
+        }
         $post->increment('view');
         $description = Str::limit($post->content, 40);
         $popularPosts = Post::where('id', '!=', $post->id)

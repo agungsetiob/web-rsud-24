@@ -18,13 +18,13 @@
                             <div class="service-content-inner">
                                 @if($post->image)
                                     <div class="mb-4">
-                                        <img src="{{ asset('storage/posts/' . $post->image)}}" class="img-fluid w-100"
-                                            alt="{{ $post->title }}">
+                                        <img src="{{ asset('storage/posts/' . $ogImage)}}" class="img-fluid w-100"
+                                            alt="{{ $title }}">
                                     </div>
                                 @else
                                     <div class="mb-4" style="max-height: 300px; overflow: hidden;">
                                         <img src="{{ asset('storage/posts/putih.jpg')}}" class="img-fluid w-100"
-                                            alt="{{ $post->title }}">
+                                            alt="{{ $title }}">
                                     </div>
                                 @endif
                                 <p>{!! $post->content !!}</p>
