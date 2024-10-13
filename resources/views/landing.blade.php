@@ -6,6 +6,12 @@
     <title>SIPLAYER - RSUD</title>
     <link rel="shortcut icon" href="https://rsud.tanahbumbukab.go.id/img/logo.png" type="image/x-icon"/>
     <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
         body {
             font-family: Arial, sans-serif;
             background-image: linear-gradient(to right, violet, #00008b);
@@ -15,8 +21,8 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
-            box-sizing: border-box;
+            min-height: 90vh;
+            overflow-x: hidden; /* Prevent horizontal scrolling */
         }
 
         .container {
@@ -40,6 +46,7 @@
             text-align: center;
             position: relative;
             transition: transform 0.3s ease, background-image 0.7s ease;
+            max-width: 100%; /* Ensure cards don't overflow */
         }
 
         .card a {
@@ -49,7 +56,9 @@
         .card img {
             width: 50px;
             height: 50px;
-            transition: width 0.3s, height 0.3s; /* Smooth transition for resizing */
+            transition: width 0.3s, height 0.3s;
+            max-width: 100%;
+            height: auto; /* Make sure images are responsive */
         }
 
         .card h3 {
@@ -70,27 +79,27 @@
         .card:hover {
             background-color: #f0f0f0;
             background-image: linear-gradient(#0074e5, #ff8a00);
-            transform: scale(1.05); /* Slight zoom effect */
+            transform: scale(1.05);
         }
 
         /* Responsive styles */
         @media (min-width: 1024px) {
             .container {
                 max-width: 1200px;
-                grid-template-columns: repeat(2, 1fr); /* 2 cards per row */
+                grid-template-columns: repeat(2, 1fr);
             }
             .card {
                 padding: 30px;
             }
             .card img {
-                width: 100px; /* Double the size for large screens */
+                width: 100px;
                 height: 100px;
             }
         }
 
         @media (max-width: 768px) {
             .container {
-                grid-template-columns: repeat(2, 1fr); /* 2 cards per row for tablets */
+                grid-template-columns: repeat(2, 1fr);
             }
             .logo {
                 grid-column: span 2;
@@ -116,8 +125,6 @@
             text-align: center;
             font-size: 14px;
             width: 100%;
-            position: relative;
-            bottom: 0;
         }
 
         .disabled {
@@ -172,7 +179,7 @@
         </div>
     </div>
     <footer>
-        <p>&copy; 2024 Agung Setio Budi</p>
+        <p>&copy; 2024 RSUD dr. H. Andi Abdurrahman Noor</p>
     </footer>
 </body>
 </html>

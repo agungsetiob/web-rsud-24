@@ -3,20 +3,11 @@
 
 <head>
     <meta charset="utf-8">
-    <title>{{$title}}</title>
+    <title>{{ $title }}</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="rsud tanah bumbu" name="keywords">
-    <meta name="description" content='{!!$description!!}' />
-    <meta property="og:title" content="{{$title}}">
-    @if ($post->image)
-        <meta property="og:image" content="{{asset('storage/posts/' . $ogImage)}}">
-    @else
-        <meta property="og:image" content="{{asset('storage/posts/putih.jpg')}}">
-    @endif
-    <meta property="og:image:width" content="900" />
-    <meta property="og:image:height" content="500" />
-    <meta property="og:description" content='{!!$description!!}'>
-    <meta property="og:url" content="{{url('blog/' . $url)}}" />
+    <meta content="rumah sakit umum daerah dr h andi abdurrahman noor tanah bumbu" name="description">
+    <meta property="og:image" content="{{asset('img/logo.png')}}">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -87,7 +78,7 @@
                     <a href="#" class="nav-item nav-link" hx-get="{{url('/home')}}" hx-trigger="click" hx-target="#app"
                         hx-swap="outerHTML transition:true" hx-push-url="true"
                         hx-indicator="#loadingIndicator">Beranda</a>
-                    <a href="#" class="nav-item nav-link" hx-get="{{url('/blog')}}" hx-trigger="click" hx-target="#app"
+                    <a href="" class="nav-item nav-link" hx-get="{{url('/blog')}}" hx-trigger="click" hx-target="#app"
                         hx-swap="outerHTML transition:true" hx-push-url="true" hx-indicator="#loadingIndicator">Blog</a>
                     <a href="#" class="nav-item nav-link" hx-get="{{url('/profil')}}" hx-trigger="click"
                         hx-target="#app" hx-swap="outerHTML transition:true" hx-push-url="true"
@@ -95,6 +86,11 @@
                     <a href="#" class="nav-item nav-link" hx-get="{{url('/layanan')}}" hx-trigger="click"
                         hx-target="#app" hx-swap="outerHTML transition:true" hx-push-url="true"
                         hx-indicator="#loadingIndicator">Layanan</a>
+                    <a href="#" class="nav-item nav-link" hx-get="{{url('/dokter')}}" hx-trigger="click"
+                        hx-target="#app" hx-swap="outerHTML transition:true" hx-push-url="true"
+                        hx-indicator="#loadingIndicator">Dokter</a>
+                    <a href="#" class="nav-item nav-link" hx-get="{{url('/faq')}}" hx-trigger="click" hx-target="#app"
+                        hx-swap="outerHTML transition:true" hx-push-url="true" hx-indicator="#loadingIndicator">Faq</a>
                     <a id="kontak" href="" class="nav-item nav-link" hx-get="{{url('/kontak')}}" hx-trigger="click"
                         hx-target="#app" hx-swap="outerHTML transition:true" hx-push-url="true"
                         hx-indicator="#loadingIndicator">Kontak</a>
@@ -102,13 +98,11 @@
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                         <div class="dropdown-menu m-0">
                             <a href="{{url('quran')}}" class="dropdown-item">Al-Qur'an Digital</a>
-                            <a href="#" class="dropdown-item" hx-get="{{url('/standar-pelayanan')}}" hx-trigger="click"
-                                hx-target="#app" hx-swap="outerHTML transition:true" hx-push-url="true"
-                                hx-indicator="#loadingIndicator">Standar Pelayanan</a>
+                            <a href="#" class="dropdown-item">Standar Pelayanan</a>
                             <a href="#" class="dropdown-item">Survey</a>
-                            <a href="#" class="dropdown-item" hx-get="{{url('/document')}}"
-                                hx-trigger="click" hx-target="#app" hx-swap="outerHTML transition:true"
-                                hx-push-url="true" hx-indicator="#loadingIndicator">Dokumen Publik</a>
+                            <a href="#" class="dropdown-item" hx-get="{{url('/document')}}" hx-trigger="click"
+                                hx-target="#app" hx-swap="outerHTML transition:true" hx-push-url="true"
+                                hx-indicator="#loadingIndicator">Dokumen Publik</a>
                             <a href="#" class="dropdown-item">Top Author</a>
                         </div>
                     </div>
@@ -126,8 +120,8 @@
         <div class="container">
             <div class="row g-4 align-items-center justify-content-center">
                 <div class="col-md-6 text-center mb-md-0">
-                    <span class="text-white"><a href="#"><i class="fas fa-copyright text-light me-2"></i>IT PDE</a> RSUD
-                        RS Amanah Husada</span>
+                    <span class="text-white"><a href="#"><i class="fas fa-copyright text-light me-2"></i>IT</a> RSUD dr.
+                        H. Andi Abdurrahman Noor</span>
                 </div>
             </div>
         </div>
