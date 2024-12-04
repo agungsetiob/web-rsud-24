@@ -27,6 +27,7 @@
                                             alt="{{ $title }}">
                                     </div>
                                 @endif
+                                <p class="text-dark"> {{ \Carbon\Carbon::parse($post->updated_at)->translatedFormat('l, d F Y') }} </p>
                                 <p>{!! $post->content !!}</p>
                             </div>
                         </div>
