@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ServiceController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BpjsController;
 use App\Http\Controllers\{CategoryController, 
                         ContactController, 
                         FaqController, 
@@ -72,7 +73,8 @@ Route::get('document/{file}', [FileController::class, 'show']);
 
 Route::get('layanan', [ServiceController::class, 'allServices']);
 
-
+Route::view('/bpjs-checkin', 'bpjs.checkin');
+Route::post('/check-in', [BpjsController::class, 'checkIn']);
 //route group on my own
 Route::middleware(['auth'])->group(function () {
     Route::resource('/posts', PostController::class);
