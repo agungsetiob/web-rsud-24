@@ -297,7 +297,7 @@
             </div>
             <div class="pb">
                 <a href="{{url ('/bpjs-checkin')}}" class="btn-modern">
-                    Check-In BPJS
+                    Checkin BPJS
                 </a>
                 <p>Menuju halaman check-in untuk pasien BPJS</p>
             </div>
