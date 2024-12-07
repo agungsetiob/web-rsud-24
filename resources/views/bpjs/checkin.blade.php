@@ -115,8 +115,7 @@
                     </div>
                 </div>
                 <div class="text-center mt-3">
-                    <small class="footer-text">© 2024 BPJS Integration. Built with ❤️ by <a href="#">Agung
-                            Setio</a>.</small>
+                    <small class="footer-text">© 2024 BPJS Integration. Built with ❤️ by <a href="#">IT DHAAN</a>.</small>
                 </div>
             </div>
         </div>
