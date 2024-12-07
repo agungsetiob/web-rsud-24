@@ -201,6 +201,30 @@
                 transform: scale(1);
             }
         }
+
+        .btn-modern {
+            display: inline-block;
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #ffffff;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 8px;
+            background: linear-gradient(90deg, #007BFF 0%, #0056b3 100%);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn-modern:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-modern:active {
+            transform: translateY(0);
+            box-shadow: 0 3px 4px rgba(0, 0, 0, 0.2);
+        }
     </style>
 </head>
 
@@ -251,29 +275,35 @@
             </a>
         </div>
     </div>
-
-    <!-- Modal Structure -->
     <div class="modal" id="pamanpentolModal">
         <div class="modal-content">
             <span class="modal-close" onclick="closeModal()">&times;</span>
+
             <div class="pb">
                 <a href="https://play.google.com/store/apps/details?id=app.bpjs.mobile&hl=id">
-                    <img src="https://play-lh.googleusercontent.com/BlrmGYzr7rNTFMYLyNnk7RF2e8EpkY5aCI9kbXnhUZz9cZKW1vj9_ODLdTe3vDUy_Cg=w240-h480-rw" alt="Website RSUD Logo">
+                    <img src="https://play-lh.googleusercontent.com/BlrmGYzr7rNTFMYLyNnk7RF2e8EpkY5aCI9kbXnhUZz9cZKW1vj9_ODLdTe3vDUy_Cg=w240-h480-rw"
+                        alt="Mobile JKN Logo">
                     <h2>Mobile JKN</h2>
                 </a>
-                <p>Ambil antrian online via mobile jkn khusus untuk pasien bpjs</p>
+                <p>Ambil antrian online via mobile JKN khusus untuk pasien BPJS</p>
             </div>
+
             <div class="pb">
                 <a href="https://simgos.tanahbumbukab.go.id/apps/RegOnline/" style="margin-top: 20px;">
-                    <img src="https://rsud.tanahbumbukab.go.id/storage/logors.png" alt="Website RSUD Logo">
+                    <img src="https://rsud.tanahbumbukab.go.id/storage/logors.png" alt="Web Antrol Logo">
                     <h2>Web Antrol</h2>
                 </a>
-                <p>Ambil antrian via web antrol untuk pasien umum dan bpjs</p>
+                <p>Ambil antrian via web antrol untuk pasien umum dan BPJS</p>
             </div>
+            <div class="pb">
+                <a href="{{url ('/bpjs-checkin')}}" class="btn-modern">
+                    Check-In BPJS
+                </a>
+                <p>Menuju halaman check-in untuk pasien BPJS</p>
+            </div>
+
         </div>
     </div>
-
-
     <footer>
         <p>&copy; 2024 RSUD dr. H. Andi Abdurrahman Noor</p>
     </footer>
