@@ -14,10 +14,10 @@ class BpjsController extends Controller
     private $baseEndpoint = 'http://103.175.202.237/webservice/registrasionline/bpjs';
 
     /**
-     * Hospital GPS coordinates (example coordinates).
+     * Hospital GPS coordinates
      */
-    private $hospitalLat =  -3.522521513090456;
-    private $hospitalLng = 115.95749914249028;
+    private $hospitalLat =  -3.5224191943463126;
+    private $hospitalLng = 115.95746613629129;
     private $allowedRadius = 1200;
 
     /**
