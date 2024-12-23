@@ -250,7 +250,7 @@
                 <h3>PAMANPENTOL (Aplikasi Manajemen Antrian dan Pendaftaran Online)</h3>
             </a>
         </div>
-        <div class="card disabled">
+        <div class="card">
             <a href="/controls">
                 <img src="{{asset('img/palkon.png')}}" alt="Palkon Icon">
                 <h3>SIPALKON (Sistem Pengingat Jadwal Kontrol)</h3>
