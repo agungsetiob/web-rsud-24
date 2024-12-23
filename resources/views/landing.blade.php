@@ -7,7 +7,6 @@
     <title>SIPLAYER - RSUD</title>
     <link rel="shortcut icon" href="https://rsud.tanahbumbukab.go.id/img/logo.png" type="image/x-icon" />
     <style>
-        /* Your existing styles */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -15,7 +14,7 @@
         }
 
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Poppins', sans-serif;
             background-image: linear-gradient(to right, violet, #00008b);
             margin: 0;
             padding: 0;
@@ -252,8 +251,8 @@
             </a>
         </div>
         <div class="card disabled">
-            <a class="disabled" href="javascript:void(0)">
-                <img src="{{asset('img/palkon.png')}}" alt="Palkon Online Icon">
+            <a href="/controls">
+                <img src="{{asset('img/palkon.png')}}" alt="Palkon Icon">
                 <h3>SIPALKON (Sistem Pengingat Jadwal Kontrol)</h3>
             </a>
         </div>

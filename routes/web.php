@@ -3,6 +3,7 @@
 use App\Http\Controllers\ServiceController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BpjsController;
+use App\Http\Controllers\ControlController;
 use App\Http\Controllers\{CategoryController, 
                         ContactController, 
                         FaqController, 
@@ -75,6 +76,11 @@ Route::get('layanan', [ServiceController::class, 'allServices']);
 
 Route::view('/bpjs-checkin', 'bpjs.checkin');
 Route::post('/check-in', [BpjsController::class, 'checkIn']);
+
+Route::get('/controls', [ControlController::class, 'index'])->name('controls.index');
+Route::get('/controls/list', [ControlController::class, 'list'])->name('controls.list');
+Route::get('/cetak-surat-kontrol', [ControlController::class, 'cetakSuratKontrol'])->name('cetakSuratKontrol');
+
 //route group on my own
 Route::middleware(['auth'])->group(function () {
     Route::resource('/posts', PostController::class);
