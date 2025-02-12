@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -54,6 +53,14 @@
             font-size: 16px;
             transition: background-color 0.3s;
         }
+        .btn-danger {
+            border: none;
+            border-radius: 10px;
+            padding: 15px;
+            width: 100%;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
 
         .btn-primary:hover {
             background-color: #004080;
@@ -89,9 +96,7 @@
         }
     </style>
 </head>
-
 <body>
-
     <div class="container mt-5">
         <div class="row justify-content-center">
             <div class="col-lg-6 col-md-8 col-sm-10">
@@ -109,13 +114,17 @@
                             </div>
                             <button type="submit" class="btn btn-primary" id="submitButton">
                                 <i class="fas fa-spinner fa-spin fa-xl loading-spinner d-none"></i>
-                                Submit
+                                Check-In
+                            </button>
+                            <button type="button" class="btn btn-danger mt-2" id="cancelButton">
+                                <i class="fas fa-spinner fa-spin fa-xl loading-spinner-cancel d-none"></i>
+                                Batal Antrian
                             </button>
                         </form>
                     </div>
                 </div>
                 <div class="text-center mt-3">
-                    <small class="footer-text">© 2024 BPJS Integration. Built with ❤️ by <a href="#">IT DHAAN</a>.</small>
+                    <small class="footer-text">© 2024 BPJS Integration. Built with ❤️ by <a href="#">Agung Setio</a>.</small>
                 </div>
             </div>
         </div>
@@ -130,21 +139,17 @@
             $('#checkinForm').on('submit', function (e) {
                 e.preventDefault();
 
-                // Show loading spinner and disable the button
                 $('#submitButton').prop('disabled', true);
                 $('.loading-spinner').removeClass('d-none');
 
                 let kodebooking = $('#kodebooking').val();
 
-                // Check if Geolocation is supported
                 if (navigator.geolocation) {
                     navigator.geolocation.getCurrentPosition(
                         function (position) {
-                            // Retrieve latitude and longitude
                             const latitude = position.coords.latitude;
                             const longitude = position.coords.longitude;
 
-                            // Send the AJAX request with geolocation data
                             $.ajax({
                                 url: "{{ url('/check-in') }}",
                                 method: "POST",
@@ -171,10 +176,10 @@
                                     $('.loading-spinner').addClass('d-none');
                                     $('#submitButton').prop('disabled', false);
                                 },
-                                error: function (xhr) {
+                                error: function () {
                                     Swal.fire({
                                         title: 'Error!',
-                                        text: 'Failed to process your request. Please try again later.',
+                                        text: 'Gagal melakukan check-in, coba lagi nanti.',
                                         icon: 'error',
                                         confirmButtonText: 'Retry',
                                     });
@@ -185,26 +190,9 @@
                             });
                         },
                         function (error) {
-                            // Handle geolocation errors
-                            let errorMessage = '';
-                            switch (error.code) {
-                                case error.PERMISSION_DENIED:
-                                    errorMessage = 'You have denied access to location. Please enable it to proceed.';
-                                    break;
-                                case error.POSITION_UNAVAILABLE:
-                                    errorMessage = 'Location information is unavailable.';
-                                    break;
-                                case error.TIMEOUT:
-                                    errorMessage = 'Location request timed out.';
-                                    break;
-                                default:
-                                    errorMessage = 'An unknown error occurred while accessing location.';
-                                    break;
-                            }
-
                             Swal.fire({
-                                title: 'Location Error',
-                                text: errorMessage,
+                                title: 'Error Lokasi',
+                                text: 'Gagal mendapatkan lokasi, silakan aktifkan GPS!',
                                 icon: 'warning',
                                 confirmButtonText: 'OK',
                             });
@@ -213,22 +201,63 @@
                             $('#submitButton').prop('disabled', false);
                         }
                     );
-                } else {
+                }
+            });
+
+            $('#cancelButton').on('click', function () {
+                let kodebooking = $('#kodebooking').val();
+
+                if (!kodebooking) {
                     Swal.fire({
-                        title: 'Geolocation Not Supported',
-                        text: 'Your browser does not support geolocation. Please use a supported browser.',
+                        title: 'Error!',
+                        text: 'Kode Booking harus diisi!',
                         icon: 'error',
                         confirmButtonText: 'OK',
                     });
-
-                    $('.loading-spinner').addClass('d-none');
-                    $('#submitButton').prop('disabled', false);
+                    return;
                 }
+
+                $('#cancelButton').prop('disabled', true);
+                $('.loading-spinner-cancel').removeClass('d-none');
+
+                $.ajax({
+                    url: "{{ url('/batal-antrian') }}",
+                    method: "POST",
+                    data: {
+                        _token: "{{ csrf_token() }}",
+                        kodebooking: kodebooking,
+                    },
+                    success: function (response) {
+                        let iconType = response.metadata.code === 200 ? 'success' : 'warning';
+                        let title = response.metadata.code === 200
+                            ? `Antrian Kode Booking <span style='color:red'>${kodebooking}</span> Dibatalkan`
+                            : 'Oops!';
+                        let message = response.metadata.message;
+
+                        Swal.fire({
+                            title: title,
+                            text: message,
+                            icon: iconType,
+                            confirmButtonText: 'OK',
+                        });
+
+                        $('.loading-spinner-cancel').addClass('d-none');
+                        $('#cancelButton').prop('disabled', false);
+                    },
+                    error: function () {
+                        Swal.fire({
+                            title: 'Error!',
+                            text: 'Gagal membatalkan antrian, coba lagi nanti.',
+                            icon: 'error',
+                            confirmButtonText: 'Retry',
+                        });
+
+                        $('.loading-spinner-cancel').addClass('d-none');
+                        $('#cancelButton').prop('disabled', false);
+                    },
+                });
             });
         });
-
     </script>
-
 </body>
-
 </html>

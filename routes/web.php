@@ -76,6 +76,7 @@ Route::get('layanan', [ServiceController::class, 'allServices']);
 
 Route::view('/bpjs-checkin', 'bpjs.checkin');
 Route::post('/check-in', [BpjsController::class, 'checkIn']);
+Route::post('/batal-antrian', [BpjsController::class, 'batalAntrian']);
 
 Route::get('/controls', [ControlController::class, 'index'])->name('controls.index');
 Route::get('/controls/list', [ControlController::class, 'list'])->name('controls.list');

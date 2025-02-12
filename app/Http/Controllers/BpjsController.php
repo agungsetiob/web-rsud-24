@@ -194,4 +194,61 @@ class BpjsController extends Controller
 
         return $distance;
     }
+
+    public function batalAntrian(Request $request)
+    {
+        $kodeBooking = $request->input('kodebooking');
+
+        if (!$kodeBooking) {
+            return response()->json([
+                'metadata' => [
+                    'code' => 400,
+                    'message' => 'Kode Booking harus diisi!',
+                ],
+            ]);
+        }
+
+        // Ambil token untuk autentikasi
+        $token = $this->getToken();
+
+        if (!$token) {
+            return response()->json([
+                'metadata' => [
+                    'code' => 500,
+                    'message' => 'Gagal mendapatkan token',
+                ],
+            ]);
+        }
+
+        try {
+            $response = Http::withHeaders([
+                'x-token' => $token,
+                'Content-Type' => 'application/json',
+                'Accept' => 'application/json',
+            ])->post("{$this->baseEndpoint}/setBatalAntrian", [
+                'kodebooking' => $kodeBooking,
+            ]);
+
+            if ($response->successful()) {
+                return $response->json();
+            }
+
+            return response()->json([
+                'metadata' => [
+                    'code' => $response->status(),
+                    'message' => 'Pembatalan antrian gagal: ' . $response->body(),
+                ],
+            ]);
+        } catch (\Exception $e) {
+            Log::error('Batal antrian request failed: ' . $e->getMessage());
+
+            return response()->json([
+                'metadata' => [
+                    'code' => 500,
+                    'message' => 'Terjadi kesalahan saat membatalkan antrian',
+                ],
+            ]);
+        }
+    }
+
 }
