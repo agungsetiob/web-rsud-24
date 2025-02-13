@@ -304,7 +304,7 @@
         </div>
     </div>
     <footer>
-        <p>&copy; 2024 RSUD dr. H. Andi Abdurrahman Noor</p>
+        <p>&copy; 2024 - {{ date('Y') }} RSUD dr. H. Andi Abdurrahman Noor</p>
     </footer>
 
     <script>
