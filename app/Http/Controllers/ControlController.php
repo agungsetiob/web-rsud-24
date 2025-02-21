@@ -57,8 +57,7 @@ class ControlController extends Controller
             return abort(400, 'Nomor Surat Kontrol harus diisi!');
         }
 
-        // Ambil data JSON dari sesi atau permintaan sebelumnya
-        $suratKontrols = session('suratKontrols', []); // Pastikan data ini telah disimpan di sesi
+        $suratKontrols = session('suratKontrols', []);
         $suratKontrol = collect($suratKontrols)->firstWhere('noSuratKontrol', $noSuratKontrol);
 
         if (!$suratKontrol) {
@@ -81,12 +80,10 @@ class ControlController extends Controller
         $no_rm = $peserta['mr']['noMR'] ?? '-';
         $tanggal_lahir = $peserta['tglLahir'] ?? '-';
 
-        // Ubah tanggal surat dan tanggal lahir ke format Indonesia
         $tanggalSurat = $suratKontrol['tglTerbitKontrol'] ?? date('Y-m-d');
         $tanggalSuratIndonesia = $this->formatTanggalIndonesia($tanggalSurat);
         $tanggalLahirIndonesia = $this->formatTanggalIndonesia($tanggal_lahir);
 
-        // Persiapkan data untuk view
         $data = [
             'noSuratKontrol' => $suratKontrol['noSuratKontrol'] ?? '-',
             'tglRencanaKontrol' => $suratKontrol['tglRencanaKontrol'],
@@ -105,12 +102,11 @@ class ControlController extends Controller
     private function formatTanggalIndonesia($tanggal)
     {
         // Validasi format tanggal
-        $timestamp = strtotime($tanggal); // Konversi string tanggal menjadi timestamp
+        $timestamp = strtotime($tanggal);
         if (!$timestamp) {
-            return $tanggal; // Kembalikan input asli jika konversi gagal
+            return $tanggal;
         }
 
-        // Nama bulan dalam bahasa Indonesia
         $bulanIndo = [
             1 => 'Januari',
             2 => 'Februari',
@@ -127,7 +123,7 @@ class ControlController extends Controller
         ];
 
         $hari = date('d', $timestamp); // Ambil tanggal
-        $bulan = date('n', $timestamp); // Ambil bulan (tanpa leading zero)
+        $bulan = date('n', $timestamp); // Ambil bulan
         $tahun = date('Y', $timestamp); // Ambil tahun
 
         return "{$hari} {$bulanIndo[$bulan]} {$tahun}";
