@@ -246,8 +246,8 @@
         <!-- PAMANPENTOL Card -->
         <div class="card">
             <a href="javascript:void(0)" onclick="openModal()">
-                <img src="{{asset('img/pamanpentol.png')}}" alt="Antrian Online Icon">
-                <h3>PAMANPENTOL (Aplikasi Manajemen Antrian dan Pendaftaran Online)</h3>
+                <img src="{{asset('img/pamanpentol.png')}}" alt="Antrean Online Icon">
+                <h3>PAMANPENTOL (Aplikasi Manajemen Antrean dan Pendaftaran Online)</h3>
             </a>
         </div>
         <div class="card">
@@ -284,7 +284,7 @@
                         alt="Mobile JKN Logo">
                     <h2>Mobile JKN</h2>
                 </a>
-                <p>Ambil antrian online via mobile JKN khusus untuk pasien BPJS</p>
+                <p>Ambil Antrean online via mobile JKN khusus untuk pasien BPJS</p>
             </div>
 
             <div class="pb">
@@ -292,7 +292,7 @@
                     <img src="https://rsud.tanahbumbukab.go.id/storage/logors.png" alt="Web Antrol Logo">
                     <h2>Web Antrol</h2>
                 </a>
-                <p>Ambil antrian via web antrol untuk pasien umum dan BPJS</p>
+                <p>Ambil Antrean via web antrol untuk pasien umum dan BPJS</p>
             </div>
             <div class="pb">
                 <a href="{{url ('/bpjs-checkin')}}" class="btn-modern">
