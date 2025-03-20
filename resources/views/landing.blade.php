@@ -280,13 +280,18 @@
 
             <div class="pb">
                 <a href="https://play.google.com/store/apps/details?id=app.bpjs.mobile&hl=id">
-                    <img src="https://play-lh.googleusercontent.com/BlrmGYzr7rNTFMYLyNnk7RF2e8EpkY5aCI9kbXnhUZz9cZKW1vj9_ODLdTe3vDUy_Cg=w240-h480-rw"
-                        alt="Mobile JKN Logo">
-                    <h2>Mobile JKN</h2>
+                    <img src="https://play-lh.googleusercontent.com/BlrmGYzr7rNTFMYLyNnk7RF2e8EpkY5aCI9kbXnhUZz9cZKW1vj9_ODLdTe3vDUy_Cg=w240-h480-rw" alt="Mobile JKN Logo">
                 </a>
+                <div>
+                    <a href="https://play.google.com/store/apps/details?id=app.bpjs.mobile&hl=id">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Google Play Store Badge">
+                    </a>
+                    <a href="https://apps.apple.com/id/app/mobile-jkn/id1237601115">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Download_on_the_App_Store_Badge.svg/640px-Download_on_the_App_Store_Badge.svg.png" alt="App Store Badge">
+                    </a>
+                </div>
                 <p>Ambil Antrean online via mobile JKN khusus untuk pasien BPJS</p>
             </div>
-
             <div class="pb">
                 <a href="https://simgos.tanahbumbukab.go.id/apps/RegOnline/" style="margin-top: 20px;">
                     <img src="https://rsud.tanahbumbukab.go.id/storage/logors.png" alt="Web Antrol Logo">
