@@ -279,7 +279,7 @@
             <span class="modal-close" onclick="closeModal()">&times;</span>
 
             <div class="pb">
-                <a href="https://play.google.com/store/apps/details?id=app.bpjs.mobile&hl=id">
+                <a href="#">
                     <img src="https://play-lh.googleusercontent.com/BlrmGYzr7rNTFMYLyNnk7RF2e8EpkY5aCI9kbXnhUZz9cZKW1vj9_ODLdTe3vDUy_Cg=w240-h480-rw" alt="Mobile JKN Logo">
                 </a>
                 <div>
