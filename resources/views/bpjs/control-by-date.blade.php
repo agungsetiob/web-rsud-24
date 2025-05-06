@@ -135,15 +135,10 @@ $(document).ready(function () {
                         `);
                     });
 
-                    if (response.data.response.list.length > 0) {
-                        $('#resultModalLabel').html(`Hasil Rencana Kontrol (Total: ${response.total_data})`);
-                        $('#resultModal').modal('show');
-                    } else {
-                        Swal.fire('Info', 'Tidak ada data dengan:<br>- Jenis Kontrol = Surat Kontrol (2)<br>- Tanggal Rencana = Tanggal Terbit', 'info');
-                    }
+                    $('#resultModalLabel').html(`Hasil Rencana Kontrol (Total: ${response.total_data})`);
+                    $('#resultModal').modal('show');
                 } else {
-                    const errorMsg = response.data?.metaData?.message || 
-                                response.message ||
+                    const errorMsg = response.message ||
                                 'Tidak ada data rencana kontrol untuk periode yang dipilih.';
                     Swal.fire('Info', errorMsg, 'info');
                 }
