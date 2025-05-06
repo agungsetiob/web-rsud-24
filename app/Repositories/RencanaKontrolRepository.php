@@ -64,4 +64,37 @@ class RencanaKontrolRepository
         $data = $this->bridging->getRequest($endpoint);
         return json_decode($data, true);
     }
+    // public function getByDateRange($tglAwal, $tglAkhir, $filter = 2)
+    // {
+    //     $endpoint = 'RencanaKontrol/ListRencanaKontrol/tglAwal/' . $tglAwal . '/tglAkhir/' . $tglAkhir . '/filter/' . $filter;
+    //     $result = $this->bridging->getRequest($endpoint);
+    //     return json_decode($result, true);
+    // }
+    public function getByDateRange($tglAwal, $tglAkhir, $filter = 2)
+    {
+        $endpoint = 'RencanaKontrol/ListRencanaKontrol/tglAwal/' . $tglAwal . '/tglAkhir/' . $tglAkhir . '/filter/' . $filter;
+        $result = $this->bridging->getRequest($endpoint);
+        $data = json_decode($result, true);
+    
+        $totalData = 0;
+    
+        if (isset($data['metaData']['code'])) {
+            if ($data['metaData']['code'] === '200' && isset($data['response']['list'])) {
+                $data['response']['list'] = array_filter($data['response']['list'], function($item) {
+                    return $item['tglRencanaKontrol'] === $item['tglTerbitKontrol'] 
+                           && $item['jnsKontrol'] == '2';
+                });
+                
+                // Reset array keys after filtering
+                $data['response']['list'] = array_values($data['response']['list']);
+                
+                $totalData = count($data['response']['list']);
+            }
+        }
+    
+        $data['total_data'] = $totalData;
+    
+        return $data;
+    }
+
 }

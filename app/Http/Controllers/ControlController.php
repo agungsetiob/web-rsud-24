@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Repositories\RencanaKontrolRepository;
 use Illuminate\Http\Request;
-use Bpjs\Bridging\Vclaim\BridgeVclaim;
 
 class ControlController extends Controller
 {
@@ -127,6 +126,75 @@ class ControlController extends Controller
         $tahun = date('Y', $timestamp); // Ambil tahun
 
         return "{$hari} {$bulanIndo[$bulan]} {$tahun}";
+    }
+
+    public function controlByDate()
+    {
+        return view('bpjs.control-by-date');
+    }
+
+    // public function getControlByDateRange(Request $request)
+    // {
+    //     $request->validate([
+    //         'tglAwal' => 'required|date',
+    //         'tglAkhir' => 'required|date|after_or_equal:tglAwal',
+    //         'filter' => 'sometimes|integer'
+    //     ]);
+
+    //     try {
+    //         $tglAwal = $request->input('tglAwal');
+    //         $tglAkhir = $request->input('tglAkhir');
+    //         $filter = $request->input('filter', 2);
+
+    //         $data = $this->rencanaKontrolRepository->getByDateRange($tglAwal, $tglAkhir, $filter);
+
+    //         return response()->json([
+    //             'success' => true,
+    //             'data' => $data,
+    //             'message' => 'Data rencana kontrol berhasil ditemukan'
+    //         ]);
+
+    //     } catch (\Exception $e) {
+    //         return response()->json([
+    //             'success' => false,
+    //             'message' => 'Gagal mengambil data rencana kontrol: ' . $e->getMessage()
+    //         ], 500);
+    //     }
+    // }
+    public function getControlByDateRange(Request $request)
+    {
+        $request->validate([
+            'tglAwal' => 'required|date',
+            'tglAkhir' => 'required|date|after_or_equal:tglAwal',
+            'filter' => 'sometimes|integer'
+        ]);
+    
+        try {
+            $tglAwal = $request->input('tglAwal');
+            $tglAkhir = $request->input('tglAkhir');
+            $filter = $request->input('filter', 2);
+    
+            $data = $this->rencanaKontrolRepository->getByDateRange($tglAwal, $tglAkhir, $filter);
+    
+            $hasData = isset($data['metaData']['code']) && 
+                       $data['metaData']['code'] === '200' && 
+                       !empty($data['response']['list']);
+    
+            return response()->json([
+                'success' => $hasData,
+                'data' => $data,
+                'total_data' => $data['total_data'] ?? 0,
+                'message' => $hasData 
+                    ? 'Data rencana kontrol berhasil ditemukan' 
+                    : 'Tidak ada data rencana kontrol yang memenuhi kriteria'
+            ]);
+    
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Gagal mengambil data rencana kontrol: ' . $e->getMessage()
+            ], 500);
+        }
     }
 
 }

@@ -81,6 +81,8 @@ Route::post('/batal-antrian', [BpjsController::class, 'batalAntrian']);
 Route::get('/controls', [ControlController::class, 'index'])->name('controls.index');
 Route::get('/controls/list', [ControlController::class, 'list'])->name('controls.list');
 Route::get('/cetak-surat-kontrol', [ControlController::class, 'cetakSuratKontrol'])->name('cetakSuratKontrol');
+Route::get('/control-by-date-range', [ControlController::class, 'controlByDate'])->name('getControlByDateRange');
+Route::get('/control-by-date-range/list', [ControlController::class, 'getControlByDateRange'])->name('controlsByDateRange');
 
 //route group on my own
 Route::middleware(['auth'])->group(function () {
