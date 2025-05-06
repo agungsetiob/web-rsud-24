@@ -117,6 +117,12 @@
                     <i class="fas fa-fw fa-table fa-xl"></i>
                     <span>Standar Pelayanan</span></a>
             </li>
+
+            <li class="nav-item {{ (request()->is('bpjs-checkin')) ? 'active bg-active' : '' }}">
+                <a class="nav-link" href="{{url('bpjs-checkin')}}">
+                    <i class="fas fa-fw fa-check fa-xl"></i>
+                    <span>Check in</span></a>
+            </li>
             @endif
 
             <!-- Divider -->

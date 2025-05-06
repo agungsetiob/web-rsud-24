@@ -48,17 +48,17 @@ class BpjsController extends Controller
     public function checkIn(Request $request)
     {
         $kodebooking = $request->input('kodebooking');
-        $latitude = $request->input('latitude');
-        $longitude = $request->input('longitude');
+        // $latitude = $request->input('latitude');
+        // $longitude = $request->input('longitude');
 
-        if (!$this->validateLocation($latitude, $longitude)) {
-            return response()->json([
-                'metadata' => [
-                    'code' => 403,
-                    'message' => 'Checkin mjkn maksimal 1 km dari rumah sakit.',
-                ],
-            ]);
-        }
+        // if (!$this->validateLocation($latitude, $longitude)) {
+        //     return response()->json([
+        //         'metadata' => [
+        //             'code' => 403,
+        //             'message' => 'Checkin mjkn maksimal 1 km dari rumah sakit.',
+        //         ],
+        //     ]);
+        // }
 
         $token = $this->getToken();
 
