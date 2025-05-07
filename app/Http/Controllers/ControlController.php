@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Repositories\RencanaKontrolRepository;
 use Illuminate\Http\Request;
+use App\Models\JadwalKontrol;
 
 class ControlController extends Controller
 {
@@ -197,4 +198,54 @@ class ControlController extends Controller
         }
     }
 
+    public function cariKontrol()
+    {
+        return view('bpjs.fix-control');
+    }
+
+    public function search(Request $request)
+    {
+        $request->validate([
+            'nomor' => 'required|string',
+        ]);
+    
+        $jadwal = JadwalKontrol::where('nomor', $request->nomor)->get(); // Use `get()` to retrieve all matches
+    
+        if ($jadwal->isNotEmpty()) {
+            return response()->json([
+                'success' => true,
+                'data' => $jadwal
+            ]);
+        }
+    
+        return response()->json([
+            'success' => false,
+            'message' => 'Data tidak ditemukan'
+        ], 404);
+    }
+    public function updateStatus(Request $request)
+    {
+        $request->validate([
+            'id' => 'required|integer',
+        ]);
+    
+        try {
+            $jadwal = JadwalKontrol::findOrFail($request->id);
+            
+            $jadwal->update(['SUDAH_DIGUNAKAN' => 0]);
+    
+            return response()->json([
+                'success' => true,
+                'message' => 'Status berhasil diperbaiki',
+                'data' => $jadwal
+            ]);
+    
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Terjadi kesalahan: ' . $e->getMessage()
+            ], 500);
+        }
+    }    
+    
 }

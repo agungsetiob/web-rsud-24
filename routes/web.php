@@ -151,5 +151,11 @@ Route::get('quran/surat/{surah}', [HomeController::class, 'detailsurah'])->name(
 Route::get('pengaduan-masyarakat', [ContactController::class, 'pengaduan'])->name('pengaduan');
 Route::post('pengaduan', [ContactController::class, 'simpanPengaduan'])->name('aduan');
 
+Route::get('perbaiki-kontrol', [ControlController::class, 'cariKontrol']);
+Route::get('/jadwal-kontrol/search', [ControlController::class, 'search'])->name('jadwalKontrol.search');
+Route::post('/jadwal-kontrol/update', [ControlController::class, 'updateStatus'])
+    ->name('jadwalKontrol.update')
+    ->middleware('web');
+
 
 require __DIR__.'/auth.php';

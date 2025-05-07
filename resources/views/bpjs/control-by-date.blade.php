@@ -138,9 +138,9 @@ $(document).ready(function () {
                     $('#resultModalLabel').html(`Hasil Rencana Kontrol (Total: ${response.total_data})`);
                     $('#resultModal').modal('show');
                 } else {
-                    const errorMsg = response.message ||
-                                'Tidak ada data rencana kontrol untuk periode yang dipilih.';
-                    Swal.fire('Info', errorMsg, 'info');
+                    const errorMsg = response.data.metaData.message;
+                    const message = response.message;
+                    Swal.fire(errorMsg, message, 'info');
                 }
             },
             error: function (xhr) {
