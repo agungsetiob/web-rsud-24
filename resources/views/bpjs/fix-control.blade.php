@@ -30,9 +30,9 @@
 
 <!-- Modal to Show Search Results -->
 <div class="modal fade" id="resultModal" tabindex="-1" aria-labelledby="resultModalLabel">
-    <div class="modal-dialog modal-fullscreen">
+    <div class="modal-dialog modal-xl">
         <div class="modal-content">
-            <div class="modal-header card-header text-white">
+            <div class="modal-header card-header text-white" style="border-top-left-radius: 10px; border-top-right-radius:10px">
                 <h5 class="modal-title" id="resultModalLabel">Hasil Pencarian Jadwal Kontrol</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
@@ -103,7 +103,7 @@ $(document).ready(function () {
                                 <td>
                                     ${item.SUDAH_DIGUNAKAN ? 
                                         `<button class="btn btn-warning fixStatus" data-id="${item.ID}">Perbaiki</button>` :
-                                        '<span class="text-success">Sudah Diperbaiki</span>'
+                                        '<span class="text-success">Aman</span>'
                                     }
                                 </td>
                             </tr>
