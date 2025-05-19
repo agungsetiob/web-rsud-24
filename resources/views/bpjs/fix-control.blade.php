@@ -8,7 +8,7 @@
         <div class="col-lg-6 col-md-8 col-sm-10">
             <div class="card">
                 <div class="card-header text-white text-center">
-                    <h4>Cari Jadwal Kontrol</h4>
+                    <h4>Cari Surat Kontrol</h4>
                 </div>
                 <div class="card-body">
                     <form id="searchJadwalKontrol">
@@ -17,7 +17,7 @@
                             <label for="nomorKontrol" class="form-label">Nomor Kontrol</label>
                             <input type="text" id="nomorKontrol" name="nomorKontrol" class="form-control" placeholder="Masukkan Nomor Kontrol" required>
                         </div>
-                        <button type="submit" class="btn btn-primary w-100">Cari Jadwal</button>
+                        <button type="submit" class="btn btn-primary w-100">Cari</button>
                     </form>
                 </div>
             </div>
@@ -123,7 +123,7 @@ $(document).ready(function () {
 
     $(document).on('click', '.fixStatus', function () {
         const id = $(this).data('id');
-        const button = $(this); // Store button reference
+        const button = $(this);
 
         Swal.fire({
             title: 'Konfirmasi',

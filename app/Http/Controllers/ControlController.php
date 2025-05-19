@@ -209,7 +209,7 @@ class ControlController extends Controller
             'nomor' => 'required|string',
         ]);
     
-        $jadwal = JadwalKontrol::where('nomor', $request->nomor)->get(); // Use `get()` to retrieve all matches
+        $jadwal = JadwalKontrol::where('nomor', $request->nomor)->get();
     
         if ($jadwal->isNotEmpty()) {
             return response()->json([
