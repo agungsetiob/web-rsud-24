@@ -81,7 +81,11 @@
                 {{ $data['noSuratKontrol'] }}
             </div>
             <h5><strong>RSUD DR. H. ANDI ABDURRAHMAN NOOR</strong></h5>
-            <h6><strong>SURAT RENCANA KONTROL</strong></h6>
+            @if ($data['jnsKontrol'] == '1')
+                <h6><strong>SURAT RENCANA INAP</strong></h6>
+            @elseif ($data['jnsKontrol'] == '2')
+                <h6><strong>SURAT RENCANA KONTROL</strong></h6>
+            @endif
         </div>
         <div class="info-table">
             <p>Surat Keterangan Rencana Kontrol ini digunakan 1 (Satu) kali kunjungan pada:</p>

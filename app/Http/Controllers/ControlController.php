@@ -94,6 +94,7 @@ class ControlController extends Controller
             'tujuan' => $suratKontrol['namaPoliTujuan'] ?? '-',
             'dokter' => $suratKontrol['namaDokter'] ?? '-',
             'tanggal_surat' => $tanggalSuratIndonesia,
+            'jnsKontrol' => $suratKontrol['jnsKontrol'] ?? '-',
         ];
 
         return view('bpjs.surkon', compact('data'));
