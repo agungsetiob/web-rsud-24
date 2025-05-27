@@ -4,9 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Surat Rencana Kontrol</title>
+    <title>
+        @if ($data['jnsKontrol'] == '1')
+            Surat Rencana Inap
+        @elseif ($data['jnsKontrol'] == '2')
+            Surat Rencana Kontrol
+        @else
+            Surat Rencana
+        @endif
+    </title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <link rel="shortcut icon" href="{{url ('storage/logors.png')}}" type="image/x-icon" />
+    <link rel="shortcut icon" href="{{ url('storage/logors.png') }}" type="image/x-icon" />
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -85,24 +93,38 @@
                 <h6><strong>SURAT RENCANA INAP</strong></h6>
             @elseif ($data['jnsKontrol'] == '2')
                 <h6><strong>SURAT RENCANA KONTROL</strong></h6>
+            @else
+                <h6><strong>SURAT RENCANA</strong></h6>
             @endif
         </div>
+
         <div class="info-table">
-            <p>Surat Keterangan Rencana Kontrol ini digunakan 1 (Satu) kali kunjungan pada:</p>
-            <table class="table table-borderless">
-                <tr>
-                    <td width="20%">Tanggal</td>
-                    <td>: {{ $data['tglRencanaKontrol'] }} & Estimasi Jam Pelayanan Belum ada, Silahkan ambil antrian</td>
-                </tr>
-            </table>
-            <p>Untuk Pasien dengan:</p>
+            @if ($data['jnsKontrol'] == '1')
+                <p>Surat ini merupakan surat rencana rawat inap yang diberikan kepada pasien dengan jadwal masuk rawat inap sebagai berikut:</p>
+                <table class="table table-borderless">
+                    <tr>
+                        <td width="20%">Tanggal Masuk</td>
+                        <td>: {{ $data['tglRencanaKontrol'] }} (Estimasi waktu masuk akan diinformasikan lebih lanjut)</td>
+                    </tr>
+                </table>
+            @elseif ($data['jnsKontrol'] == '2')
+                <p>Surat Keterangan Rencana Kontrol ini digunakan untuk 1 (satu) kali kunjungan kontrol pada:</p>
+                <table class="table table-borderless">
+                    <tr>
+                        <td width="20%">Tanggal</td>
+                        <td>: {{ $data['tglRencanaKontrol'] }} & Estimasi Jam Pelayanan Belum tersedia, silakan ambil antrian</td>
+                    </tr>
+                </table>
+            @endif
+
+            <p>Data pasien sebagai berikut:</p>
             <table class="table table-borderless">
                 <tr>
                     <td width="20%">No. Kartu</td>
                     <td>: {{ $data['noKartu'] }}</td>
                 </tr>
                 <tr>
-                    <td>Nama / NO. RM</td>
+                    <td>Nama / No. RM</td>
                     <td>: {{ $data['nama'] }} / {{ $data['no_rm'] }}</td>
                 </tr>
                 <tr>
@@ -119,18 +141,22 @@
                 </tr>
             </table>
         </div>
+
         <div class="footer">
             <div class="info">
-                <p><strong>Untuk Pasien berusia diatas 17 Tahun wajib melakukan Verifikasi Sidik Jari sebelum melakukan pendaftaran</strong></p>
+                @if ($data['jnsKontrol'] == '2')
+                    <p><strong>Untuk pasien berusia di atas 17 tahun wajib melakukan verifikasi sidik jari sebelum melakukan pendaftaran.</strong></p>
+                @endif
             </div>
             <div class="signature">
                 <p style="padding-bottom:50px;">{{ $data['dokter'] }}</p>
-                <p class="signature">TANAH BUMBU, {{ $data['tanggal_surat'] }}</p>
+                <p>TANAH BUMBU, {{ $data['tanggal_surat'] }}</p>
             </div>
         </div>
     </div>
+
     <script>
-        window.onload = function() {
+        window.onload = function () {
             window.print();
         }
     </script>
