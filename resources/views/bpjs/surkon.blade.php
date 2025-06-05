@@ -78,6 +78,16 @@
         .top {
             padding-top: 40px;
         }
+        @media print {
+            .bg-danger {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .text-white {
+                color: #ffffff !important;
+            }
+        }
     </style>
 </head>
 
@@ -112,7 +122,7 @@
                 <table class="table table-borderless">
                     <tr>
                         <td width="20%">Tanggal</td>
-                        <td>: {{ $data['tglRencanaKontrol'] }} & Estimasi Jam Pelayanan Belum tersedia, silakan ambil antrian</td>
+                        <td>: <strong class="bg-danger">{{ $data['tglRencanaKontrol'] }} & Estimasi Jam Pelayanan Belum tersedia, silakan ambil antrian</strong></td>
                     </tr>
                 </table>
             @endif
