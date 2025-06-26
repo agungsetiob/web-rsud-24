@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
+use App\Models\Reservasi;
 
 class BpjsController extends Controller
 {
@@ -188,6 +189,60 @@ class BpjsController extends Controller
         return $distance;
     }
 
+    // public function batalAntrian(Request $request)
+    // {
+    //     $kodeBooking = $request->input('kodebooking');
+
+    //     if (!$kodeBooking) {
+    //         return response()->json([
+    //             'metadata' => [
+    //                 'code' => 400,
+    //                 'message' => 'Kode Booking harus diisi!',
+    //             ],
+    //         ]);
+    //     }
+
+    //     $token = $this->getToken();
+
+    //     if (!$token) {
+    //         return response()->json([
+    //             'metadata' => [
+    //                 'code' => 500,
+    //                 'message' => 'Gagal mendapatkan token',
+    //             ],
+    //         ]);
+    //     }
+
+    //     try {
+    //         $response = Http::withHeaders([
+    //             'x-token' => $token,
+    //             'Content-Type' => 'application/json',
+    //             'Accept' => 'application/json',
+    //         ])->post("{$this->baseEndpoint}/setBatalAntrian", [
+    //             'kodebooking' => $kodeBooking,
+    //         ]);
+
+    //         if ($response->successful()) {
+    //             return $response->json();
+    //         }
+
+    //         return response()->json([
+    //             'metadata' => [
+    //                 'code' => $response->status(),
+    //                 'message' => 'Pembatalan antrian gagal: ' . $response->body(),
+    //             ],
+    //         ]);
+    //     } catch (\Exception $e) {
+    //         Log::error('Batal antrian request failed: ' . $e->getMessage());
+
+    //         return response()->json([
+    //             'metadata' => [
+    //                 'code' => 500,
+    //                 'message' => 'Terjadi kesalahan saat membatalkan antrian',
+    //             ],
+    //         ]);
+    //     }
+    // }
     public function batalAntrian(Request $request)
     {
         $kodeBooking = $request->input('kodebooking');
@@ -199,6 +254,18 @@ class BpjsController extends Controller
                     'message' => 'Kode Booking harus diisi!',
                 ],
             ]);
+        }
+
+        try {
+            $reservation = Reservasi::where('ID', $kodeBooking)->first();
+
+            if ($reservation && $reservation->JENIS_APLIKASI == 3) {
+                $reservation->STATUS = 99;
+                $reservation->save();
+                Log::info("Reservation {$kodeBooking} (JENIS_APLIKASI 3) updated STATUS to 99.");
+            }
+        } catch (\Exception $e) {
+            Log::error('Error updating reservation via model: ' . $e->getMessage());
         }
 
         $token = $this->getToken();
