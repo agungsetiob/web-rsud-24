@@ -118,7 +118,7 @@
                             <div class="input-group">
                                 <input type="text" id="tokenOutput"
                                     class="form-control form-control fw-semibold bg-light text-dark border" readonly>
-                                <button class="btn btn-outline-secondary" type="button" id="copyTokenBtn">
+                                <button class="btn btn-outline-secondary" type="button" id="copyTokenBtn" title="Salin Token">
                                     <i class="fas fa-copy me-1 fa-2x"></i>
                                 </button>
                             </div>
@@ -178,24 +178,35 @@
                 },
                 error: function (xhr) {
                     let message = 'Terjadi kesalahan saat generate token.';
+                    let title = 'Error';
 
-                    if (xhr.status === 422 && xhr.responseJSON.errors) {
-                        let errors = xhr.responseJSON.errors;
-
-                        message = Object.entries(errors).map(([field, msgs]) => {
-                            return `<strong>${field}:</strong> ${msgs.join(', ')}`;
-                        }).join('<br>');
+                    if (xhr.status === 403 || xhr.status === 401) {
+                        // Akses tidak diizinkan
+                        title = 'Akses Ditolak';
+                        message = xhr.responseJSON?.message ?? 'Anda tidak memiliki akses.';
+                    } else if (xhr.status === 404 && xhr.responseJSON?.message) {
+                        // User tidak ditemukan
+                        title = 'User Tidak Ditemukan';
+                        message = xhr.responseJSON.message;
+                    } else if (xhr.status === 422 && xhr.responseJSON.errors) {
+                        // Validasi gagal
+                        title = 'Validasi Gagal';
+                        const errors = xhr.responseJSON.errors;
+                        message = Object.entries(errors)
+                            .map(([field, msgs]) => `<strong>${field}:</strong> ${msgs.join(', ')}`)
+                            .join('<br>');
                     }
 
                     Swal.fire({
-                        title: 'Validasi Gagal!',
+                        title: title,
                         icon: 'error',
                         html: message,
                     });
 
                     $('#generateTokenButton').prop('disabled', false);
                     $('.loading-spinner-token').addClass('d-none');
-                },
+                }
+
             });
             // Copy to clipboard function
             $('#copyTokenBtn').on('click', function () {

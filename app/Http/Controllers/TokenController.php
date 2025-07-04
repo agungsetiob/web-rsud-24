@@ -15,6 +15,10 @@ class TokenController extends Controller
     }
     public function generate(Request $request)
     {
+        if (auth()->user()->role !== 'admin') {
+            return response()->json(['message' => 'Anda tidak memiliki akses pembuatan token'], 403);
+
+        }
         $request->validate([
             'user_id' => 'required',
             'token_name' => 'required|string|max:255|unique:personal_access_tokens,name',
