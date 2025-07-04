@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SIPLAYER - RSUD</title>
-    <link rel="shortcut icon" href="https://rsud.tanahbumbukab.go.id/img/logo.png" type="image/x-icon" />
+    <link rel="shortcut icon" href="{{ asset('storage/logo.png') }}" type="image/x-icon" />
     <style>
         * {
             box-sizing: border-box;
@@ -68,12 +68,26 @@
             color: #4A00E0;
         }
 
-        .logo {
+        .header-logo {
             grid-column: span 2;
             text-align: left;
-            font-size: 29px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin-bottom: 10px;
+        }
+
+        .header-logo .main-logo-text {
+            font-size: 3em;
             color: #FFEB3B;
             font-weight: bold;
+        }
+
+        .header-logo .hospital-name {
+            font-size: 1.5em;
+            color: #FFEB3B;
+            font-weight: normal;
+            margin-top: 5px;
         }
 
         .card:hover {
@@ -103,7 +117,7 @@
                 grid-template-columns: repeat(2, 1fr);
             }
 
-            .logo {
+            .header-logo {
                 grid-column: span 2;
             }
         }
@@ -113,9 +127,10 @@
                 grid-template-columns: 1fr;
             }
 
-            .logo {
+            .header-logo {
                 grid-column: span 1;
                 text-align: center;
+                align-items: center;
             }
 
             .card h3 {
@@ -229,10 +244,13 @@
 
 <body>
     <div class="container">
-        <div class="logo">RSUD dr. H. Andi Abdurrahman Noor</div>
+        <div class="header-logo">
+            <span class="main-logo-text">SIPLAYER</span>
+            <h2 class="hospital-name">RSUD dr. H. Andi Abdurrahman Noor</h2>
+        </div>
         <div class="card">
             <a href="/home" target="_blank">
-                <img src="https://rsud.tanahbumbukab.go.id/storage/logors.png" alt="Website RSUD Icon">
+                <img src="{{ asset('storage/logors.png') }}" alt="Website RSUD Icon">
                 <h3>Website RSUD</h3>
             </a>
         </div>
@@ -243,7 +261,6 @@
                 <h3>SIMRS (Sistem Informasi Manajemen Rumah Sakit)</h3>
             </a>
         </div>
-        <!-- PAMANPENTOL Card -->
         <div class="card">
             <a href="javascript:void(0)" onclick="openModal()">
                 <img src="{{asset('img/pamanpentol.png')}}" alt="Antrean Online Icon">
@@ -276,7 +293,7 @@
     </div>
     <div class="modal" id="pamanpentolModal">
         <div class="modal-content">
-            <span class="modal-close" onclick="closeModal()">&times;</span>
+            <span class="modal-close" onclick="closeModal()">×</span>
 
             <div class="pb">
                 <a href="#">
@@ -287,14 +304,14 @@
                         <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Google Play Store Badge">
                     </a>
                     <a href="https://apps.apple.com/id/app/mobile-jkn/id1237601115">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Download_on_the_App_Store_Badge.svg/640px-Download_on_the_App_Store_Badge.svg.png" alt="App Store Badge">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Download_on_the_App_Store_Badge.svg/640px-Download_on_the_App_Store_Badge.png" alt="App Store Badge">
                     </a>
                 </div>
                 <p>Ambil Antrean online via mobile JKN khusus untuk pasien BPJS</p>
             </div>
             <div class="pb">
                 <a href="https://simgos.tanahbumbukab.go.id/apps/RegOnline/" style="margin-top: 20px;">
-                    <img src="https://rsud.tanahbumbukab.go.id/storage/logors.png" alt="Web Antrol Logo">
+                    <img src="{{ asset('storage/logors.png') }}" alt="Web Antrol Logo">
                     <h2>Web Antrol</h2>
                 </a>
                 <p>Ambil Antrean via web antrol untuk pasien umum dan BPJS</p>
@@ -309,7 +326,7 @@
         </div>
     </div>
     <footer>
-        <p>&copy; 2024 - {{ date('Y') }} RSUD dr. H. Andi Abdurrahman Noor</p>
+        <p>© 2024 - {{ date('Y') }} RSUD dr. H. Andi Abdurrahman Noor</p>
     </footer>
 
     <script>

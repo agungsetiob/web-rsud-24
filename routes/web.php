@@ -4,15 +4,18 @@ use App\Http\Controllers\ServiceController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BpjsController;
 use App\Http\Controllers\ControlController;
-use App\Http\Controllers\{CategoryController, 
-                        ContactController, 
-                        FaqController, 
-                        FileController,
-                        BackupController};
+use App\Http\Controllers\{
+    CategoryController,
+    ContactController,
+    FaqController,
+    FileController,
+    BackupController
+};
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StandarPelayananController;
+use App\Http\Controllers\TokenController;
 use App\Models\Profile;
 use Illuminate\Http\Request;
 
@@ -120,7 +123,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::resource('setting/faqs', App\Http\Controllers\FaqController::class);
     Route::get('/faqs/{faq}', [FaqController::class, 'destroy']);
-    
+
     Route::get('pengaduan/list', [ContactController::class, 'daftarPengaduan']);
     Route::get('pengaduan/laporan/{startdate}/{enddate}', [ContactController::class, 'cetakPengaduan']);
 
@@ -138,6 +141,10 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/check-in', [BpjsController::class, 'checkIn']);
     Route::post('/batal-antrian', [BpjsController::class, 'batalAntrian']);
 
+    Route::get('/generate-token', [TokenController::class, 'index'])->name('generate.token');
+    Route::post('/generate-token', [TokenController::class, 'generate']);
+    Route::view('/revoke-token', 'admin.revoke-token');
+    Route::post('/revoke-token', [TokenController::class, 'revoke']);
 });
 
 
@@ -158,4 +165,4 @@ Route::post('/jadwal-kontrol/update', [ControlController::class, 'updateStatus']
     ->middleware('web');
 
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
