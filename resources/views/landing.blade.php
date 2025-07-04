@@ -245,6 +245,7 @@
 <body>
     <div class="container">
         <div class="header-logo">
+            <!-- <img src="{{ asset('storage/siplayer.png') }}" alt="SIPLAYER Logo" style="width: 150px; height: auto; margin-bottom: 10px;"> -->
             <span class="main-logo-text">SIPLAYER</span>
             <h2 class="hospital-name">RSUD dr. H. Andi Abdurrahman Noor</h2>
         </div>
@@ -281,6 +282,7 @@
         </div>
         <div class="card disabled">
             <a class="disabled" href="javascript:void(0)">
+                <img src="{{ asset('storage/siplayer.png') }}" alt="SIPLAYER Logo" style="width: 50px; height: auto; margin-bottom: 5px;">
                 <h3 style="text-align: left; color: black;">Tentang Sistem</h3>
                 <p style="text-align: justify; color: black;">
                     Sistem Integrasi Pelayanan dan Administrasi Elektronik (SIPLAYER)
