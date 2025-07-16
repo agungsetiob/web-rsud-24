@@ -71,7 +71,7 @@
                     Swal.fire({
                         title: 'Token Berhasil Dibuat!',
                         icon: 'success',
-                    });
+                    }).then(() => location.reload());
                 } else {
                     Swal.fire({
                         title: 'Gagal!',
@@ -94,7 +94,7 @@
                     title = 'User Tidak Ditemukan';
                     message = xhr.responseJSON.message;
                 } else if (xhr.status === 422 && xhr.responseJSON.errors) {
-                    title = 'Validasi Gagal';
+                    title = 'Gagal';
                     const errors = xhr.responseJSON.errors;
                     message = Object.entries(errors)
                         .map(([field, msgs]) => `<strong>${field}:</strong> ${msgs.join(', ')}`)
