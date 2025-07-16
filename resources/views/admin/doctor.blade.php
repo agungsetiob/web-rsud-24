@@ -158,7 +158,6 @@
         </div>
     </div>
 
-
     <!-- Edit Modal -->
     @foreach ($doctors as $doc)
     <div class="modal fade" id="editModal{{$doc->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
