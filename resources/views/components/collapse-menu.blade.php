@@ -99,7 +99,7 @@
                 <i class="fas fa-fw fa-database fa-xl"></i>
                 <span>Backup</span></a>
         </li>
-        <li class="nav-item {{ (request()->is('token')) ? 'active bg-active' : '' }}">
+        <li class="nav-item {{ (request()->is('generate-token')) ? 'active bg-active' : '' }}">
             <a class="nav-link" href="{{route('token.index')}}">
                 <i class="fas fa-fw fa-fire fa-xl"></i>
                 <span>API Token</span></a>
