@@ -105,10 +105,13 @@
                             <a href="#" class="dropdown-item" hx-get="{{url('/standar-pelayanan')}}" hx-trigger="click"
                                 hx-target="#app" hx-swap="outerHTML transition:true" hx-push-url="true"
                                 hx-indicator="#loadingIndicator">Standar Pelayanan</a>
+                            <a href="" class="dropdown-item" hx-get="{{url('/publikasi')}}" hx-trigger="click"
+                                hx-target="#app" hx-swap="outerHTML transition:true" hx-push-url="true"
+                                hx-indicator="#loadingIndicator">Publikasi</a>
                             <a href="#" class="dropdown-item">Survey</a>
-                            <a href="#" class="dropdown-item" hx-get="{{url('/document')}}"
-                                hx-trigger="click" hx-target="#app" hx-swap="outerHTML transition:true"
-                                hx-push-url="true" hx-indicator="#loadingIndicator">Dokumen Publik</a>
+                            <a href="#" class="dropdown-item" hx-get="{{url('/document')}}" hx-trigger="click"
+                                hx-target="#app" hx-swap="outerHTML transition:true" hx-push-url="true"
+                                hx-indicator="#loadingIndicator">Dokumen Publik</a>
                             <a href="#" class="dropdown-item">Top Author</a>
                         </div>
                     </div>

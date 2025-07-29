@@ -99,6 +99,11 @@
                 <i class="fas fa-fw fa-database fa-xl"></i>
                 <span>Backup</span></a>
         </li>
+        <li class="nav-item {{ (request()->is('publications')) ? 'active bg-active' : '' }}">
+            <a class="nav-link" href="{{url('publications')}}">
+                <i class="fas fa-fw fa-newspaper fa-xl"></i>
+                <span>Publications</span></a>
+        </li>
         <li class="nav-item {{ (request()->is('generate-token')) ? 'active bg-active' : '' }}">
             <a class="nav-link" href="{{route('token.index')}}">
                 <i class="fas fa-fw fa-fire fa-xl"></i>
@@ -124,11 +129,6 @@
                 <span>Standar Pelayanan</span></a>
         </li>
     @endif
-    <li class="nav-item {{ (request()->is('publications')) ? 'active bg-active' : '' }}">
-        <a class="nav-link" href="{{url('publications')}}">
-            <i class="fas fa-fw fa-newspaper fa-xl"></i>
-            <span>Publications</span></a>
-    </li>
     <li class="nav-item {{ (request()->is('bpjs-checkin')) ? 'active bg-active' : '' }}">
         <a class="nav-link" href="{{url('bpjs-checkin')}}">
             <i class="fas fa-fw fa-check fa-xl"></i>

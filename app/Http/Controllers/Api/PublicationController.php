@@ -35,7 +35,6 @@ class PublicationController extends Controller
         return $slug;
     }
 
-
     public function index( Request $request)
     {
         $this->authorizeToken($request);

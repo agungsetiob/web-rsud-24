@@ -78,6 +78,9 @@ Route::get('document/{file}', [FileController::class, 'show']);
 
 Route::get('layanan', [ServiceController::class, 'allServices']);
 
+Route::get('/publikasi', [PublicationController::class, 'publications'])->name('publikasi.index');
+Route::get('/publikasi/{slug}', [PublicationController::class, 'show'])->name('publications.show');
+
 Route::get('/controls', [ControlController::class, 'index'])->name('controls.index');
 Route::get('/controls/list', [ControlController::class, 'list'])->name('controls.list');
 Route::get('/cetak-surat-kontrol', [ControlController::class, 'cetakSuratKontrol'])->name('cetakSuratKontrol');
