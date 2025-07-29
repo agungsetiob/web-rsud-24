@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Contact;
 use App\Models\Complain;
-use Barryvdh\DomPDF\Facade\PDF;
+use PDF;
 use Auth;
 
 class ContactController extends Controller
