@@ -20,7 +20,7 @@
                     <div class="alert alert-danger">Tidak ada token ditemukan.</div>
                 @else
                     <div class="table-responsive">
-                        <table class="table table-borderless table-striped table-hover">
+                        <table id="dataTable" width="100%" cellspacing="0" class="table table-borderless table-striped table-hover">
                             <thead>
                                 <tr>
                                     <th>Nama Token</th>

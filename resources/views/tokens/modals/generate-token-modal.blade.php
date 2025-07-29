@@ -71,7 +71,7 @@
                     Swal.fire({
                         title: 'Token Berhasil Dibuat!',
                         icon: 'success',
-                    }).then(() => location.reload());
+                    });
                 } else {
                     Swal.fire({
                         title: 'Gagal!',
@@ -126,6 +126,6 @@
             text: 'Token berhasil disalin ke clipboard.',
             timer: 1500,
             showConfirmButton: false
-        });
+        }).then(() => location.reload());
     });
 </script>

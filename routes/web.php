@@ -9,7 +9,8 @@ use App\Http\Controllers\{
     ContactController,
     FaqController,
     FileController,
-    BackupController
+    BackupController,
+    PublicationController,
 };
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
@@ -144,6 +145,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/generate-token', [TokenController::class, 'index'])->name('token.index');
     Route::post('/generate-token', [TokenController::class, 'generate']);
     Route::post('/revoke-token', [TokenController::class, 'revoke']);
+
+    Route::get('/publications', [PublicationController::class, 'index'])->name('publications.index');
 });
 
 
