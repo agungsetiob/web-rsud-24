@@ -6,14 +6,15 @@
     <div class="container-fluid">
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Daftar Publikasi</h1>
-            <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#createPublicationModal">
-                <i class="fas fa-plus"></i> Tambah Publikasi
-            </button>
-            <button class="btn btn-sm btn-secondary" id="viewJsonBtn">
-                <i class="fas fa-code"></i> Lihat JSON
-            </button>
+            <div class="d-flex">
+                <button class="btn btn-sm btn-primary mr-2" data-toggle="modal" data-target="#createPublicationModal">
+                    <i class="fas fa-plus"></i> Tambah Publikasi
+                </button>
+                <button class="btn btn-sm btn-secondary" id="viewJsonBtn">
+                    <i class="fas fa-code"></i> Lihat JSON
+                </button>
+            </div>
         </div>
-
         <div class="card shadow mb-4">
             <div class="card-header py-3">
                 <h6 class="m-0 font-weight-bold text-primary">List Publikasi</h6>
@@ -45,7 +46,8 @@
                                             <button class="btn btn-sm btn-info edit-btn" data-id="{{ $pub->id }}"
                                                 data-nama="{{ $pub->nama_dokumen }}" data-slug="{{ $pub->slug }}"
                                                 data-produsen="{{ $pub->produsen_data }}" data-rilis="{{ $pub->tanggal_rilis }}"
-                                                data-deskripsi="{{ $pub->deskripsi }}" data-rencana="{{ $pub->rencana_rilis }}">
+                                                data-deskripsi="{{ $pub->deskripsi }}" data-rencana="{{ $pub->rencana_rilis }}"
+                                                data-image="{{ $pub->image }}" data-file="{{ $pub->file }}">
                                                 <i class="fas fa-edit"></i>
                                             </button>
 
@@ -84,6 +86,8 @@
             $('#edit_rencana_rilis').val(formatDateOnly(btn.data('rencana')));
             $('#edit_tanggal_rilis').val(formatDateOnly(btn.data('rilis')));
             $('#edit_deskripsi').val(btn.data('deskripsi') ?? '');
+            $('#edit_image_preview img').attr('src', btn.data('image') || '#');
+            $('#edit_file_preview a').attr('href', btn.data('file') || '#');
 
             $('#editPublicationModal').modal('show');
         });
@@ -113,8 +117,10 @@
                 }
             });
         });
+        
+        // Untuk semua data
         $('#viewJsonBtn').on('click', function () {
-            $('#jsonContent').text('Loading...');
+            $('#jsonContentAll').text('Loading...');
 
             $.ajax({
                 url: `{{ url('/api/publications') }}`,
@@ -123,11 +129,11 @@
                     Authorization: `Bearer ${WEBRSUD_TOKEN}`
                 },
                 success: function (response) {
-                    $('#jsonContent').text(JSON.stringify(response, null, 4));
+                    $('#jsonContentAll').text(JSON.stringify(response, null, 4));
                     $('#jsonModal').modal('show');
                 },
                 error: function (xhr) {
-                    $('#jsonContent').text(`Error ${xhr.status}: ${xhr.responseText}`);
+                    $('#jsonContentAll').text(`Error ${xhr.status}: ${xhr.responseText}`);
                     $('#jsonModal').modal('show');
                 }
             });

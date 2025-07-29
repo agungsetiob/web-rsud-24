@@ -1,4 +1,5 @@
-<div class="modal fade" id="editPublicationModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+<div class="modal fade" id="editPublicationModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header bg-gradient-warning text-white">
@@ -20,7 +21,8 @@
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="edit_produsen_data">Produsen Data</label>
-                            <input type="text" name="produsen_data" id="edit_produsen_data" class="form-control" required>
+                            <input type="text" name="produsen_data" id="edit_produsen_data" class="form-control"
+                                required>
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="edit_rencana_rilis">Rencana Rilis</label>
@@ -34,9 +36,15 @@
                         <div class="col-md-6 mb-4">
                             <label for="edit_image">Ganti Gambar</label>
                             <div class="custom-file">
-                                <input type="file" class="custom-file-input" name="image" id="edit_image" accept="image/*">
+                                <input type="file" class="custom-file-input" name="image" id="edit_image"
+                                    accept="image/*">
                                 <label class="custom-file-label" for="edit_image">Pilih gambar...</label>
                             </div>
+                            <div class="mt-2" id="edit_image_preview">
+                                <img src="#" alt="Preview Gambar" class="img-fluid rounded border"
+                                    style="max-height: 200px;">
+                            </div>
+
                         </div>
 
                         <div class="col-md-6 mb-4">
@@ -45,6 +53,11 @@
                                 <input type="file" class="custom-file-input" name="file" id="edit_file"
                                     accept=".pdf,.doc,.docx,.xls,.xlsx">
                                 <label class="custom-file-label" for="edit_file">Pilih file dokumen...</label>
+                            </div>
+                            <div class="mt-2" id="edit_file_preview">
+                                <a href="#" target="_blank" class="btn btn-sm btn-outline-primary">
+                                    <i class="fas fa-file-download"></i> Lihat File Publikasi
+                                </a>
                             </div>
                         </div>
 
@@ -64,7 +77,6 @@
     </div>
 </div>
 <script>
-    // Ganti label saat upload file di edit modal
     $('#editPublicationModal .custom-file-input').on('change', function () {
         let fileName = $(this).val().split('\\').pop()
         $(this).next('.custom-file-label').addClass("selected").html(fileName)
@@ -78,7 +90,8 @@
         $('#edit_rencana_rilis').val(data.rencana_rilis)
         $('#edit_tanggal_rilis').val(data.tanggal_rilis)
         $('#edit_deskripsi').val(data.deskripsi)
-
+        $('#edit_image_preview img').attr('src', data.image || '#')
+        $('#edit_file_preview a').attr('href', data.file || '#')
         $('#editPublicationModal').modal('show')
     }
 
