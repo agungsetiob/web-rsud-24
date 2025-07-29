@@ -113,24 +113,25 @@
                 }
             });
         });
-        $(document).ready(function() {
-        $('#viewJsonBtn').on('click', function() {
+        $('#viewJsonBtn').on('click', function () {
+            $('#jsonContent').text('Loading...');
+
             $.ajax({
-                url: '{{ url('/api/publications') }}',
+                url: `{{ url('/api/publications') }}`,
                 method: 'GET',
                 headers: {
                     Authorization: `Bearer ${WEBRSUD_TOKEN}`
                 },
-                success: function(data) {
-                    $('#jsonContent').text(JSON.stringify(data, null, 2));
+                success: function (response) {
+                    $('#jsonContent').text(JSON.stringify(response, null, 4));
                     $('#jsonModal').modal('show');
                 },
-                error: function() {
-                    Swal.fire('Error', 'Gagal memuat data JSON.', 'error');
+                error: function (xhr) {
+                    $('#jsonContent').text(`Error ${xhr.status}: ${xhr.responseText}`);
+                    $('#jsonModal').modal('show');
                 }
             });
         });
-    });
 
     </script>
     @include('publications.modals.create')
