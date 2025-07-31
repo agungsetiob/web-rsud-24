@@ -257,7 +257,7 @@
         </div>
         <div class="card">
             <a class="disabled" href="javascript:void(0)">
-                <img src="https://simgos.tanahbumbukab.go.id/apps/RegOnline/public/img/simgos-icon.png"
+                <img src="{{asset('img/simgos-icon.png')}}"
                     alt="SIMRS Icon">
                 <h3>SIMRS (Sistem Informasi Manajemen Rumah Sakit)</h3>
             </a>

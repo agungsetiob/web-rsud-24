@@ -13,12 +13,11 @@ class PostController extends Controller
     {
         $posts = Post::latest()->paginate(6);
 
-        // Format data: limit content & ambil field penting saja
         $data = $posts->map(function ($post) {
             return [
                 'id' => $post->id,
                 'title' => $post->title,
-                'excerpt' => Str::limit($post->content, 40),
+                'deskripsi' => Str::limit($post->content, 40),
                 'created_at' => $post->created_at->toDateTimeString(),
             ];
         });

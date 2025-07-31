@@ -46,5 +46,4 @@ class PublicationController extends Controller
         $response = Http::withoutVerifying()->get('https://satudata.tanahbumbukab.go.id/publikasi/1/fetch-data');
         return $response->json();
     }
-
 }
