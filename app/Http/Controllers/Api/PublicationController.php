@@ -44,7 +44,7 @@ class PublicationController extends Controller
 
         return response()->json([
             'status' => 'success',
-            'data' => $collection
+            'data' => $collection->toArray(request()),
         ]);
     }
 
