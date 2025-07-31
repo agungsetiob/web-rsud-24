@@ -150,6 +150,9 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/revoke-token', [TokenController::class, 'revoke']);
 
     Route::get('/publications', [PublicationController::class, 'index'])->name('publications.index');
+
+    Route::get('/diskominfo', [PublicationController::class, 'diskominfo'])->name('diskominfo');
+    Route::get('/proxy-publikasi', [PublicationController::class, 'proxy']);
 });
 
 

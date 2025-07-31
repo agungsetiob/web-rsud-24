@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Publication;
 use Illuminate\Http\Request;
+use Http;
 
 class PublicationController extends Controller
 {
@@ -33,6 +34,17 @@ class PublicationController extends Controller
             ->get();
 
         return view('main.publication-detail', compact('publication', 'others', 'title'));
+    }
+
+    public function diskominfo()
+    {
+        return view('publications.diskominfo');
+    }
+
+    public function proxy()
+    {
+        $response = Http::withoutVerifying()->get('https://satudata.tanahbumbukab.go.id/publikasi/1/fetch-data');
+        return $response->json();
     }
 
 }
