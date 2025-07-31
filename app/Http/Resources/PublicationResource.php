@@ -10,7 +10,7 @@ class PublicationResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'id' => $this->id,
+            //'id' => $this->id,
             'nama_dokumen' => $this->nama_dokumen,
             'slug' => $this->slug,
             'produsen_data' => $this->produsen_data,
