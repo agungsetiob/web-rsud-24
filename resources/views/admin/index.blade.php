@@ -225,4 +225,11 @@
         </div>
     </div>
     @endforeach
+    <script>
+    $(document).ready(function() {
+        $('#dataTable').DataTable({
+            "order": [[2, "desc"]]
+        });
+    });
+    </script>
     @endsection   
