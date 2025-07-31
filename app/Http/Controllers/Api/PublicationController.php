@@ -35,11 +35,17 @@ class PublicationController extends Controller
         return $slug;
     }
 
-    public function index( Request $request)
+    public function index(Request $request)
     {
         $this->authorizeToken($request);
+
         $publications = Publication::latest()->paginate(10);
-        return PublicationResource::collection($publications);
+        $collection = PublicationResource::collection($publications);
+
+        return response()->json([
+            'status' => 'success',
+            'data' => $collection
+        ]);
     }
 
     public function store(Request $request)
@@ -60,7 +66,7 @@ class PublicationController extends Controller
             $imageName = 'rsud_' . $tanggal . '_' . $request->file('image')->hashName();
             $validated['image'] = $request->file('image')->storeAs(
                 'publikasi',
-                $imageName, 
+                $imageName,
                 'public'
             );
         }
@@ -69,7 +75,7 @@ class PublicationController extends Controller
             $fileName = 'rsud_' . $tanggal . '_' . $request->file('file')->hashName();
             $validated['file'] = $request->file('file')->storeAs(
                 'publikasi',
-                $fileName, 
+                $fileName,
                 'public'
             );
         }
@@ -108,7 +114,7 @@ class PublicationController extends Controller
             $imageName = 'rsud_' . $tanggal . '_' . $request->file('image')->hashName();
             $validated['image'] = $request->file('image')->storeAs(
                 'publikasi',
-                $imageName, 
+                $imageName,
                 'public'
             );
             if ($publication->image) {
@@ -120,7 +126,7 @@ class PublicationController extends Controller
             $fileName = 'rsud_' . $tanggal . '_' . $request->file('file')->hashName();
             $validated['file'] = $request->file('file')->storeAs(
                 'publikasi',
-                $fileName, 
+                $fileName,
                 'public'
             );
             if ($publication->file) {
