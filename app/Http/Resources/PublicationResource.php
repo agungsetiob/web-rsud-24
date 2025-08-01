@@ -19,8 +19,8 @@ class PublicationResource extends JsonResource
             'deskripsi' => $this->deskripsi,
             'image' => $this->image,
             'file' => $this->file,
-            'image_url' => asset("{$this->image}"),
-            'file_url' => asset("{$this->file}"),
+            'image_url' => asset("storage/{$this->image}"),
+            'file_url' => asset("storage/{$this->file}"),
         ];
     }
 }
