@@ -39,7 +39,8 @@ class PublicationController extends Controller
     {
         $this->authorizeToken($request);
 
-        $publications = Publication::latest()->paginate(10);
+        //$publications = Publication::latest()->paginate(10);
+        $publications = Publication::latest()->get();
         $collection = PublicationResource::collection($publications);
 
         return response()->json([
