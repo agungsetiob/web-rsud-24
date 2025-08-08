@@ -17,7 +17,7 @@ class BpjsController extends Controller
     /**
      * Hospital GPS coordinates
      */
-    private $hospitalLat =  -3.5224191943463126;
+    private $hospitalLat = -3.5224191943463126;
     private $hospitalLng = 115.95746613629129;
     private $allowedRadius = 1200;
 
@@ -259,10 +259,10 @@ class BpjsController extends Controller
         try {
             $reservation = Reservasi::where('ID', $kodeBooking)->first();
 
-            if ($reservation && $reservation->JENIS_APLIKASI == 3) {
+            if ($reservation && in_array($reservation->JENIS_APLIKASI, [3, 22])) {
                 $reservation->STATUS = 99;
                 $reservation->save();
-                Log::info("Reservation {$kodeBooking} (JENIS_APLIKASI 3) updated STATUS to 99.");
+                Log::info("Reservation {$kodeBooking} (JENIS_APLIKASI {$reservation->JENIS_APLIKASI}) updated STATUS to 99.");
             }
         } catch (\Exception $e) {
             Log::error('Error updating reservation via model: ' . $e->getMessage());
@@ -285,8 +285,8 @@ class BpjsController extends Controller
                 'Content-Type' => 'application/json',
                 'Accept' => 'application/json',
             ])->post("{$this->baseEndpoint}/setBatalAntrian", [
-                'kodebooking' => $kodeBooking,
-            ]);
+                        'kodebooking' => $kodeBooking,
+                    ]);
 
             if ($response->successful()) {
                 return $response->json();
@@ -309,5 +309,4 @@ class BpjsController extends Controller
             ]);
         }
     }
-
 }
