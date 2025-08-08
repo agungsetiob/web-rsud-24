@@ -30,7 +30,6 @@ class ContactController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
@@ -153,7 +152,8 @@ class ContactController extends Controller
 
     public function cetakPengaduan($startdate, $enddate)
     {
-        $complains = Complain::whereBetween('date',[$startdate, $enddate])->get();
+        $complains = Complain::whereBetween('date',[$startdate, $enddate])
+        ->orderBy('date', 'asc')->get();
         $total = Complain::all()->count();
         $pdf = PDF::loadview('admin.cetak-pengaduan',['complains' => $complains, 'total' => $total
         ])->setPaper('A4', 'portrait');
