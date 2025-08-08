@@ -257,8 +257,7 @@
         </div>
         <div class="card">
             <a class="disabled" href="javascript:void(0)">
-                <img src="{{asset('img/simgos-icon.png')}}"
-                    alt="SIMRS Icon">
+                <img src="{{asset('img/simgos-icon.png')}}" alt="SIMRS Icon">
                 <h3>SIMRS (Sistem Informasi Manajemen Rumah Sakit)</h3>
             </a>
         </div>
@@ -282,7 +281,8 @@
         </div>
         <div class="card disabled">
             <a class="disabled" href="javascript:void(0)">
-                <img src="{{ asset('storage/siplayer.png') }}" alt="SIPLAYER Logo" style="width: 50px; height: auto; margin-bottom: 5px;">
+                <img src="{{ asset('storage/siplayer.png') }}" alt="SIPLAYER Logo"
+                    style="width: 50px; height: auto; margin-bottom: 5px;">
                 <h3 style="text-align: left; color: black;">Tentang Sistem</h3>
                 <p style="text-align: justify; color: black;">
                     Sistem Integrasi Pelayanan dan Administrasi Elektronik (SIPLAYER)
@@ -299,27 +299,30 @@
 
             <div class="pb">
                 <a href="#">
-                    <img src="https://play-lh.googleusercontent.com/BlrmGYzr7rNTFMYLyNnk7RF2e8EpkY5aCI9kbXnhUZz9cZKW1vj9_ODLdTe3vDUy_Cg=w240-h480-rw" alt="Mobile JKN Logo">
+                    <img src="https://play-lh.googleusercontent.com/BlrmGYzr7rNTFMYLyNnk7RF2e8EpkY5aCI9kbXnhUZz9cZKW1vj9_ODLdTe3vDUy_Cg=w240-h480-rw"
+                        alt="Mobile JKN Logo">
                 </a>
                 <div>
                     <a href="https://play.google.com/store/apps/details?id=app.bpjs.mobile&hl=id">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Google Play Store Badge">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg"
+                            alt="Google Play Store Badge">
                     </a>
                     <a href="https://apps.apple.com/id/app/mobile-jkn/id1237601115">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Download_on_the_App_Store_Badge.svg/640px-Download_on_the_App_Store_Badge.png" alt="App Store Badge">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Download_on_the_App_Store_Badge.svg/640px-Download_on_the_App_Store_Badge.png"
+                            alt="App Store Badge">
                     </a>
                 </div>
                 <p>Ambil Antrean online via mobile JKN khusus untuk pasien BPJS</p>
             </div>
             <div class="pb">
-                <a href="https://simgos.tanahbumbukab.go.id/apps/RegOnline/" style="margin-top: 20px;">
-                    <img src="{{ asset('storage/logors.png') }}" alt="Web Antrol Logo">
-                    <h2>Web Antrol</h2>
+                <a href="https://simgos.tanahbumbukab.go.id/apps/RegOnline/" style="margin-top: 20px; margin-bottom: 10px;"
+                    class="btn-modern">
+                    Web Antrol
                 </a>
                 <p>Ambil Antrean via web antrol untuk pasien umum dan BPJS</p>
             </div>
             <div class="pb">
-                <a href="{{url ('/bpjs-checkin')}}" class="btn-modern">
+                <a href="{{url('/bpjs-checkin')}}" class="btn-modern" style="margin-top: 20px; margin-bottom: 10px;">
                     Checkin BPJS
                 </a>
                 <p>Menuju halaman check-in untuk pasien BPJS</p>
