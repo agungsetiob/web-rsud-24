@@ -259,7 +259,7 @@ class BpjsController extends Controller
         try {
             $reservation = Reservasi::where('ID', $kodeBooking)->first();
 
-            if ($reservation && ($reservation->JENIS_APLIKASI == 22 || $reservation->JENIS_APLIKASI == 3)) { 
+            if ($reservation) {
                 $reservation->STATUS = 99;
                 $reservation->save();
                 Log::info("Reservation {$kodeBooking} (JENIS_APLIKASI {$reservation->JENIS_APLIKASI}) updated STATUS to 99.");
