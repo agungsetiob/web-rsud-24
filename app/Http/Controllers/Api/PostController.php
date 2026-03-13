@@ -3,64 +3,104 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use App\Models\Post;
+use App\Models\{Post, User};
 use Illuminate\Support\Str;
-use Illuminate\Support\Facades\URL;
 
 class PostController extends Controller
 {
-    public function index(Request $request)
+    public function index()
     {
-        $posts = Post::with(['user', 'category'])->latest()->paginate(6);
-
-        $data = $posts->map(function ($post) {
-            return [
-                'id' => $post->id,
-                'date' => $post->created_at->toIso8601String(),
-                'date_gmt' => $post->created_at->setTimezone('UTC')->toIso8601String(),
-                'modified' => $post->updated_at->toIso8601String(),
-                'modified_gmt' => $post->updated_at->setTimezone('UTC')->toIso8601String(),
-                'slug' => $post->slug,
-                'status' => 'publish',
-                'type' => 'post',
-                'link' => url("/blog/{$post->slug}"),
-                'title' => [
-                    'rendered' => $post->title,
-                ],
-                'content' => [
-                    'rendered' => $post->content,
-                    'protected' => false
-                ],
-                'excerpt' => [
-                    'rendered' => Str::limit(strip_tags($post->content), 100),
-                    'protected' => false
-                ],
-                'author' => $post->user->id ?? null,
-                'author_name' => $post->user->name ?? null,          // 🔥 Ditambahkan
-                'featured_media' => $post->image ?? null,
-                'comment_status' => 'open',
-                'ping_status' => 'closed',
-                'sticky' => false,
-                'template' => '',
-                'format' => 'standard',
-                'meta' => [
-                    'view' => $post->view ?? 0,
-                ],
-                'categories' => [$post->category_id],
-                'category_name' => $post->category->name ?? null      // 🔥 Ditambahkan
-            ];
-        });
+        $posts = Post::latest()->paginate(6);
+        foreach ($posts as $post) {
+            $post->content_preview = Str::limit($post->content, 40);
+        }
 
         return response()->json([
             'success' => true,
-            'data' => $data,
-            'meta' => [
-                'current_page' => $posts->currentPage(),
-                'last_page' => $posts->lastPage(),
-                'per_page' => $posts->perPage(),
-                'total' => $posts->total(),
+            'data'    => $posts,
+            'message' => 'Berhasil mengambil daftar blog'
+        ], 200);
+    }
+
+    public function category($category)
+    {
+        $posts = Post::whereHas('category', function ($q) use ($category) {
+            $q->where('name', $category);
+        })->paginate(6);
+
+        foreach ($posts as $post) {
+            $post->content_preview = Str::limit($post->content, 40);
+        }
+
+        return response()->json([
+            'success' => true,
+            'data'    => $posts,
+            'message' => "Berhasil mengambil blog dengan kategori: $category"
+        ], 200);
+    }
+
+    public function show($slug)
+    {
+        $post = Post::where('slug', $slug)->first();
+        if (!$post) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Blog tidak ditemukan',
+            ], 404);
+        }
+
+        $post->increment('view');
+
+        $popularPosts = Post::where('id', '!=', $post->id)
+                            ->orderBy('view', 'desc')
+                            ->limit(3)
+                            ->get();
+
+        $relatedPosts = Post::where('category_id', $post->category_id)
+                            ->where('id', '!=', $post->id)
+                            ->limit(3)
+                            ->get();
+
+        return response()->json([
+            'success' => true,
+            'data'    => [
+                'post'          => $post,
+                'popular_posts' => $popularPosts,
+                'related_posts' => $relatedPosts
             ],
-        ]);
+            'message' => 'Detail blog berhasil diambil'
+        ], 200);
+    }
+
+    public function postByUser($username)
+    {
+        $posts = Post::whereHas('user', function ($q) use ($username) {
+            $q->where('username', $username);
+        })->paginate(6);
+
+        foreach ($posts as $post) {
+            $post->content_preview = Str::limit($post->content, 40);
+        }
+
+        return response()->json([
+            'success' => true,
+            'data'    => $posts,
+            'message' => "Berhasil mengambil blog dari author: $username"
+        ], 200);
+    }
+
+    public function leaderboard()
+    {
+        $ranks = User::with('posts')
+            ->withCount('posts')
+            ->where('status', 'active')
+            ->orderByDesc('posts_count')
+            ->paginate(8);
+
+        return response()->json([
+            'success' => true,
+            'data'    => $ranks,
+            'message' => 'Data Leaderboard berhasil diambil'
+        ], 200);
     }
 }
