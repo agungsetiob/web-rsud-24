@@ -145,6 +145,8 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/check-in', [BpjsController::class, 'checkIn']);
     Route::post('/batal-antrian', [BpjsController::class, 'batalAntrian']);
 
+    Route::get('/token', [BpjsController::class, 'getToken']);
+
     Route::get('/generate-token', [TokenController::class, 'index'])->name('token.index');
     Route::post('/generate-token', [TokenController::class, 'generate']);
     Route::post('/revoke-token', [TokenController::class, 'revoke']);
