@@ -63,4 +63,9 @@ Route::prefix('v1')->group(function () {
     // Pengaduan masyarakat
     Route::get('/pengaduan-masyarakat', [\App\Http\Controllers\Api\PengaduanController::class, 'index']);
     Route::post('/pengaduan', [\App\Http\Controllers\Api\PengaduanController::class, 'store']);
+
+    // Jadwal Dokter
+    Route::get('/jadwal-dokter', [\App\Http\Controllers\Api\ScheduleController::class, 'index']);
+    Route::get('/jadwal-dokter/dokter/{id}', [\App\Http\Controllers\Api\ScheduleController::class, 'byDoctor']);
+    Route::get('/jadwal-dokter/hari/{day}', [\App\Http\Controllers\Api\ScheduleController::class, 'byDay']);
 });
