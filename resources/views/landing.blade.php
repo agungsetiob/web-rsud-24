@@ -250,7 +250,7 @@
             <h2 class="hospital-name">RSUD dr. H. Andi Abdurrahman Noor</h2>
         </div>
         <div class="card">
-            <a href="/beranda" target="_blank">
+            <a href="/home" target="_blank">
                 <img src="{{ asset('storage/logors.png') }}" alt="Website RSUD Icon">
                 <h3>Website RSUD</h3>
             </a>
