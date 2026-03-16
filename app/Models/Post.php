@@ -26,6 +26,12 @@ class Post extends Model
         'slug',
         'view',
         'category_id',
-
     ];
+
+    protected $appends = ['image_url'];
+
+    public function getImageUrlAttribute()
+    {
+        return $this->image ? asset('storage/posts/' . $this->image) : null;
+    }
 }

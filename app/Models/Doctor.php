@@ -14,16 +14,17 @@ class Doctor extends Model
     //     return $this->belongsTo(User::class);
     // }
 
-    public function schedules()
-    {
-        return $this->hasMany(Schedule::class);
-    }
-
     protected $fillable = [
         'name',
         'specialization',
         'photo',
         'category',
-
     ];
+
+    protected $appends = ['photo_url'];
+
+    public function getPhotoUrlAttribute()
+    {
+        return $this->photo ? asset('storage/doctor/' . $this->photo) : null;
+    }
 }
