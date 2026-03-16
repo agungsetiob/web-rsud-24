@@ -12,7 +12,6 @@
                 </div>
                 <!-- /.container-fluid -->
 
-
                  <!-- Begin Page Content -->
                 <div class="container-fluid">
                     <!-- DataTales Example -->
@@ -80,8 +79,6 @@
 
                 </div>
                 <!-- /.container-fluid -->
-
-
 
     <!-- delete Modal-->
     @foreach ($doctors as $doc)

@@ -104,6 +104,12 @@
                 <i class="fas fa-fw fa-newspaper fa-xl"></i>
                 <span>Publications</span></a>
         </li>
+        <li class="nav-item {{ (request()->is('schedules')) ? 'active bg-active' : '' }}">
+            <a class="nav-link" href="{{route('schedules.index')}}">
+                <i class="fas fa-fw fa-calendar-alt fa-xl"></i>
+                <span>Schedules</span></a>
+        </li>
+
         <li class="nav-item {{ (request()->is('generate-token')) ? 'active bg-active' : '' }}">
             <a class="nav-link" href="{{route('token.index')}}">
                 <i class="fas fa-fw fa-fire fa-xl"></i>

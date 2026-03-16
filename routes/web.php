@@ -11,6 +11,7 @@ use App\Http\Controllers\{
     FileController,
     BackupController,
     PublicationController,
+    ScheduleController,
 };
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
@@ -155,6 +156,8 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/diskominfo', [PublicationController::class, 'diskominfo'])->name('diskominfo');
     Route::get('/proxy-publikasi', [PublicationController::class, 'proxy']);
+
+    Route::resource('schedules', ScheduleController::class);
 });
 
 
