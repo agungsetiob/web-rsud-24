@@ -15,7 +15,13 @@ class File extends Model
     protected $fillable = [
         'name',
         'file',
-        'user_id'
-
+        'user_id',
     ];
+
+    protected $appends = ['file_url'];
+
+    public function getFileUrlAttribute()
+    {
+        return $this->file ? asset('storage/docs/' . $this->file) : null;
+    }
 }

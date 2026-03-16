@@ -16,7 +16,13 @@ class Standard extends Model
         'name',
         'service_name',
         'file',
-        'user_id'
-
+        'user_id',
     ];
+
+    protected $appends = ['file_url'];
+
+    public function getFileUrlAttribute()
+    {
+        return $this->file ? asset('storage/sp/' . $this->file) : null;
+    }
 }
