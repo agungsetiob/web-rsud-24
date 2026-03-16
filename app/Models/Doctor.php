@@ -21,6 +21,11 @@ class Doctor extends Model
         'category',
     ];
 
+    public function schedules()
+    {
+        return $this->hasMany(Schedule::class);
+    }
+
     protected $appends = ['photo_url'];
 
     public function getPhotoUrlAttribute()
