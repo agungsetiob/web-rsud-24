@@ -58,7 +58,7 @@ Route::get('/', function () {
     return view('landing');
 });
 
-Route::get('/home', [HomeController::class, 'frontPage']);
+Route::get('/beranda', [HomeController::class, 'frontPage']);
 Route::get('blog/', [HomeController::class, 'index'])->name('blog.index');
 Route::get('blog/category/{category}', [HomeController::class, 'category']);
 Route::get('blog/{slug}', [HomeController::class, 'show'])->name('blog');
