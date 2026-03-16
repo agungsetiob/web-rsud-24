@@ -12,7 +12,7 @@ class BpjsController extends Controller
     /**
      * Base URL for the webservice endpoint.
      */
-    private $baseEndpoint = 'http://41.216.186.239/webservice/registrasionline/bpjs';
+    private $baseEndpoint = 'https://simgos.tanahbumbukab.go.id/webservice/registrasionline/bpjs';
 
     /**
      * Hospital GPS coordinates
