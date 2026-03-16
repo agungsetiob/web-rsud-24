@@ -21,4 +21,16 @@ class Publication extends Model
         'rencana_rilis',
         'tanggal_rilis',
     ];
+
+    protected $appends = ['image_url', 'file_url'];
+
+    public function getImageUrlAttribute()
+    {
+        return $this->image ? asset('storage/' . $this->image) : null;
+    }
+
+    public function getFileUrlAttribute()
+    {
+        return $this->file ? asset('storage/' . $this->file) : null;
+    }
 }
