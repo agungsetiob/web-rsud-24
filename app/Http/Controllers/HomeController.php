@@ -262,7 +262,8 @@ class HomeController extends Controller
             //delete image
             Storage::delete('public/doctor/'. $doc->photo);
 
-            //delete post
+            //delete
+            $doc->schedules()->delete();
             $doc->delete();
 
             //redirect to index
