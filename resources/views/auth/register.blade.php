@@ -39,7 +39,6 @@
                 <x-label for="role" :value="__('Role')" />
                 <select name="role" class="block mt-1 w-full rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                     <option selected disabled>Choose a role</option>
-                    <option :value="admin" {{ old('role') == 'admin' ? 'selected' : '' }}>admin</option>
                     <option :value="user" {{ old('role') == 'user' ? 'selected' : '' }}>user</option>
                 </select>
             </div>
