@@ -14,14 +14,9 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        if (Auth::user()->role == 'admin') {
-            // ambil service beserta dokter
             $services = Service::with('doctor')->get();
-            $doctors = Doctor::all(); // untuk dropdown di view
+            $doctors = Doctor::all();
             return view('admin.our-services', compact('services', 'doctors'));
-        } else {
-            return redirect()->back()->with(['error' => 'ojo dibandingke!']);
-        }
     }
 
     /**
@@ -34,7 +29,7 @@ class ServiceController extends Controller
             'desc' => 'required|string',
             'icon' => 'required|string',
             'jenis' => 'nullable|string',
-            'doctor_id' => 'nullable|exists:doctors,id', // validasi dokter
+            'doctor_id' => 'nullable|exists:doctors,id',
         ]);
 
         $service = new Service();
@@ -42,7 +37,7 @@ class ServiceController extends Controller
         $service->desc = $request->desc;
         $service->icon = $request->icon;
         $service->jenis = $request->jenis;
-        $service->doctor_id = $request->doctor_id; // simpan dokter jaga
+        $service->doctor_id = $request->doctor_id;
         $service->save();
 
         return redirect()->back()->with(['success' => 'Service created successfully!']);

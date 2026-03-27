@@ -134,6 +134,11 @@
                 <i class="fas fa-fw fa-table fa-xl"></i>
                 <span>Standar Pelayanan</span></a>
         </li>
+        <li class="nav-item {{ (request()->is('our-services')) ? 'active bg-active' : '' }}">
+            <a class="nav-link" href="{{url('our-services')}}">
+                <i class="fas fa-fw fa-hand-holding-medical fa-xl"></i>
+                <span>Our Services</span></a>
+        </li>
     @endif
     <li class="nav-item {{ (request()->is('bpjs-checkin')) ? 'active bg-active' : '' }}">
         <a class="nav-link" href="{{url('bpjs-checkin')}}">

@@ -30,28 +30,31 @@
                                             <td> {{$user->email}} </td>
                                             <td>
                                                 <div class="dropdown">
-                                                    <button class="btn btn-primary btn-sm dropdown-toggle" type="button"
+                                                    <button class="btn btn-sm dropdown-toggle 
+                                                        @if($user->status == 'inactive') btn-danger @else btn-primary @endif"
+                                                        type="button"
                                                         id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
                                                         aria-expanded="false">
-                                                        {{$user->status}}
+                                                        {{ $user->status }}
                                                     </button>
+
                                                     @if ($user->status == 'inactive')
-                                                    <form method="POST" action="{{url('activate/'. $user->id)}}">
-                                                        @csrf
-                                                        <div class="dropdown-menu animated--fade-in bg-gray-400" aria-labelledby="dropdownMenuButton">
-                                                            <button class="dropdown-item">Activate</button>
-                                                        </div>
-                                                    </form>
+                                                        <form method="POST" action="{{ url('activate/'. $user->id) }}">
+                                                            @csrf
+                                                            <div class="dropdown-menu animated--fade-in bg-gray-400" aria-labelledby="dropdownMenuButton">
+                                                                <button class="dropdown-item">Activate</button>
+                                                            </div>
+                                                        </form>
                                                     @elseif ($user->status == 'active')
-                                                    <form method="POST" action="{{url('deactivate/'. $user->id)}}">
-                                                        @csrf
-                                                        <div class="dropdown-menu animated--fade-in bg-gray-400" aria-labelledby="dropdownMenuButton">
-                                                            <button class="dropdown-item">Deactivate</button>
-                                                        </div>
-                                                    </form>
+                                                        <form method="POST" action="{{ url('deactivate/'. $user->id) }}">
+                                                            @csrf
+                                                            <div class="dropdown-menu animated--fade-in bg-gray-400" aria-labelledby="dropdownMenuButton">
+                                                                <button class="dropdown-item">Deactivate</button>
+                                                            </div>
+                                                        </form>
                                                     @endif
                                                 </div>
-                                            </td>       
+                                            </td>      
                                         </tr>
                                         @empty
                                             <div class="alert alert-danger">
