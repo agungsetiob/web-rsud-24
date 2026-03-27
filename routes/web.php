@@ -12,6 +12,8 @@ use App\Http\Controllers\{
     BackupController,
     PublicationController,
     ScheduleController,
+    PoliklinikController,
+    CarouselController
 };
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
@@ -58,7 +60,7 @@ Route::get('/', function () {
     return view('landing');
 });
 
-Route::get('/beranda', [HomeController::class, 'frontPage']);
+Route::get('/home', [HomeController::class, 'frontPage']);
 Route::get('blog/', [HomeController::class, 'index'])->name('blog.index');
 Route::get('blog/category/{category}', [HomeController::class, 'category']);
 Route::get('blog/{slug}', [HomeController::class, 'show'])->name('blog');
@@ -87,6 +89,8 @@ Route::get('/controls/list', [ControlController::class, 'list'])->name('controls
 Route::get('/cetak-surat-kontrol', [ControlController::class, 'cetakSuratKontrol'])->name('cetakSuratKontrol');
 Route::get('/control-by-date-range', [ControlController::class, 'controlByDate'])->name('getControlByDateRange');
 Route::get('/control-by-date-range/list', [ControlController::class, 'getControlByDateRange'])->name('controlsByDateRange');
+
+Route::get('/poliklinik', [PoliklinikController::class, 'index'])->name('poliklinik.index');
 
 //route group on my own
 Route::middleware(['auth'])->group(function () {
@@ -158,6 +162,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/proxy-publikasi', [PublicationController::class, 'proxy']);
 
     Route::resource('schedules', ScheduleController::class);
+    Route::resource('carousels', CarouselController::class);
+
 });
 
 

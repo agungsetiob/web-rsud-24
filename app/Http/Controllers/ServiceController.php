@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Doctor;
 use App\Models\Service;
 use Illuminate\Http\Request;
 use Auth;
@@ -14,8 +15,10 @@ class ServiceController extends Controller
     public function index()
     {
         if (Auth::user()->role == 'admin') {
-            $services = Service::all();
-            return view ('admin.our-services', compact('services'));
+            // ambil service beserta dokter
+            $services = Service::with('doctor')->get();
+            $doctors = Doctor::all(); // untuk dropdown di view
+            return view('admin.our-services', compact('services', 'doctors'));
         } else {
             return redirect()->back()->with(['error' => 'ojo dibandingke!']);
         }
@@ -30,12 +33,16 @@ class ServiceController extends Controller
             'name' => 'required|unique:services|string|max:255',
             'desc' => 'required|string',
             'icon' => 'required|string',
+            'jenis' => 'nullable|string',
+            'doctor_id' => 'nullable|exists:doctors,id', // validasi dokter
         ]);
 
         $service = new Service();
         $service->name = $request->name;
         $service->desc = $request->desc;
         $service->icon = $request->icon;
+        $service->jenis = $request->jenis;
+        $service->doctor_id = $request->doctor_id; // simpan dokter jaga
         $service->save();
 
         return redirect()->back()->with(['success' => 'Service created successfully!']);
@@ -50,7 +57,7 @@ class ServiceController extends Controller
         $services = Service::all();
         if ($request->header('HX-Request')) {
             return view('main.services', compact('services'))->fragment('services');
-        } else{
+        } else {
             return view('main.services', compact('services'));
         }
     }
@@ -73,17 +80,23 @@ class ServiceController extends Controller
             'name' => 'required|string|max:255',
             'desc' => 'required|string',
             'icon' => 'required|string',
+            'jenis' => 'nullable|string',
+            'doctor_id' => 'nullable|exists:doctors,id',
         ]);
 
         $service = Service::findOrFail($id);
         $service->name = $request->name;
         $service->desc = $request->desc;
         $service->icon = $request->icon;
+        $service->jenis = $request->jenis;
+        $service->doctor_id = $request->doctor_id; // update dokter jaga
         $service->save();
 
+        if ($request->ajax()) {
+            return response()->json(['success' => true]);
+        }
         return redirect()->back()->with(['success' => 'Service updated successfully!']);
     }
-
 
     /**
      * Remove the specified resource from storage.

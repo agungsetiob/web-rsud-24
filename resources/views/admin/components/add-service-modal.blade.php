@@ -65,7 +65,34 @@
                             </div>
                         </div>
                     </div>
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <div class="form-group">
+                        <label>Jenis</label>
+                        <div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input @error('jenis') is-invalid @enderror" type="radio"
+                                    name="jenis" id="jenis1" value="klinik" {{ old('jenis') == "klinik" ? 'checked' : '' }} required>
+                                <label class="form-check-label" for="jenis1">
+                                    <p class="mb-0">Klinik</p>
+                                </label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input @error('jenis') is-invalid @enderror" type="radio"
+                                    name="jenis" id="jenis2" value="non klinik" {{ old('jenis') == "non klinik" ? 'checked' : '' }} required>
+                                <label class="form-check-label" for="jenis2">
+                                    <p class="mb-0">Non Klinik</p>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="doctor_id">Dokter Jaga</label>
+                        <select name="doctor_id" id="doctor_id" class="form-control" required>
+                            <option value="" disabled selected>Pilih Dokter</option>
+                            @foreach($doctors as $doc)
+                                <option value="{{ $doc->id }}">{{ $doc->name }} - {{ $doc->specialization }}</option>
+                            @endforeach
+                        </select>
+                    </div>
                     <button type="submit" class="btn btn-primary">Save</button>
                 </form>
             </div>

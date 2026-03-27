@@ -66,8 +66,8 @@
     <div class="container-fluid position-relative p-0">
         <nav class="navbar navbar-expand-lg navbar-light bg-white px-4 px-lg-5 py-3 py-lg-0">
             <a href="/" class="navbar-brand p-0">
-                <!-- <h1 class="text-primary m-0"><i class="fas fa-star-of-life me-3"></i>Terapia</h1> -->
-                <img src="{{url('storage/logors.png')}}" alt="Logo">
+                <img src="{{url('storage/logotanbu.png')}}" alt="Logo">
+                <img src="{{url('storage/beraksi.png')}}" alt="beraksi">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
                 title="navbar toggle">
@@ -83,9 +83,9 @@
                     <a href="#" class="nav-item nav-link" hx-get="{{url('/profil')}}" hx-trigger="click"
                         hx-target="#app" hx-swap="outerHTML transition:true" hx-push-url="true"
                         hx-indicator="#loadingIndicator">Profil</a>
-                    <a href="#" class="nav-item nav-link" hx-get="{{url('/layanan')}}" hx-trigger="click"
+                    <a href="#" class="nav-item nav-link" hx-get="{{url('/poliklinik')}}" hx-trigger="click"
                         hx-target="#app" hx-swap="outerHTML transition:true" hx-push-url="true"
-                        hx-indicator="#loadingIndicator">Layanan</a>
+                        hx-indicator="#loadingIndicator">Jadwal</a>
                     <a href="#" class="nav-item nav-link" hx-get="{{url('/dokter')}}" hx-trigger="click"
                         hx-target="#app" hx-swap="outerHTML transition:true" hx-push-url="true"
                         hx-indicator="#loadingIndicator">Dokter</a>
@@ -97,17 +97,20 @@
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                         <div class="dropdown-menu m-0">
+                            <a href="#" class="dropdown-item" hx-get="{{url('/layanan')}}" hx-trigger="click"
+                                hx-target="#app" hx-swap="outerHTML transition:true" hx-push-url="true"
+                                hx-indicator="#loadingIndicator">Layanan</a>
                             <a href="{{url('quran')}}" class="dropdown-item">Al-Qur'an Digital</a>
-                            <a href="" class="dropdown-item" hx-get="{{url('/standar-pelayanan')}}"
-                                hx-trigger="click" hx-target="#app" hx-swap="outerHTML transition:true"
-                                hx-push-url="true" hx-indicator="#loadingIndicator">Standar Pelayanan</a>
+                            <a href="" class="dropdown-item" hx-get="{{url('/standar-pelayanan')}}" hx-trigger="click"
+                                hx-target="#app" hx-swap="outerHTML transition:true" hx-push-url="true"
+                                hx-indicator="#loadingIndicator">Standar Pelayanan</a>
                             <a href="" class="dropdown-item" hx-get="{{url('/publikasi')}}" hx-trigger="click"
                                 hx-target="#app" hx-swap="outerHTML transition:true" hx-push-url="true"
                                 hx-indicator="#loadingIndicator">Publikasi</a>
                             <a href="#" class="dropdown-item">Survey</a>
-                            <a href="#" class="dropdown-item" hx-get="{{url('/document')}}"
-                                hx-trigger="click" hx-target="#app" hx-swap="outerHTML transition:true"
-                                hx-push-url="true" hx-indicator="#loadingIndicator">Dokumen Publik</a>
+                            <a href="#" class="dropdown-item" hx-get="{{url('/document')}}" hx-trigger="click"
+                                hx-target="#app" hx-swap="outerHTML transition:true" hx-push-url="true"
+                                hx-indicator="#loadingIndicator">Dokumen Publik</a>
                             <a href="#" class="dropdown-item">Top Author</a>
                         </div>
                     </div>

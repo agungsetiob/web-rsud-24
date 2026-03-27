@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SIPLAYER - RSUD</title>
-    <link rel="shortcut icon" href="{{ asset('storage/logo.png') }}" type="image/x-icon" />
+    <link rel="shortcut icon" href="{{ asset('img/logo.png') }}" type="image/x-icon" />
     <style>
         * {
             box-sizing: border-box;
@@ -250,7 +250,7 @@
             <h2 class="hospital-name">RSUD dr. H. Andi Abdurrahman Noor</h2>
         </div>
         <div class="card">
-            <a href="/beranda" target="_blank">
+            <a href="/home" target="_blank">
                 <img src="{{ asset('storage/logors.png') }}" alt="Website RSUD Icon">
                 <h3>Website RSUD</h3>
             </a>

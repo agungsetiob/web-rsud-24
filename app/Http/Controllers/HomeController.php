@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\{Post, Doctor, User, Faq, Service};
+use App\Models\{Post, Doctor, User, Faq, Service, Carousel};
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Http;
@@ -56,11 +56,11 @@ class HomeController extends Controller
         ->limit(4)
         ->get();
         $posts = Post::latest()->limit(3)->get();
-        $title = 'RSUD RS Amanah Husada';
+        $carousels = Carousel::all();
         if ($request->header('HX-Request')) {
-            return view('main.index', compact('faqs', 'doctors', 'posts', 'title', 'services'))->fragment('beranda');
+            return view('main.index', compact('faqs', 'doctors', 'posts', 'services', 'carousels'))->fragment('beranda');
         }
-        return view('main.index', compact('doctors', 'faqs', 'posts', 'title', 'services'));
+        return view('main.index', compact('doctors', 'faqs', 'posts', 'services', 'carousels'));
     }
 
     public function doctor(Request $request)
