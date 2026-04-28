@@ -37,10 +37,21 @@
                                                             alt="{{ $service->doctor->name }}" class="img-fluid rounded-circle shadow-sm"
                                                             style="width: 100px; height: 100px; object-fit: cover;">
                                                     </div>
+                                                @else
+                                                    <div class="doctor-photo mb-3">
+                                                        <img src="{{ asset('storage/logors.png') }}" alt="No Photo"
+                                                            class="img-fluid rounded-circle shadow-sm"
+                                                            style="width: 100px; height: 100px; object-fit: cover;">
+                                                    </div>
                                                 @endif
                                                 <p class="doctor-name mb-0">{{ $service->doctor->name }}</p>
                                                 <small class="specialization">{{ $service->doctor->specialization }}</small>
                                             @else
+                                                <div class="doctor-photo mb-3">
+                                                    <img src="{{ asset('storage/logors.png') }}" alt="No Photo"
+                                                        class="img-fluid rounded-circle shadow-sm"
+                                                        style="width: 100px; height: 100px; object-fit: cover;">
+                                                </div>
                                                 <div class="closed-status">
                                                     <span class="badge rounded-pill bg-danger-subtle text-danger px-4 py-2">Tutup</span>
                                                 </div>
