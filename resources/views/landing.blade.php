@@ -304,11 +304,11 @@
                 </a>
                 <div>
                     <a href="https://play.google.com/store/apps/details?id=app.bpjs.mobile&hl=id">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg"
+                        <img src="{{ asset('img/google-play-badge.png') }}"
                             alt="Google Play Store Badge">
                     </a>
                     <a href="https://apps.apple.com/id/app/mobile-jkn/id1237601115">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Download_on_the_App_Store_Badge.svg/640px-Download_on_the_App_Store_Badge.png"
+                        <img src="{{ asset('img/app-store-badge.png') }}"
                             alt="App Store Badge">
                     </a>
                 </div>
