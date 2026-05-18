@@ -68,6 +68,7 @@
             <a href="/" class="navbar-brand p-0">
                 <!-- <h1 class="text-primary m-0"><i class="fas fa-star-of-life me-3"></i>Terapia</h1> -->
                 <img src="{{url('storage/logors.png')}}" alt="Logo">
+                <img src="{{url('storage/beraksi.png')}}" alt="beraksi">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
                 title="navbar toggle">
