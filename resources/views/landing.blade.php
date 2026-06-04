@@ -273,10 +273,10 @@
                 <h3>SIPALKON (Sistem Pengingat Jadwal Kontrol)</h3>
             </a>
         </div>
-        <div class="card disabled">
-            <a class="disabled" href="javascript:void(0)">
+        <div class="card">
+            <a href="https://sirajapaten.tanahbumbukab.go.id" target="_blank">
                 <img src="{{asset('img/supriadi.svg')}}" alt="Supriadi Online Icon">
-                <h3>e-SUPRIADI (Surat Perintah Perjalanan Dinas Online)</h3>
+                <h3>SIRAJAPATEN AI (Sitem Ramah Jadwal dan Pengaduan Terintegrasi AI)</h3>
             </a>
         </div>
         <div class="card disabled">
