@@ -91,6 +91,7 @@ Route::get('/control-by-date-range', [ControlController::class, 'controlByDate']
 Route::get('/control-by-date-range/list', [ControlController::class, 'getControlByDateRange'])->name('controlsByDateRange');
 
 Route::get('/poliklinik', [PoliklinikController::class, 'index'])->name('poliklinik.index');
+Route::get('/dokter/jadwal', [PoliklinikController::class, 'jadwal'])->name('embeded.jadwal-dokter');
 
 //route group on my own
 Route::middleware(['auth'])->group(function () {

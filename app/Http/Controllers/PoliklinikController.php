@@ -27,4 +27,25 @@ class PoliklinikController extends Controller
             return view('main.poliklinik', compact('services', 'today'));
         }
     }
+
+    public function jadwal(Request $request)
+    {
+        $today = \Carbon\Carbon::now()->translatedFormat('l');
+
+        $services = Service::with('doctor')
+            ->where('jenis', 'klinik')
+            ->get();
+
+        if ($today === 'Minggu') {
+            foreach ($services as $service) {
+                $service->doctor_id = null;
+                $service->setRelation('doctor', null);
+            }
+        }
+        if ($request->header('HX-Request')) {
+            return view('embeded.jadwal-dokter', compact('services', 'today'))->fragment('poliklinik');
+        } else {
+            return view('embeded.jadwal-dokter', compact('services', 'today'));
+        }
+    }
 }
