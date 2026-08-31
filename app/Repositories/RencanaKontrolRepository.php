@@ -23,9 +23,39 @@ class RencanaKontrolRepository
 
     public function getByNomorKartu($bulan, $tahun, $nomorKartu)
     {
-        $endpoint = 'RencanaKontrol/ListRencanaKontrol/Bulan/' . $bulan . '/Tahun/' . $tahun . '/NoKartu/' . $nomorKartu . '/filter/2';
-        $result = $this->bridging->getRequest($endpoint);
-        return json_decode($result, true);
+        $bulan = trim((string) $bulan);
+        $tahun = trim((string) $tahun);
+        $nomorKartu = trim((string) $nomorKartu);
+
+        $endpoint = 'RencanaKontrol/ListRencanaKontrol/Bulan/'
+            . $bulan
+            . '/Tahun/'
+            . $tahun
+            . '/NoKartu/'
+            . $nomorKartu
+            . '/filter/2';
+
+        $raw = $this->bridging->getRequest($endpoint);
+
+        if (is_array($raw)) {
+            $decoded = $raw;
+        } elseif (is_object($raw)) {
+            $decoded = json_decode(json_encode($raw), true);
+        } else {
+            $decoded = json_decode(trim((string) $raw), true);
+        }
+
+        if (!is_array($decoded) || !isset($decoded['metaData'])) {
+            $decoded = [
+                'metaData' => [
+                    'code' => '200',
+                    'message' => 'OK',
+                ],
+                'response' => $decoded,
+            ];
+        }
+
+        return $decoded;
     }
 
     public function findSep($noSep)
@@ -58,9 +88,9 @@ class RencanaKontrolRepository
 
     public function pesertaByNomor($noKartu)
     {
-  
+
         $date = date('Y-m-d');
-        $endpoint = 'Peserta/nokartu/'.$noKartu.'/tglSEP/' . $date ;
+        $endpoint = 'Peserta/nokartu/' . $noKartu . '/tglSEP/' . $date;
         $data = $this->bridging->getRequest($endpoint);
         return json_decode($data, true);
     }
@@ -75,26 +105,25 @@ class RencanaKontrolRepository
         $endpoint = 'RencanaKontrol/ListRencanaKontrol/tglAwal/' . $tglAwal . '/tglAkhir/' . $tglAkhir . '/filter/' . $filter;
         $result = $this->bridging->getRequest($endpoint);
         $data = json_decode($result, true);
-    
+
         $totalData = 0;
-    
+
         if (isset($data['metaData']['code'])) {
             if ($data['metaData']['code'] === '200' && isset($data['response']['list'])) {
-                $data['response']['list'] = array_filter($data['response']['list'], function($item) {
-                    return $item['tglRencanaKontrol'] === $item['tglTerbitKontrol'] 
-                           && $item['jnsKontrol'] == '2';
+                $data['response']['list'] = array_filter($data['response']['list'], function ($item) {
+                    return $item['tglRencanaKontrol'] === $item['tglTerbitKontrol']
+                        && $item['jnsKontrol'] == '2';
                 });
-                
+
                 // Reset array keys after filtering
                 $data['response']['list'] = array_values($data['response']['list']);
-                
+
                 $totalData = count($data['response']['list']);
             }
         }
-    
+
         $data['total_data'] = $totalData;
-    
+
         return $data;
     }
-
 }
