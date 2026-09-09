@@ -89,11 +89,16 @@
                         </div>
                     </div>
                     <div class="form-group">
+                        <label for="edit_schedule_date">Tanggal Jadwal</label>
+                        <input type="date" name="schedule_date" class="form-control" id="edit_schedule_date" required>
+                    </div>
+
+                    <div class="form-group">
                         <label for="edit_doctor_id">Dokter Jaga</label>
                         <select name="doctor_id" id="edit_doctor_id" class="form-control">
                             <option value="" disabled>Pilih Dokter</option>
                             @foreach($doctors as $doc)
-                                <option value="{{ $doc->id }}">{{ $doc->name }} - {{ $doc->specialization }}</option>
+                            <option value="{{ $doc->id }}">{{ $doc->name }} - {{ $doc->specialization }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -114,7 +119,6 @@
                 $('#edit_id').val(data.id);
                 $('#edit_name').val(data.name);
                 $('#edit_desc').val(data.desc);
-
                 $('input[name="icon"][value="' + data.icon + '"]').prop('checked', true);
                 $('input[name="jenis"][value="' + data.jenis + '"]').prop('checked', true);
 
@@ -125,6 +129,10 @@
                     $('#edit_doctor_id').val(data.doctor_id);
                 }
 
+                if (data.schedule_date) {
+                    $('#edit_schedule_date').val(data.schedule_date);
+                }
+
                 $('#editServiceForm').attr('action', '/our-services/' + serviceId);
             });
         });
@@ -133,6 +141,26 @@
             create: false,
             sortField: 'text',
             placeholder: 'Cari Dokter...'
+        });
+
+        $('#editServiceForm').on('submit', function(e) {
+            e.preventDefault();
+            var form = $(this);
+            $.ajax({
+                url: form.attr('action'),
+                type: 'POST',
+                data: form.serialize(),
+                success: function(resp) {
+                    showAlert('success', 'Service updated successfully!');
+                    $('#editService').modal('hide');
+                    location.reload();
+                },
+                error: function() {
+                    $('<div class="alert alert-danger mt-3">Gagal memperbarui jadwal!</div>')
+                        .insertAfter('#editServiceForm')
+                        .delay(3000).fadeOut();
+                }
+            });
         });
 
         $('#closeClinicBtn').on('click', function() {
@@ -147,16 +175,27 @@
                     desc: $('#edit_desc').val(),
                     icon: $('input[name="icon"]:checked').val(),
                     jenis: $('input[name="jenis"]:checked').val(),
-                    doctor_id: null
+                    doctor_id: null,
+                    schedule_date: $('#edit_schedule_date').val()
                 },
                 success: function() {
-                    $('#editService').modal('hide');
-                    location.reload();
+                    $('<div class="alert alert-success mt-3">Klinik berhasil ditutup & jadwal diperbarui!</div>')
+                        .insertAfter('#editServiceForm')
+                        .delay(3000).fadeOut();
                 },
                 error: function() {
-                    alert('Gagal menutup klinik');
+                    $('<div class="alert alert-danger mt-3">Gagal menutup klinik</div>')
+                        .insertAfter('#editServiceForm')
+                        .delay(3000).fadeOut();
                 }
             });
         });
+
+        function showAlert(type, message) {
+            var alertClass = type === 'success' ? 'alert-success' : 'alert-danger';
+            $('<div class="alert ' + alertClass + ' mt-3">' + message + '</div>')
+                .insertBefore('#dataTable')
+                .delay(3000).fadeOut();
+        }
     });
 </script>

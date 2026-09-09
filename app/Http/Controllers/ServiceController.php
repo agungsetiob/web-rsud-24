@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Doctor;
+use App\Models\ScheduleDay;
 use App\Models\Service;
 use Illuminate\Http\Request;
 use Auth;
@@ -14,9 +15,9 @@ class ServiceController extends Controller
      */
     public function index()
     {
-            $services = Service::with('doctor')->get();
-            $doctors = Doctor::all();
-            return view('admin.our-services', compact('services', 'doctors'));
+        $services = Service::with('doctor')->get();
+        $doctors = Doctor::all();
+        return view('admin.our-services', compact('services', 'doctors'));
     }
 
     /**
@@ -63,7 +64,16 @@ class ServiceController extends Controller
     public function edit($id)
     {
         $service = Service::findOrFail($id);
-        return response()->json($service);
+        $scheduleDay = ScheduleDay::latest()->first();
+        return response()->json([
+            'id' => $service->id,
+            'name' => $service->name,
+            'desc' => $service->desc,
+            'icon' => $service->icon,
+            'jenis' => $service->jenis,
+            'doctor_id' => $service->doctor_id,
+            'schedule_date' => $scheduleDay ? $scheduleDay->date : null,
+        ]);
     }
 
     /**
@@ -84,8 +94,13 @@ class ServiceController extends Controller
         $service->desc = $request->desc;
         $service->icon = $request->icon;
         $service->jenis = $request->jenis;
-        $service->doctor_id = $request->doctor_id; // update dokter jaga
+        $service->doctor_id = $request->doctor_id;
         $service->save();
+
+        ScheduleDay::updateOrCreate(
+            ['id' => 1],
+            ['date' => $request->schedule_date]
+        );
 
         if ($request->ajax()) {
             return response()->json(['success' => true]);
@@ -102,5 +117,4 @@ class ServiceController extends Controller
         $service->delete();
         return redirect()->route('our-services.index')->with('success', 'Service deleted successfully');
     }
-
 }

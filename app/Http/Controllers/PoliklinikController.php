@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ScheduleDay;
 use App\Models\Service;
 use Illuminate\Http\Request;
 
@@ -9,6 +10,9 @@ class PoliklinikController extends Controller
 {
     public function index(Request $request)
     {
+        $scheduleDay = ScheduleDay::latest()->first();
+
+        $date = $scheduleDay ? $scheduleDay->date : now();
         $today = \Carbon\Carbon::now()->translatedFormat('l');
 
         $services = Service::with('doctor')
@@ -22,9 +26,9 @@ class PoliklinikController extends Controller
             }
         }
         if ($request->header('HX-Request')) {
-            return view('main.poliklinik', compact('services', 'today'))->fragment('poliklinik');
+            return view('main.poliklinik', compact('services', 'today', 'date'))->fragment('poliklinik');
         } else {
-            return view('main.poliklinik', compact('services', 'today'));
+            return view('main.poliklinik', compact('services', 'today', 'date'));
         }
     }
 
