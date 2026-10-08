@@ -94,7 +94,7 @@
 <body>
     <div class="container">
         <div class="header top">
-            <img src="https://bpjs-checkin.test/logors.png" alt="Logo RS">
+            <img src="{{ url('storage/logors.png') }}" alt="Logo RS">
             <div class="no-surat">
                 {{ $data['noSuratKontrol'] }}
             </div>
