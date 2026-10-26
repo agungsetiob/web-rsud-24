@@ -47,7 +47,7 @@
                                                 data-nama="{{ $pub->nama_dokumen }}" data-slug="{{ $pub->slug }}"
                                                 data-produsen="{{ $pub->produsen_data }}" data-rilis="{{ $pub->tanggal_rilis }}"
                                                 data-deskripsi="{{ $pub->deskripsi }}" data-rencana="{{ $pub->rencana_rilis }}"
-                                                data-image="{{ $pub->image }}" data-file="{{ $pub->file }}">
+                                                data-image="{{ '/storage/' . $pub->image }}" data-file="{{ '/storage/' . $pub->file }}">
                                                 <i class="fas fa-edit"></i>
                                             </button>
 

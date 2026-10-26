@@ -90,8 +90,8 @@
         $('#edit_rencana_rilis').val(data.rencana_rilis)
         $('#edit_tanggal_rilis').val(data.tanggal_rilis)
         $('#edit_deskripsi').val(data.deskripsi)
-        $('#edit_image_preview img').attr('src', '/storage/' + (data.image || '#'))
-        $('#edit_file_preview a').attr('href', '/storage/' + (data.file || '#'))
+        $('#edit_image_preview img').attr('src', (data.image || '#'))
+        $('#edit_file_preview a').attr('href', (data.file || '#'))
         $('#editPublicationModal').modal('show')
     }
 
